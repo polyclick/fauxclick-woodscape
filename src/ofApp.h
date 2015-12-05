@@ -75,5 +75,7 @@ class ofApp : public ofBaseApp, public ofxMidiListener {
     ofxMidiIn midiIn;
     ofxMidiMessage midiMessage;
 
+    ofSoundStream soundStream;
+
     ofxBeat beat;
 };

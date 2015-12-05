@@ -68,14 +68,24 @@ void ofApp::setup(){
   midiIn.setVerbose(true);
 
   // audio
-  ofSoundStreamListDevices();
-  ofSoundStreamSetup(
-    0,                      // output channels
-    1,                      // input channels
-    this,                   // reference to this app
-    44100,                  // sample rate
-    beat.getBufferSize(),   // buffer size
-    4);                     // amount of buffers, less = more responsive but less stable
+  //ofSoundStreamListDevices();
+  //ofSoundStream::getMatchingDevices(const string &name, unsigned int inChannels, unsigned int outChannels)
+  soundStream.printDeviceList();
+  
+  // first try to get akai device
+  vector<ofSoundDevice> matches = soundStream.getMatchingDevices("Akai Professional, LP: EIE pro (Core Audio)");
+  
+  // else try traktor a10
+  if(!matches.size())
+    matches = soundStream.getMatchingDevices("Akai Professional, LP: EIE pro (Core Audio)");
+  
+  // if akai or traktor found, set as main
+  // this will automatically fallback to microphone audio if none of both was found
+  if(matches.size())
+    soundStream.setDevice(matches[0]);
+  
+  // setup the soundstream
+  soundStream.setup(this, 0, 2, 44100, beat.getBufferSize(), 4);
 }
 
 //--------------------------------------------------------------
