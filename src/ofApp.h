@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include "ofxSyphon.h"
 
 #include "fcSketchBase.h"
 #include "fcBarSketch.h"
@@ -29,9 +30,11 @@ class ofApp : public ofBaseApp {
     int activeSketchIndex;
   
     bool bHideGui;
-  
+
     ofxLabel screenSize;
     ofxLabel sketchLabel;
   
     ofxPanel gui;
+  
+  	ofxSyphonServer mainOutputSyphonServer;
 };

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "ofMain.h"
+
 #include "fcSketchBase.h"
 
 class fcBarSketch : public fcSketchBase {
@@ -10,4 +12,5 @@ class fcBarSketch : public fcSketchBase {
     void draw();
     void logName();
     const char* name();
+  
 };

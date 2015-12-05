@@ -6,6 +6,9 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
   
+  // window
+  ofSetWindowTitle("fauxclick-woodscape");
+  
   // gui
   gui.setup();
   gui.add(screenSize.setup("screen size", ofToString(ofGetWidth()) + "x" + ofToString(ofGetHeight())));
@@ -21,16 +24,30 @@ void ofApp::setup(){
   // active sketch
   activeSketchIndex = 0;
   sketchLabel = sketches[activeSketchIndex]->name();
+  
+  // syphon
+  mainOutputSyphonServer.setName("Screen Output");
+  
+  // cap framerate if we want
+  //// ofSetFrameRate(60);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
+  sketches[activeSketchIndex]->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+  
+  // draw current sketch
   sketches[activeSketchIndex]->draw();
+  
+  // publish screen to syphon
+  mainOutputSyphonServer.publishScreen();
+  
+  // everything AFTER this line will not get send over syphon
+  // use it to draw the gui, logs, ...
   
   // draw gui if needed
   if(!bHideGui){
