@@ -17,6 +17,10 @@ class ofApp : public ofBaseApp, public ofxMidiListener {
     void draw();
     void exit();
 
+    void vSyncChanged(bool & vSync);
+    void capFramerateChanged(bool & vSync);
+    void smoothChanged(bool & smooth);
+
     void newMidiMessage(ofxMidiMessage& eventArgs);
     void audioReceived(float*, int, int);
 
@@ -31,10 +35,6 @@ class ofApp : public ofBaseApp, public ofxMidiListener {
     void windowResized(int w, int h);
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
-
-    void vSyncChanged(bool & vSync);
-    void capFramerateChanged(bool & vSync);
-    void smoothChanged(bool & smooth);
 
     stringstream text;
 

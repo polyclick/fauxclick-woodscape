@@ -1,16 +1,18 @@
 #include "fcBarSketch.h"
 
-#include "ofLog.h"
+const char* fcBarSketch::name() {
+  return "Bar Sketch";
+}
 
 void fcBarSketch::setup(){
-  
+
 }
 
 void fcBarSketch::update(){
-  
+
 }
 
-void fcBarSketch::draw(){
+void fcBarSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
   ofSetColor(0,255,255);
   float radius = 100;
   ofFill();		// draw "filled shapes"
@@ -19,8 +21,4 @@ void fcBarSketch::draw(){
 
 void fcBarSketch::logName() {
   ofLog(OF_LOG_NOTICE, this->name());
-}
-
-const char* fcBarSketch::name() {
-  return "Bar Sketch";
 }

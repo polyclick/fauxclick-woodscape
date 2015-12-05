@@ -61,8 +61,12 @@ void ofApp::vSyncChanged(bool & vSync){
 
 //--------------------------------------------------------------
 void ofApp::capFramerateChanged(bool & capFramerate){
+
+  // cap framerate to 60fps if requested
   int framerate = capFramerate ? 60 : 0;
   ofSetFrameRate(framerate);
+
+  // log setting switch
   if(framerate) {
     cout << "Frame rate set to: " << framerate << endl;
   } else {
@@ -75,8 +79,7 @@ void ofApp::smoothChanged(bool & smooth){
   if(smooth) {
     ofEnableSmoothing();
     cout << "Smoothing: enabled" << endl;
-  }
-  else {
+  } else {
     ofDisableSmoothing();
     cout << "Smoothing: disabled" << endl;
   }
@@ -92,7 +95,7 @@ void ofApp::update(){
 void ofApp::draw(){
 
   // draw current sketch
-  sketches[activeSketchIndex]->draw();
+  sketches[activeSketchIndex]->draw(beat, midiMessage);
 
   // publish screen to syphon
   mainOutputSyphonServer.publishScreen();
@@ -102,18 +105,13 @@ void ofApp::draw(){
 
   // draw gui if needed
   if(!bHideGui){
+    ofSetColor(255);
     gui.draw();
   }
 
   //cout << beat.kick() << "," << beat.snare() << "," << beat.hihat() << endl;
 
-  ofSetColor(255);
 
-  for (int i = 0; i < 32; ++i)
-  {
-    float selectedBand = beat.getBand(i);
-    //ofDrawRectangle((ofGetWidth() / 32) * i, 0, ofGetWidth() / 32, ofGetHeight() * selectedBand);
-  }
 
 
   // draw the last recieved message contents to the screen
