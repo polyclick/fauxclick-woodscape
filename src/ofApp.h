@@ -28,7 +28,7 @@ class ofApp : public ofBaseApp, public ofxMidiListener {
     void smoothChanged(bool & smooth);
 
     void newMidiMessage(ofxMidiMessage& eventArgs);
-    void audioReceived(float*, int, int);
+    void audioReceived(float* input, int bufferSize, int nChannels);
 
     void keyPressed(int key);
     void keyReleased(int key);

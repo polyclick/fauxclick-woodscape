@@ -160,14 +160,14 @@ void ofApp::update() {
   framerate = ofToString(ofGetFrameRate());
 
   // update active sketch
-  sketches[activeSketchIndex]->update();
+  sketches[activeSketchIndex]->update(beat);
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 
   // draw current sketch
-  sketches[activeSketchIndex]->draw(beat, midiMessage);
+  sketches[activeSketchIndex]->draw();
 
   // publish screen to syphon
   mainOutputSyphonServer.publishScreen();
@@ -216,7 +216,12 @@ void ofApp::newMidiMessage(ofxMidiMessage& msg) {
 
 //--------------------------------------------------------------
 void ofApp::audioReceived(float* input, int bufferSize, int nChannels) {
+  
+  // feed audio to beat detector
   beat.audioReceived(input, bufferSize, nChannels);
+  
+  // feed audio to active sketch
+  sketches[activeSketchIndex]->audioReceived(input, bufferSize, nChannels);
 }
 
 //--------------------------------------------------------------

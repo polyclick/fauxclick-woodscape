@@ -13,16 +13,20 @@ void FFTBarSketch::setup(){
 
 }
 
-void FFTBarSketch::update(){
-
+void FFTBarSketch::update(ofxBeat beat){
+  this->beat = beat;
 }
 
-void FFTBarSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
+void FFTBarSketch::draw() {
   ofSetColor(255, 255, 255);
   for (int i = 0; i < 32; ++i) {
-    float selectedBand = beat.getBand(i);
+    float selectedBand = this->beat.getBand(i);
     ofDrawRectangle((ofGetWidth() / 32) * i, 0, ofGetWidth() / 32, ofGetHeight() * selectedBand);
   }
+}
+
+void FFTBarSketch::audioReceived(float* input, int bufferSize, int nChannels) {
+  // audio received, do something with input
 }
 
 const char* FFTBarSketch::getName() {

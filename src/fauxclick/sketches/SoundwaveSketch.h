@@ -6,7 +6,8 @@
 class SoundwaveSketch : public SketchBase {
   
   private:
-    vector <float> left;
+    vector <float> audio;
+    float yPosition = 0;
   
   protected:
     const char* name;
@@ -17,9 +18,11 @@ class SoundwaveSketch : public SketchBase {
     ~SoundwaveSketch();
   
     void setup();
-    void update();
-    void draw(ofxBeat beat, ofxMidiMessage midi);
+    void update(ofxBeat beat);
+    void draw();
 
+    void audioReceived(float* input, int bufferSize, int nChannels);  
+  
     const char* getName();
     void logName();
 };

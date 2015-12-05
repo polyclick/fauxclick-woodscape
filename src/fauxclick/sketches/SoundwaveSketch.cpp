@@ -10,35 +10,46 @@ SoundwaveSketch::~SoundwaveSketch(){
 }
 
 void SoundwaveSketch::setup(){
-  left.assign(this->app->bufferSize, 0.0);
+  audio.assign(this->app->bufferSize, 0.0);
 }
 
-void SoundwaveSketch::update(){
-
+void SoundwaveSketch::update(ofxBeat beat){
+  
 }
 
-void SoundwaveSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
-//  ofPushStyle();
-//		ofPushMatrix();
-//		ofTranslate(32, 170, 0);
-//  
-//		ofSetColor(225);
-//		ofDrawBitmapString("Left Channel", 4, 18);
-//		
-//		ofSetLineWidth(1);
-//		ofDrawRectangle(0, 0, 512, 200);
-//  
-//		ofSetColor(245, 58, 135);
-//		ofSetLineWidth(3);
-//  
-//  ofBeginShape();
-//  for (unsigned int i = 0; i < left.size(); i++){
-//				ofVertex(i*2, 100 -left[i]*180.0f);
-//  }
-//  ofEndShape(false);
-//  
-//		ofPopMatrix();
-//  ofPopStyle();
+void SoundwaveSketch::draw() {
+  if(!audio.size()) return;
+  ofNoFill();
+
+  ofPushStyle();
+		ofPushMatrix();
+
+      // set color
+      ofSetColor(245, 58, 135);
+      ofSetLineWidth(3);
+  
+      // y offset
+      ofTranslate(0, ofGetHeight() / 2.0, 0);
+  
+      // start drawing the line
+      ofBeginShape();
+  
+      // draw over the full width of the screen
+      float pointSize = (float)ofGetWidth() / (float)audio.size();
+      for (unsigned int i = 0; i < audio.size(); i++){
+        ofVertex(i * pointSize, audio[i] * ofGetHeight() / 4.0);
+      }
+  
+      // end drawing the line
+      ofEndShape(false);
+		ofPopMatrix();
+  ofPopStyle();
+}
+
+void SoundwaveSketch::audioReceived(float* input, int bufferSize, int nChannels) {
+  for (int i = 0; i < bufferSize; i++){
+    audio[i] = input[i];
+  }
 }
 
 const char* SoundwaveSketch::getName() {

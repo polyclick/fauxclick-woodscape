@@ -4,6 +4,8 @@
 #include "SketchBase.h"
 
 class TriangleNoiseSketch : public SketchBase {
+  private:
+    ofxBeat beat;
 
   protected:
     const char* name;
@@ -14,9 +16,11 @@ class TriangleNoiseSketch : public SketchBase {
     ~TriangleNoiseSketch();
   
     void setup();
-    void update();
-    void draw(ofxBeat beat, ofxMidiMessage midi);
+    void update(ofxBeat beat);
+    void draw();
 
+    void audioReceived(float* input, int bufferSize, int nChannels);
+  
     const char* getName();
     void logName();
 };
