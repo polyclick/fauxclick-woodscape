@@ -3,16 +3,22 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 #include "ofxSyphon.h"
+#include "ofxMidi.h"
+#include "ofxBeat.h"
 
 #include "fcSketchBase.h"
 #include "fcBarSketch.h"
 
-class ofApp : public ofBaseApp {
+class ofApp : public ofBaseApp, public ofxMidiListener {
 
   public:
     void setup();
     void update();
     void draw();
+    void exit();
+
+    void newMidiMessage(ofxMidiMessage& eventArgs);
+    void audioReceived(float*, int, int);
 
     void keyPressed(int key);
     void keyReleased(int key);
@@ -26,15 +32,30 @@ class ofApp : public ofBaseApp {
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-    std::vector<fcSketchBase*> sketches;
-    int activeSketchIndex;
-  
+    void vSyncChanged(bool & vSync);
+    void capFramerateChanged(bool & vSync);
+    void smoothChanged(bool & smooth);
+
+    stringstream text;
+
     bool bHideGui;
+    int activeSketchIndex;
+
+    std::vector<fcSketchBase*> sketches;
+
+    ofParameter<bool> vSync;
+    ofParameter<bool> capFramerate;
+    ofParameter<bool> smooth;
 
     ofxLabel screenSize;
     ofxLabel sketchLabel;
-  
     ofxPanel gui;
-  
+    ofParameterGroup parameters;
+
   	ofxSyphonServer mainOutputSyphonServer;
+
+    ofxMidiIn midiIn;
+    ofxMidiMessage midiMessage;
+
+    ofxBeat beat;
 };
