@@ -1,7 +1,12 @@
 #include "TriangleNoiseSketch.h"
 
-const char* TriangleNoiseSketch::name() {
-  return "Bar Sketch";
+TriangleNoiseSketch::TriangleNoiseSketch(ofApp* app, const char* name){
+  this->name = name;
+  this->app = app;
+}
+
+TriangleNoiseSketch::~TriangleNoiseSketch(){
+  // destructor
 }
 
 void TriangleNoiseSketch::setup(){
@@ -32,6 +37,10 @@ void TriangleNoiseSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
   ofEndShape();
 }
 
+const char* TriangleNoiseSketch::getName() {
+  return this->name;
+}
+
 void TriangleNoiseSketch::logName() {
-  ofLog(OF_LOG_NOTICE, this->name());
+  ofLog(OF_LOG_NOTICE, this->name);
 }

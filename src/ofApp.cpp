@@ -97,14 +97,14 @@ void ofApp::setupSyphon() {
 
 //--------------------------------------------------------------
 void ofApp::setupSketches() {
-  sketches.push_back(new TriangleSketch());
-  sketches.push_back(new FFTBarSketch());
-  sketches.push_back(new TriangleNoiseSketch());
-  sketches.push_back(new SoundwaveSketch());
+  sketches.push_back(new TriangleSketch(this, "TriangleSketch"));
+  sketches.push_back(new FFTBarSketch(this, "FFTBarSketch"));
+  sketches.push_back(new TriangleNoiseSketch(this, "TriangleNoiseSketch"));
+  sketches.push_back(new SoundwaveSketch(this, "SoundwaveSketch"));
   
   // active sketch
   activeSketchIndex = 0;
-  sketchLabel = sketches[activeSketchIndex]->name();
+  sketchLabel = sketches[activeSketchIndex]->getName();
 }
 
 //--------------------------------------------------------------
@@ -239,7 +239,7 @@ void ofApp::keyPressed(int key){
   }
 
   sketches[activeSketchIndex]->logName();
-  sketchLabel = sketches[activeSketchIndex]->name();
+  sketchLabel = sketches[activeSketchIndex]->getName();
 }
 
 //--------------------------------------------------------------

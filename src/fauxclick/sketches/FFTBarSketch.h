@@ -1,15 +1,22 @@
 #pragma once
 
+#include "ofApp.h"
 #include "SketchBase.h"
 
 class FFTBarSketch : public SketchBase {
-
+  
+  protected:
+    const char* name;
+    ofApp* app;
+  
   public:
-    const char* name();
+    FFTBarSketch(ofApp* app, const char* name);
+    ~FFTBarSketch();
 
     void setup();
     void update();
     void draw(ofxBeat beat, ofxMidiMessage midi);
 
+    const char* getName();
     void logName();
 };

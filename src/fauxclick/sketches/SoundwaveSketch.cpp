@@ -1,7 +1,12 @@
 #include "SoundwaveSketch.h"
 
-const char* SoundwaveSketch::name() {
-  return "Bar Sketch";
+SoundwaveSketch::SoundwaveSketch(ofApp* app, const char* name){
+  this->name = name;
+  this->app = app;
+}
+
+SoundwaveSketch::~SoundwaveSketch(){
+  // destructor
 }
 
 void SoundwaveSketch::setup(){
@@ -36,6 +41,10 @@ void SoundwaveSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
 //  ofPopStyle();
 }
 
+const char* SoundwaveSketch::getName() {
+  return this->name;
+}
+
 void SoundwaveSketch::logName() {
-  ofLog(OF_LOG_NOTICE, this->name());
+  ofLog(OF_LOG_NOTICE, this->name);
 }

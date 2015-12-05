@@ -1,7 +1,12 @@
 #include "TriangleSketch.h"
 
-const char* TriangleSketch::name() {
-  return "Triangle Sketch";
+TriangleSketch::TriangleSketch(ofApp* app, const char* name){
+  this->name = name;
+  this->app = app;
+}
+
+TriangleSketch::~TriangleSketch(){
+  // destructor
 }
 
 void TriangleSketch::setup() {
@@ -19,6 +24,10 @@ void TriangleSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
   ofDrawCircle(100,400,radius);
 }
 
+const char* TriangleSketch::getName() {
+  return this->name;
+}
+
 void TriangleSketch::logName() {
-  ofLog(OF_LOG_NOTICE, this->name());
+  ofLog(OF_LOG_NOTICE, this->name);
 }

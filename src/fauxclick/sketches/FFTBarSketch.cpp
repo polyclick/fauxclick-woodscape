@@ -1,7 +1,12 @@
 #include "FFTBarSketch.h"
 
-const char* FFTBarSketch::name() {
-  return "Bar Sketch";
+FFTBarSketch::FFTBarSketch(ofApp* app, const char* name){
+  this->name = name;
+  this->app = app;
+}
+
+FFTBarSketch::~FFTBarSketch(){
+  // destructor
 }
 
 void FFTBarSketch::setup(){
@@ -20,6 +25,10 @@ void FFTBarSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
   }
 }
 
+const char* FFTBarSketch::getName() {
+  return this->name;
+}
+
 void FFTBarSketch::logName() {
-  ofLog(OF_LOG_NOTICE, this->name());
+  ofLog(OF_LOG_NOTICE, this->name);
 }
