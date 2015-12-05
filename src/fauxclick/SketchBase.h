@@ -5,7 +5,7 @@
 #include "ofxBeat.h"
 #include "ofLog.h"
 
-class fcSketchBase {
+class SketchBase {
 
   public:
     virtual const char* name() = 0;

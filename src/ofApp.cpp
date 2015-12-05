@@ -1,8 +1,9 @@
 #include "ofApp.h"
 
-#include "fcTriangleSketch.h"
-#include "fcFFTBarSketch.h"
-#include "fcTriangleNoiseSketch.h"
+#include "TriangleSketch.h"
+#include "FFTBarSketch.h"
+#include "TriangleNoiseSketch.h"
+#include "SoundwaveSketch.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -11,22 +12,33 @@ void ofApp::setup(){
   ofSetWindowTitle("fauxclick-woodscape");
   ofBackground(0, 0, 0);
   ofSetLogLevel(OF_LOG_VERBOSE);
+  
+  // libraries and stuff
+  this->setupGui();
+  this->setupMidi();
+  this->setupAudio();
+  this->setupSyphon();
+  
+  // our sketches
+  this->setupSketches();
+}
 
-  // gui
+//--------------------------------------------------------------
+void ofApp::setupGui() {
   vSync.addListener(this, &ofApp::vSyncChanged);
   capFramerate.addListener(this, &ofApp::capFramerateChanged);
   smooth.addListener(this, &ofApp::smoothChanged);
-
+  
   summary.setName("summary");
   summary.add(sketchLabel.set("sketch", ""));
   summary.add(framerate.set("fps", ""));
   summary.add(screenSize.set("resolution", ""));
-
+  
   settings.setName("settings");
   settings.add(vSync.set("vSync", false));
   settings.add(capFramerate.set("capFramerate", false));
   settings.add(smooth.set("smooth", false));
-
+  
   midi.setName("midi");
   midi.add(midiStatus.set("status", ""));
   midi.add(midiChannel.set("channel", ""));
@@ -35,41 +47,31 @@ void ofApp::setup(){
   midi.add(midiControl.set("control", 0, 0, 127));
   midi.add(midiValue.set("value (normalized)", 0, 0, 100));
   midi.add(midiDelta.set("delta", ""));
-
+  
   audio.setName("audio");
   audio.add(audioKick.set("kick", 0, 0, 100));
   audio.add(audioSnare.set("snare", 0, 0, 100));
   audio.add(audioHat.set("hat", 0, 0, 100));
-
+  
   debug.add(summary);
   debug.add(settings);
   debug.add(midi);
   debug.add(audio);
-
+  
   gui.setup(debug);
+}
 
-  // sketches
-  sketches.push_back(new fcTriangleSketch());
-  sketches.push_back(new fcFFTBarSketch());
-  sketches.push_back(new fcTriangleNoiseSketch());
-
-  // active sketch
-  activeSketchIndex = 0;
-  sketchLabel = sketches[activeSketchIndex]->name();
-
-  // syphon
-  mainOutputSyphonServer.setName("Screen Output");
-
-  // midi
+//--------------------------------------------------------------
+void ofApp::setupMidi() {
   midiIn.listPorts();
   midiIn.openPort("Ableton Push User Port");
   midiIn.ignoreTypes(false, false, false);  // sysex, timing, active sense
   midiIn.addListener(this);
   midiIn.setVerbose(true);
+}
 
-  // audio
-  //ofSoundStreamListDevices();
-  //ofSoundStream::getMatchingDevices(const string &name, unsigned int inChannels, unsigned int outChannels)
+//--------------------------------------------------------------
+void ofApp::setupAudio() {
   soundStream.printDeviceList();
   
   // first try to get akai device
@@ -85,7 +87,24 @@ void ofApp::setup(){
     soundStream.setDevice(matches[0]);
   
   // setup the soundstream
-  soundStream.setup(this, 0, 2, 44100, beat.getBufferSize(), 4);
+  soundStream.setup(this, 0, 1, 44100, beat.getBufferSize(), 4);
+}
+
+//--------------------------------------------------------------
+void ofApp::setupSyphon() {
+  mainOutputSyphonServer.setName("Screen Output");
+}
+
+//--------------------------------------------------------------
+void ofApp::setupSketches() {
+  sketches.push_back(new TriangleSketch());
+  sketches.push_back(new FFTBarSketch());
+  sketches.push_back(new TriangleNoiseSketch());
+  sketches.push_back(new SoundwaveSketch());
+  
+  // active sketch
+  activeSketchIndex = 0;
+  sketchLabel = sketches[activeSketchIndex]->name();
 }
 
 //--------------------------------------------------------------
@@ -212,6 +231,10 @@ void ofApp::keyPressed(int key){
 
     case '3':
       activeSketchIndex = 2;
+      break;
+      
+    case '4':
+      activeSketchIndex = 3;
       break;
   }
 

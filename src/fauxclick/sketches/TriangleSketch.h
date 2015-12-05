@@ -1,8 +1,8 @@
 #pragma once
 
-#include "fcSketchBase.h"
+#include "SketchBase.h"
 
-class fcFFTBarSketch : public fcSketchBase {
+class TriangleSketch : public SketchBase {
 
   public:
     const char* name();

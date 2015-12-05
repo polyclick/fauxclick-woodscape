@@ -1,18 +1,18 @@
-#include "fcTriangleNoiseSketch.h"
+#include "TriangleNoiseSketch.h"
 
-const char* fcTriangleNoiseSketch::name() {
+const char* TriangleNoiseSketch::name() {
   return "Bar Sketch";
 }
 
-void fcTriangleNoiseSketch::setup(){
+void TriangleNoiseSketch::setup(){
 
 }
 
-void fcTriangleNoiseSketch::update(){
+void TriangleNoiseSketch::update(){
 
 }
 
-void fcTriangleNoiseSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
+void TriangleNoiseSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
   ofSetHexColor(0xffffff);
   ofSetPolyMode(OF_POLY_WINDING_ODD);
   ofBeginShape();
@@ -32,6 +32,6 @@ void fcTriangleNoiseSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
   ofEndShape();
 }
 
-void fcTriangleNoiseSketch::logName() {
+void TriangleNoiseSketch::logName() {
   ofLog(OF_LOG_NOTICE, this->name());
 }

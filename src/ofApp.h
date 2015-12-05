@@ -6,11 +6,17 @@
 #include "ofxMidi.h"
 #include "ofxBeat.h"
 
-#include "fcSketchBase.h"
-#include "fcFFTBarSketch.h"
+#include "SketchBase.h"
 
 class ofApp : public ofBaseApp, public ofxMidiListener {
 
+  private:
+    void setupGui();
+    void setupMidi();
+    void setupAudio();
+    void setupSyphon();
+    void setupSketches();
+  
   public:
     void setup();
     void update();
@@ -41,7 +47,7 @@ class ofApp : public ofBaseApp, public ofxMidiListener {
     bool bHideGui;
     int activeSketchIndex;
 
-    std::vector<fcSketchBase*> sketches;
+    std::vector<SketchBase*> sketches;
 
     ofParameter<string> sketchLabel;
     ofParameter<string> framerate;
