@@ -59,9 +59,14 @@ class ofApp : public ofBaseApp, public ofxMidiListener {
     ofParameter<float> midiValue;
     ofParameter<string> midiDelta;
 
+    ofParameter<float> audioKick;
+    ofParameter<float> audioSnare;
+    ofParameter<float> audioHat;
+
     ofParameterGroup summary;
     ofParameterGroup settings;
     ofParameterGroup midi;
+    ofParameterGroup audio;
     ofParameterGroup debug;
     ofxPanel gui;
 

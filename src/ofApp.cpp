@@ -2,6 +2,7 @@
 
 #include "fcTriangleSketch.h"
 #include "fcBarSketch.h"
+#include "fcBlobSketch.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -35,15 +36,22 @@ void ofApp::setup(){
   midi.add(midiValue.set("value (normalized)", 0, 0, 100));
   midi.add(midiDelta.set("delta", ""));
 
+  audio.setName("audio");
+  audio.add(audioKick.set("kick", 0, 0, 100));
+  audio.add(audioSnare.set("snare", 0, 0, 100));
+  audio.add(audioHat.set("hat", 0, 0, 100));
+
   debug.add(summary);
   debug.add(settings);
   debug.add(midi);
+  debug.add(audio);
 
   gui.setup(debug);
 
   // sketches
   sketches.push_back(new fcTriangleSketch());
   sketches.push_back(new fcBarSketch());
+  sketches.push_back(new fcBlobSketch());
 
   // active sketch
   activeSketchIndex = 0;
@@ -107,6 +115,11 @@ void ofApp::update() {
 
   // update beat detector
   beat.update(ofGetElapsedTimeMillis());
+
+  // debug
+  audioKick = beat.kick() * 100.0;
+  audioSnare = beat.snare() * 100.0;
+  audioHat = beat.hihat() * 100.0;
 
   // set framerate
   framerate = ofToString(ofGetFrameRate());
@@ -185,6 +198,10 @@ void ofApp::keyPressed(int key){
 
     case '2':
       activeSketchIndex = 1;
+      break;
+
+    case '3':
+      activeSketchIndex = 2;
       break;
   }
 
