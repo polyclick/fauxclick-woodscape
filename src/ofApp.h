@@ -45,6 +45,8 @@ class ofApp : public ofBaseApp, public ofxMidiListener {
     stringstream text;
 
     bool bHideGui;
+  
+    int bufferSize;
     int activeSketchIndex;
 
     std::vector<SketchBase*> sketches;

@@ -10,7 +10,7 @@ SoundwaveSketch::~SoundwaveSketch(){
 }
 
 void SoundwaveSketch::setup(){
-
+  left.assign(this->app->bufferSize, 0.0);
 }
 
 void SoundwaveSketch::update(){

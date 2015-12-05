@@ -87,7 +87,8 @@ void ofApp::setupAudio() {
     soundStream.setDevice(matches[0]);
   
   // setup the soundstream
-  soundStream.setup(this, 0, 1, 44100, beat.getBufferSize(), 4);
+  bufferSize = beat.getBufferSize();
+  soundStream.setup(this, 0, 1, 44100, bufferSize, 4);
 }
 
 //--------------------------------------------------------------
@@ -101,6 +102,11 @@ void ofApp::setupSketches() {
   sketches.push_back(new FFTBarSketch(this, "FFTBarSketch"));
   sketches.push_back(new TriangleNoiseSketch(this, "TriangleNoiseSketch"));
   sketches.push_back(new SoundwaveSketch(this, "SoundwaveSketch"));
+  
+  // call setup
+  for (auto &sketch : sketches) {
+    sketch->setup();
+  }
   
   // active sketch
   activeSketchIndex = 0;

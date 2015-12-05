@@ -5,6 +5,9 @@
 
 class SoundwaveSketch : public SketchBase {
   
+  private:
+    vector <float> left;
+  
   protected:
     const char* name;
     ofApp* app;
