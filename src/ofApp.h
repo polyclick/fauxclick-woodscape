@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGui.h"
+
 #include "fcSketchBase.h"
 #include "fcBarSketch.h"
 
@@ -24,5 +26,12 @@ class ofApp : public ofBaseApp {
     void gotMessage(ofMessage msg);
 
     std::vector<fcSketchBase*> sketches;
-    int activeSketchIndex = 0;
+    int activeSketchIndex;
+  
+    bool bHideGui;
+  
+    ofxLabel screenSize;
+    ofxLabel sketchLabel;
+  
+    ofxPanel gui;
 };

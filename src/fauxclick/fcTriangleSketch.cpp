@@ -15,5 +15,9 @@ void fcTriangleSketch::draw(){
 }
 
 void fcTriangleSketch::logName() {
-  ofLog(OF_LOG_NOTICE, "Triangle Sketch");
+  ofLog(OF_LOG_NOTICE, this->name());
+}
+
+const char* fcTriangleSketch::name() {
+  return "Triangle Sketch";
 }

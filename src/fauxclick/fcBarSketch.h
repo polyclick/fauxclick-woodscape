@@ -9,5 +9,5 @@ class fcBarSketch : public fcSketchBase {
     void update();
     void draw();
     void logName();
-  
+    const char* name();
 };
