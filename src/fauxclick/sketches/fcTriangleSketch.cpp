@@ -13,12 +13,10 @@ void fcTriangleSketch::update() {
 }
 
 void fcTriangleSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
-  ofSetColor(255);
-
-  for (int i = 0; i < 32; ++i) {
-    float selectedBand = beat.getBand(i);
-    ofDrawRectangle((ofGetWidth() / 32) * i, 0, ofGetWidth() / 32, ofGetHeight() * selectedBand);
-  }
+  ofSetColor(0,255,255);
+  float radius = 100;
+  ofFill();   // draw "filled shapes"
+  ofDrawCircle(100,400,radius);
 }
 
 void fcTriangleSketch::logName() {

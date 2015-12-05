@@ -43,14 +43,27 @@ class ofApp : public ofBaseApp, public ofxMidiListener {
 
     std::vector<fcSketchBase*> sketches;
 
+    ofParameter<string> sketchLabel;
+    ofParameter<string> framerate;
+    ofParameter<string> screenSize;
+
     ofParameter<bool> vSync;
     ofParameter<bool> capFramerate;
     ofParameter<bool> smooth;
 
-    ofxLabel screenSize;
-    ofxLabel sketchLabel;
+    ofParameter<string> midiStatus;
+    ofParameter<string> midiChannel;
+    ofParameter<float> midiPitch;
+    ofParameter<float> midiVelocity;
+    ofParameter<float> midiControl;
+    ofParameter<float> midiValue;
+    ofParameter<string> midiDelta;
+
+    ofParameterGroup summary;
+    ofParameterGroup settings;
+    ofParameterGroup midi;
+    ofParameterGroup debug;
     ofxPanel gui;
-    ofParameterGroup parameters;
 
   	ofxSyphonServer mainOutputSyphonServer;
 

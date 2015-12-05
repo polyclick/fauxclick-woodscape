@@ -11,18 +11,35 @@ void ofApp::setup(){
   ofBackground(0, 0, 0);
   ofSetLogLevel(OF_LOG_VERBOSE);
 
-  // we add this listener before setting up so the initial circle resolution is correct
+  // gui
   vSync.addListener(this, &ofApp::vSyncChanged);
   capFramerate.addListener(this, &ofApp::capFramerateChanged);
   smooth.addListener(this, &ofApp::smoothChanged);
 
-  parameters.setName("settings");
-  parameters.add(vSync.set("vSync", false));
-  parameters.add(capFramerate.set("capFramerate", false));
-  parameters.add(smooth.set("smooth", false));
+  summary.setName("summary");
+  summary.add(sketchLabel.set("sketch", ""));
+  summary.add(framerate.set("fps", ""));
+  summary.add(screenSize.set("resolution", ""));
 
-  // gui
-  gui.setup(parameters);
+  settings.setName("settings");
+  settings.add(vSync.set("vSync", false));
+  settings.add(capFramerate.set("capFramerate", false));
+  settings.add(smooth.set("smooth", false));
+
+  midi.setName("midi");
+  midi.add(midiStatus.set("status", ""));
+  midi.add(midiChannel.set("channel", ""));
+  midi.add(midiPitch.set("pitch", 0, 0, 127));
+  midi.add(midiVelocity.set("velocity", 0, 0, 127));
+  midi.add(midiControl.set("control", 0, 0, 127));
+  midi.add(midiValue.set("value (normalized)", 0, 0, 100));
+  midi.add(midiDelta.set("delta", ""));
+
+  debug.add(summary);
+  debug.add(settings);
+  debug.add(midi);
+
+  gui.setup(debug);
 
   // sketches
   sketches.push_back(new fcTriangleSketch());
@@ -75,7 +92,7 @@ void ofApp::capFramerateChanged(bool & capFramerate){
 }
 
 //--------------------------------------------------------------
-void ofApp::smoothChanged(bool & smooth){
+void ofApp::smoothChanged(bool & smooth) {
   if(smooth) {
     ofEnableSmoothing();
     cout << "Smoothing: enabled" << endl;
@@ -86,13 +103,20 @@ void ofApp::smoothChanged(bool & smooth){
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
+void ofApp::update() {
+
+  // update beat detector
   beat.update(ofGetElapsedTimeMillis());
+
+  // set framerate
+  framerate = ofToString(ofGetFrameRate());
+
+  // update active sketch
   sketches[activeSketchIndex]->update();
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
+void ofApp::draw() {
 
   // draw current sketch
   sketches[activeSketchIndex]->draw(beat, midiMessage);
@@ -110,47 +134,6 @@ void ofApp::draw(){
   }
 
   //cout << beat.kick() << "," << beat.snare() << "," << beat.hihat() << endl;
-
-
-
-
-  // draw the last recieved message contents to the screen
-  text << "Received: " << ofxMidiMessage::getStatusString(midiMessage.status);
-  ofDrawBitmapString(text.str(), 20, 20);
-  text.str(""); // clear
-
-  text << "channel: " << midiMessage.channel;
-  ofDrawBitmapString(text.str(), 20, 34);
-  text.str(""); // clear
-
-  text << "pitch: " << midiMessage.pitch;
-  ofDrawBitmapString(text.str(), 20, 48);
-  text.str(""); // clear
-  ofDrawRectangle(20, 58, ofMap(midiMessage.pitch, 0, 127, 0, ofGetWidth()-40), 20);
-
-  text << "velocity: " << midiMessage.velocity;
-  ofDrawBitmapString(text.str(), 20, 96);
-  text.str(""); // clear
-  ofDrawRectangle(20, 105, ofMap(midiMessage.velocity, 0, 127, 0, ofGetWidth()-40), 20);
-
-  text << "control: " << midiMessage.control;
-  ofDrawBitmapString(text.str(), 20, 144);
-  text.str(""); // clear
-  ofDrawRectangle(20, 154, ofMap(midiMessage.control, 0, 127, 0, ofGetWidth()-40), 20);
-
-  text << "value: " << midiMessage.value;
-  ofDrawBitmapString(text.str(), 20, 192);
-  text.str(""); // clear
-  if(midiMessage.status == MIDI_PITCH_BEND) {
-    ofDrawRectangle(20, 202, ofMap(midiMessage.value, 0, MIDI_MAX_BEND, 0, ofGetWidth()-40), 20);
-  }
-  else {
-    ofDrawRectangle(20, 202, ofMap(midiMessage.value, 0, 127, 0, ofGetWidth()-40), 20);
-  }
-
-  text << "delta: " << midiMessage.deltatime;
-  ofDrawBitmapString(text.str(), 20, 240);
-  text.str(""); // clear
 }
 
 //--------------------------------------------------------------
@@ -166,6 +149,21 @@ void ofApp::newMidiMessage(ofxMidiMessage& msg) {
 
   // make a copy of the latest message
   midiMessage = msg;
+
+  // show in debug
+  midiStatus = ofxMidiMessage::getStatusString(midiMessage.status);
+  midiChannel = ofToString(midiMessage.channel);
+  midiPitch = midiMessage.pitch;
+  midiVelocity = midiMessage.velocity;
+  midiControl = midiMessage.control;
+
+  if(midiMessage.status == MIDI_PITCH_BEND) {
+    midiValue = ofMap(midiMessage.value, 0, MIDI_MAX_BEND, 0, 100);
+  } else {
+    midiValue = ofMap(midiMessage.value, 0, 127, 0, 100);
+  }
+
+  midiDelta = ofToString(midiMessage.deltatime);
 }
 
 //--------------------------------------------------------------
