@@ -1,8 +1,8 @@
 #include "ofApp.h"
 
 #include "fcTriangleSketch.h"
-#include "fcBarSketch.h"
-#include "fcBlobSketch.h"
+#include "fcFFTBarSketch.h"
+#include "fcTriangleNoiseSketch.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -50,8 +50,8 @@ void ofApp::setup(){
 
   // sketches
   sketches.push_back(new fcTriangleSketch());
-  sketches.push_back(new fcBarSketch());
-  sketches.push_back(new fcBlobSketch());
+  sketches.push_back(new fcFFTBarSketch());
+  sketches.push_back(new fcTriangleNoiseSketch());
 
   // active sketch
   activeSketchIndex = 0;

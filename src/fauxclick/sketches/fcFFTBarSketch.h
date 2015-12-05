@@ -2,7 +2,7 @@
 
 #include "fcSketchBase.h"
 
-class fcBarSketch : public fcSketchBase {
+class fcFFTBarSketch : public fcSketchBase {
 
   public:
     const char* name();

@@ -1,18 +1,18 @@
-#include "fcBarSketch.h"
+#include "fcFFTBarSketch.h"
 
-const char* fcBarSketch::name() {
+const char* fcFFTBarSketch::name() {
   return "Bar Sketch";
 }
 
-void fcBarSketch::setup(){
+void fcFFTBarSketch::setup(){
 
 }
 
-void fcBarSketch::update(){
+void fcFFTBarSketch::update(){
 
 }
 
-void fcBarSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
+void fcFFTBarSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
   ofSetColor(255, 255, 255);
   for (int i = 0; i < 32; ++i) {
     float selectedBand = beat.getBand(i);
@@ -20,6 +20,6 @@ void fcBarSketch::draw(ofxBeat beat, ofxMidiMessage midi) {
   }
 }
 
-void fcBarSketch::logName() {
+void fcFFTBarSketch::logName() {
   ofLog(OF_LOG_NOTICE, this->name());
 }

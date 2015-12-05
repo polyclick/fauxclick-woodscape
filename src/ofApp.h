@@ -7,7 +7,7 @@
 #include "ofxBeat.h"
 
 #include "fcSketchBase.h"
-#include "fcBarSketch.h"
+#include "fcFFTBarSketch.h"
 
 class ofApp : public ofBaseApp, public ofxMidiListener {
 

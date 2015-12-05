@@ -2,7 +2,7 @@
 
 #include "fcSketchBase.h"
 
-class fcBlobSketch : public fcSketchBase {
+class fcTriangleNoiseSketch : public fcSketchBase {
 
   public:
     const char* name();

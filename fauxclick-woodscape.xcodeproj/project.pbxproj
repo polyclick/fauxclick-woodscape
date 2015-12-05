@@ -36,9 +36,9 @@
 		B8846EF8E504895A4A9EFEC0 /* ofxAssimpTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6F2EE44AD04FF549AB13699 /* ofxAssimpTexture.cpp */; };
 		B88A57B4B0BA6191EF3571E9 /* ofxSvg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B9E16009E1772C6D00B20013 /* ofxSvg.cpp */; };
 		BCC8D420CBA9217E437D2D76 /* ofxRtMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F634AA6CA2E3C60F3B87B59A /* ofxRtMidiIn.cpp */; };
-		C04303161C132A4800C1BB18 /* fcBarSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04303121C132A4800C1BB18 /* fcBarSketch.cpp */; };
 		C04303171C132A4800C1BB18 /* fcTriangleSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04303141C132A4800C1BB18 /* fcTriangleSketch.cpp */; };
-		C04303211C133E8400C1BB18 /* fcBlobSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C043031F1C133E8400C1BB18 /* fcBlobSketch.cpp */; };
+		C04303271C13451900C1BB18 /* fcTriangleNoiseSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04303251C13451900C1BB18 /* fcTriangleNoiseSketch.cpp */; };
+		C043032A1C13459C00C1BB18 /* fcFFTBarSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04303281C13459C00C1BB18 /* fcFFTBarSketch.cpp */; };
 		C098DBE008A1B5C6D12ABFFD /* ofxBeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6684F2AB3BF96EE746EF6DA /* ofxBeat.cpp */; };
 		C6FE64F74F1EA1D98C8F9847 /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0E7EDA67EDF213FC0E83D17 /* ofxMidiMessage.cpp */; };
 		C9109422648B170B07A778CF /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E3405C5AE387BDDC2AD19473 /* SyphonNameboundClient.m */; };
@@ -158,12 +158,12 @@
 		B9E16009E1772C6D00B20013 /* ofxSvg.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxSvg.cpp; path = ../../../addons/ofxSvg/src/ofxSvg.cpp; sourceTree = SOURCE_ROOT; };
 		BD0E7AC8BE205034D5B377A6 /* ofxMidiMessage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMidiMessage.h; path = ../../../addons/ofxMidi/src/ofxMidiMessage.h; sourceTree = SOURCE_ROOT; };
 		C04303091C12E94400C1BB18 /* fcSketchBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fcSketchBase.h; sourceTree = "<group>"; };
-		C04303121C132A4800C1BB18 /* fcBarSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fcBarSketch.cpp; sourceTree = "<group>"; };
-		C04303131C132A4800C1BB18 /* fcBarSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fcBarSketch.h; sourceTree = "<group>"; };
 		C04303141C132A4800C1BB18 /* fcTriangleSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fcTriangleSketch.cpp; sourceTree = "<group>"; };
 		C04303151C132A4800C1BB18 /* fcTriangleSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fcTriangleSketch.h; sourceTree = "<group>"; };
-		C043031F1C133E8400C1BB18 /* fcBlobSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fcBlobSketch.cpp; sourceTree = "<group>"; };
-		C04303201C133E8400C1BB18 /* fcBlobSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fcBlobSketch.h; sourceTree = "<group>"; };
+		C04303251C13451900C1BB18 /* fcTriangleNoiseSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fcTriangleNoiseSketch.cpp; sourceTree = "<group>"; };
+		C04303261C13451900C1BB18 /* fcTriangleNoiseSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fcTriangleNoiseSketch.h; sourceTree = "<group>"; };
+		C04303281C13459C00C1BB18 /* fcFFTBarSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fcFFTBarSketch.cpp; sourceTree = "<group>"; };
+		C04303291C13459C00C1BB18 /* fcFFTBarSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fcFFTBarSketch.h; sourceTree = "<group>"; };
 		C0E7EDA67EDF213FC0E83D17 /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiMessage.cpp; path = ../../../addons/ofxMidi/src/ofxMidiMessage.cpp; sourceTree = SOURCE_ROOT; };
 		C1638C371AC7701E1A4D6671 /* types.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = types.h; path = ../../../addons/ofxAssimpModelLoader/libs/assimp/include/assimp/types.h; sourceTree = SOURCE_ROOT; };
 		C224E0400677911C78D08627 /* poppack1.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = poppack1.h; path = ../../../addons/ofxAssimpModelLoader/libs/assimp/include/assimp/Compiler/poppack1.h; sourceTree = SOURCE_ROOT; };
@@ -541,10 +541,10 @@
 		C04303111C132A4800C1BB18 /* sketches */ = {
 			isa = PBXGroup;
 			children = (
-				C04303121C132A4800C1BB18 /* fcBarSketch.cpp */,
-				C04303131C132A4800C1BB18 /* fcBarSketch.h */,
-				C043031F1C133E8400C1BB18 /* fcBlobSketch.cpp */,
-				C04303201C133E8400C1BB18 /* fcBlobSketch.h */,
+				C04303281C13459C00C1BB18 /* fcFFTBarSketch.cpp */,
+				C04303291C13459C00C1BB18 /* fcFFTBarSketch.h */,
+				C04303251C13451900C1BB18 /* fcTriangleNoiseSketch.cpp */,
+				C04303261C13451900C1BB18 /* fcTriangleNoiseSketch.h */,
 				C04303141C132A4800C1BB18 /* fcTriangleSketch.cpp */,
 				C04303151C132A4800C1BB18 /* fcTriangleSketch.h */,
 			);
@@ -716,9 +716,9 @@
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				3B8120368B4FCCD80883BAF3 /* ofxAssimpAnimation.cpp in Sources */,
-				C04303211C133E8400C1BB18 /* fcBlobSketch.cpp in Sources */,
 				483FA4F6D5FA6422C559B1F5 /* ofxAssimpMeshHelper.cpp in Sources */,
 				8DED5056525646FA71980866 /* ofxAssimpModelLoader.cpp in Sources */,
+				C04303271C13451900C1BB18 /* fcTriangleNoiseSketch.cpp in Sources */,
 				B8846EF8E504895A4A9EFEC0 /* ofxAssimpTexture.cpp in Sources */,
 				A86D7323CE1A9450906A91DD /* fft.cpp in Sources */,
 				C098DBE008A1B5C6D12ABFFD /* ofxBeat.cpp in Sources */,
@@ -732,6 +732,7 @@
 				B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */,
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
 				BCC8D420CBA9217E437D2D76 /* ofxRtMidiIn.cpp in Sources */,
+				C043032A1C13459C00C1BB18 /* fcFFTBarSketch.cpp in Sources */,
 				3AEFE4FA8AD5C72671AD07F8 /* ofxRtMidiOut.cpp in Sources */,
 				1A86B7721CAEBC6F1C572C45 /* ofxBaseMidi.cpp in Sources */,
 				63F9FE1D90234FA6DE6F509E /* ofxMidi.cpp in Sources */,
@@ -741,7 +742,6 @@
 				63D0FD8734D5760B8080C901 /* RtMidi.cpp in Sources */,
 				B88A57B4B0BA6191EF3571E9 /* ofxSvg.cpp in Sources */,
 				6A565A9714A6A12EB9098F52 /* src_colors.cpp in Sources */,
-				C04303161C132A4800C1BB18 /* fcBarSketch.cpp in Sources */,
 				1D6B78EF041B097CE4F423C4 /* svgtiny.cpp in Sources */,
 				4294163B15857489B2176769 /* svgtiny_gradient.cpp in Sources */,
 				1B5F996886A777589D5DD794 /* svgtiny_list.cpp in Sources */,
