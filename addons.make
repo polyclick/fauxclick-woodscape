@@ -1,0 +1,6 @@
+ofxAssimpModelLoader
+ofxBeat
+ofxGui
+ofxMidi
+ofxSvg
+ofxSyphon
