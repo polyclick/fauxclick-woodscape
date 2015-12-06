@@ -39,7 +39,7 @@ void PulseSketch::draw() {
         if (this->app->audioManager->beat.isKick()) {
           float alpha = this->app->audioManager->beat.kick();
           
-          alpha *= 255;
+          alpha *= 150;
           
           ofSetColor(255, 255, 255, alpha);
           drawFace( grid.face(i,j));
