@@ -7,10 +7,13 @@
 #include "ofxBeat.h"
 
 #include "SketchBase.h"
+#include "ParameterWindow.h"
 
 class ofApp : public ofBaseApp, public ofxMidiListener {
 
-  private:
+private:
+  ParameterWindow *parameterWindow;
+  
     void setupGui();
     void setupMidi();
     void setupAudio();
@@ -22,10 +25,6 @@ class ofApp : public ofBaseApp, public ofxMidiListener {
     void update();
     void draw();
     void exit();
-
-    void vSyncChanged(bool & vSync);
-    void capFramerateChanged(bool & vSync);
-    void smoothChanged(bool & smooth);
 
     void newMidiMessage(ofxMidiMessage& eventArgs);
     void audioReceived(float* input, int bufferSize, int nChannels);
@@ -52,12 +51,7 @@ class ofApp : public ofBaseApp, public ofxMidiListener {
     std::vector<SketchBase*> sketches;
 
     ofParameter<string> sketchLabel;
-    ofParameter<string> framerate;
     ofParameter<string> screenSize;
-
-    ofParameter<bool> vSync;
-    ofParameter<bool> capFramerate;
-    ofParameter<bool> smooth;
 
     ofParameter<string> midiStatus;
     ofParameter<string> midiChannel;
@@ -72,7 +66,6 @@ class ofApp : public ofBaseApp, public ofxMidiListener {
     ofParameter<float> audioHat;
 
     ofParameterGroup summary;
-    ofParameterGroup settings;
     ofParameterGroup midi;
     ofParameterGroup audio;
     ofParameterGroup debug;

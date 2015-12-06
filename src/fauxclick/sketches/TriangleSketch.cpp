@@ -42,7 +42,7 @@ const char* TriangleSketch::getName() {
 }
 
 void TriangleSketch::logName() {
-  ofLog(OF_LOG_NOTICE, this->name);
+  ofLog(OF_LOG_NOTICE, ofToString(this->name));
 }
 
 void TriangleSketch::drawSegment( int row, int col ){

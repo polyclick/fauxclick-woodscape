@@ -12,53 +12,18 @@ void ofApp::setup(){
   ofSetWindowTitle("fauxclick-woodscape");
   ofBackground(0, 0, 0);
   ofSetLogLevel(OF_LOG_VERBOSE);
+  ofSetFrameRate(0);  // unlimited
+  ofSetVerticalSync(false);
+  ofDisableSmoothing();
   
   // libraries and stuff
-  this->setupGui();
   this->setupMidi();
   this->setupAudio();
   this->setupSyphon();
+  this->setupGui();
   
   // our sketches
   this->setupSketches();
-}
-
-//--------------------------------------------------------------
-void ofApp::setupGui() {
-  vSync.addListener(this, &ofApp::vSyncChanged);
-  capFramerate.addListener(this, &ofApp::capFramerateChanged);
-  smooth.addListener(this, &ofApp::smoothChanged);
-  
-  summary.setName("summary");
-  summary.add(sketchLabel.set("sketch", ""));
-  summary.add(framerate.set("fps", ""));
-  summary.add(screenSize.set("resolution", ""));
-  
-  settings.setName("settings");
-  settings.add(vSync.set("vSync", false));
-  settings.add(capFramerate.set("capFramerate", false));
-  settings.add(smooth.set("smooth", false));
-  
-  midi.setName("midi");
-  midi.add(midiStatus.set("status", ""));
-  midi.add(midiChannel.set("channel", ""));
-  midi.add(midiPitch.set("pitch", 0, 0, 127));
-  midi.add(midiVelocity.set("velocity", 0, 0, 127));
-  midi.add(midiControl.set("control", 0, 0, 127));
-  midi.add(midiValue.set("value (normalized)", 0, 0, 100));
-  midi.add(midiDelta.set("delta", ""));
-  
-  audio.setName("audio");
-  audio.add(audioKick.set("kick", 0, 0, 100));
-  audio.add(audioSnare.set("snare", 0, 0, 100));
-  audio.add(audioHat.set("hat", 0, 0, 100));
-  
-  debug.add(summary);
-  debug.add(settings);
-  debug.add(midi);
-  debug.add(audio);
-  
-  gui.setup(debug);
 }
 
 //--------------------------------------------------------------
@@ -87,13 +52,44 @@ void ofApp::setupAudio() {
     soundStream.setDevice(matches[0]);
   
   // setup the soundstream
-  bufferSize = beat.getBufferSize();
+  bufferSize = 256;
   soundStream.setup(this, 0, 1, 44100, bufferSize, 4);
 }
 
 //--------------------------------------------------------------
 void ofApp::setupSyphon() {
   mainOutputSyphonServer.setName("Screen Output");
+}
+
+//--------------------------------------------------------------
+void ofApp::setupGui() {
+  
+  summary.setName("summary");
+  summary.add(sketchLabel.set("sketch", ""));
+  summary.add(screenSize.set("resolution", ""));
+  
+  midi.setName("midi");
+  midi.add(midiStatus.set("status", ""));
+  midi.add(midiChannel.set("channel", ""));
+  midi.add(midiPitch.set("pitch", 0, 0, 127));
+  midi.add(midiVelocity.set("velocity", 0, 0, 127));
+  midi.add(midiControl.set("control", 0, 0, 127));
+  midi.add(midiValue.set("value (normalized)", 0, 0, 100));
+  midi.add(midiDelta.set("delta", ""));
+  
+  audio.setName("audio");
+  audio.add(audioKick.set("kick", 0, 0, 100));
+  audio.add(audioSnare.set("snare", 0, 0, 100));
+  audio.add(audioHat.set("hat", 0, 0, 100));
+  
+  debug.add(summary);
+  debug.add(midi);
+  debug.add(audio);
+  
+  gui.setup(debug);
+  
+  parameterWindow = new ParameterWindow(soundStream);
+  parameterWindow->setup();
 }
 
 //--------------------------------------------------------------
@@ -114,38 +110,6 @@ void ofApp::setupSketches() {
 }
 
 //--------------------------------------------------------------
-void ofApp::vSyncChanged(bool & vSync){
-  ofSetVerticalSync(vSync);
-  cout << "vSync: " << vSync << endl;
-}
-
-//--------------------------------------------------------------
-void ofApp::capFramerateChanged(bool & capFramerate){
-
-  // cap framerate to 60fps if requested
-  int framerate = capFramerate ? 60 : 0;
-  ofSetFrameRate(framerate);
-
-  // log setting switch
-  if(framerate) {
-    cout << "Frame rate set to: " << framerate << endl;
-  } else {
-    cout << "Frame rate set to unlimited" << endl;
-  }
-}
-
-//--------------------------------------------------------------
-void ofApp::smoothChanged(bool & smooth) {
-  if(smooth) {
-    ofEnableSmoothing();
-    cout << "Smoothing: enabled" << endl;
-  } else {
-    ofDisableSmoothing();
-    cout << "Smoothing: disabled" << endl;
-  }
-}
-
-//--------------------------------------------------------------
 void ofApp::update() {
 
   // update beat detector
@@ -156,11 +120,11 @@ void ofApp::update() {
   audioSnare = beat.snare() * 100.0;
   audioHat = beat.hihat() * 100.0;
 
-  // set framerate
-  framerate = ofToString(ofGetFrameRate());
-
   // update active sketch
   sketches[activeSketchIndex]->update(beat);
+  
+  // update parameter window
+  parameterWindow->update();
 }
 
 //--------------------------------------------------------------
@@ -179,6 +143,8 @@ void ofApp::draw() {
   if(!bHideGui){
     ofSetColor(255);
     gui.draw();
+    
+    parameterWindow->draw();
   }
 
   //cout << beat.kick() << "," << beat.snare() << "," << beat.hihat() << endl;
@@ -221,7 +187,8 @@ void ofApp::audioReceived(float* input, int bufferSize, int nChannels) {
   beat.audioReceived(input, bufferSize, nChannels);
   
   // feed audio to active sketch
-  sketches[activeSketchIndex]->audioReceived(input, bufferSize, nChannels);
+  if(sketches.size())
+    sketches[activeSketchIndex]->audioReceived(input, bufferSize, nChannels);
 }
 
 //--------------------------------------------------------------

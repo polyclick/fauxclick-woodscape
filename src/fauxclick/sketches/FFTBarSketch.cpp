@@ -34,5 +34,5 @@ const char* FFTBarSketch::getName() {
 }
 
 void FFTBarSketch::logName() {
-  ofLog(OF_LOG_NOTICE, this->name);
+  ofLog(OF_LOG_NOTICE, ofToString(this->name));
 }

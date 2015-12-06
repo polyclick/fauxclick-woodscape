@@ -50,5 +50,5 @@ const char* TriangleNoiseSketch::getName() {
 }
 
 void TriangleNoiseSketch::logName() {
-  ofLog(OF_LOG_NOTICE, this->name);
+  ofLog(OF_LOG_NOTICE, ofToString(this->name));
 }
