@@ -53,7 +53,7 @@ void PulseSketch::draw() {
           alpha *= 255;
           
           ofSetColor(255, 255, 255, alpha);
-          drawFace( grid.face(i,j));
+          drawFace( grid.face(i,j, 0.5));
         }
       }
     }
