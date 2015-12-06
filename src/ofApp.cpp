@@ -52,7 +52,7 @@ void ofApp::setupAudio() {
     soundStream.setDevice(matches[0]);
   
   // setup the soundstream
-  bufferSize = 256;
+  bufferSize = beat.getBufferSize();
   soundStream.setup(this, 0, 1, 44100, bufferSize, 4);
 }
 
