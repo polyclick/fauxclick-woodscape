@@ -1,5 +1,6 @@
 #include "ofApp.h"
 
+#include "PulseSketch.h"
 #include "TriangleSketch.h"
 #include "FFTBarSketch.h"
 #include "TriangleNoiseSketch.h"
@@ -74,6 +75,7 @@ void ofApp::setupGui() {
 
 //--------------------------------------------------------------
 void ofApp::setupSketches() {
+  sketches.push_back(new PulseSketch(this, "PulseSketch"));
   sketches.push_back(new TriangleSketch(this, "TriangleSketch"));
   sketches.push_back(new FFTBarSketch(this, "FFTBarSketch"));
   sketches.push_back(new TriangleNoiseSketch(this, "TriangleNoiseSketch"));
