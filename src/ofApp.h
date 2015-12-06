@@ -48,7 +48,7 @@ private:
     int bufferSize;
     int activeSketchIndex;
 
-    std::vector<SketchBase*> sketches;
+    vector<SketchBase*> sketches;
 
     ofParameter<string> sketchLabel;
     ofParameter<string> screenSize;

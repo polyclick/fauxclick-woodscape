@@ -7,8 +7,8 @@ class Grid {
 
 //    ofPoint equilateral( ofPoint one, ofPoint two, float rotation );
   
-    std::vector<ofPoint> points();
-    std::vector<ofPoint> face( int row, int col );
+    vector<ofPoint> points();
+    vector<ofPoint> face( int row, int col );
 
 
     // Set unit width

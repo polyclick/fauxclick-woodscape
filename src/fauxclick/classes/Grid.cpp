@@ -8,11 +8,11 @@ Grid::~Grid(){
   // destructor@
 }
 
-std::vector<ofPoint> Grid::points(){
+vector<ofPoint> Grid::points(){
 
 }
 
-std::vector<ofPoint> Grid::face(int row, int col){
+vector<ofPoint> Grid::face(int row, int col){
 
 }
 
