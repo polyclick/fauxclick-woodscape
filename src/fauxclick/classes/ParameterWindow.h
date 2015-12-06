@@ -2,10 +2,15 @@
 
 #include "ofxDatGui.h"
 
+class ofApp;
+
 class ParameterWindow {
+
+private:
+  ofApp *app;
   
 public:
-  ParameterWindow(ofSoundStream soundStream);
+  ParameterWindow(ofApp* app);
   ~ParameterWindow();
   
   vector<ofSoundDevice> audioDeviceList;
@@ -14,8 +19,10 @@ public:
   
   ofxDatGuiButton* vSyncToggle;
   ofxDatGuiButton* smoothingToggle;
-  
   ofxDatGuiDropdown* audioDropdown;
+  ofxDatGuiValuePlotter* kickValuePlotter;
+  ofxDatGuiValuePlotter* snareValuePlotter;
+  ofxDatGuiValuePlotter* hihatValuePlotter;
   
   ofxDatGuiFolder* f1;
   ofxDatGuiFolder* f2;

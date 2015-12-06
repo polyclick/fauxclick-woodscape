@@ -13,7 +13,7 @@ void ofApp::setup(){
   ofBackground(0, 0, 0);
   ofSetLogLevel(OF_LOG_VERBOSE);
   ofSetFrameRate(0);  // unlimited
-  ofSetVerticalSync(false);
+  ofSetVerticalSync(true);
   ofDisableSmoothing();
   
   // libraries and stuff
@@ -37,23 +37,8 @@ void ofApp::setupMidi() {
 
 //--------------------------------------------------------------
 void ofApp::setupAudio() {
-  soundStream.printDeviceList();
-  
-  // first try to get akai device
-  vector<ofSoundDevice> matches = soundStream.getMatchingDevices("Akai Professional, LP: EIE pro (Core Audio)");
-  
-  // else try traktor a10
-  if(!matches.size())
-    matches = soundStream.getMatchingDevices("Akai Professional, LP: EIE pro (Core Audio)");
-  
-  // if akai or traktor found, set as main
-  // this will automatically fallback to microphone audio if none of both was found
-  if(matches.size())
-    soundStream.setDevice(matches[0]);
-  
-  // setup the soundstream
-  bufferSize = beat.getBufferSize();
-  soundStream.setup(this, 0, 1, 44100, bufferSize, 4);
+  audioManager = new AudioManager(this);
+  audioManager->setup();
 }
 
 //--------------------------------------------------------------
@@ -77,18 +62,12 @@ void ofApp::setupGui() {
   midi.add(midiValue.set("value (normalized)", 0, 0, 100));
   midi.add(midiDelta.set("delta", ""));
   
-  audio.setName("audio");
-  audio.add(audioKick.set("kick", 0, 0, 100));
-  audio.add(audioSnare.set("snare", 0, 0, 100));
-  audio.add(audioHat.set("hat", 0, 0, 100));
-  
   debug.add(summary);
   debug.add(midi);
-  debug.add(audio);
   
   gui.setup(debug);
   
-  parameterWindow = new ParameterWindow(soundStream);
+  parameterWindow = new ParameterWindow(this);
   parameterWindow->setup();
 }
 
@@ -111,20 +90,12 @@ void ofApp::setupSketches() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
-
-  // update beat detector
-  beat.update(ofGetElapsedTimeMillis());
-
-  // debug
-  audioKick = beat.kick() * 100.0;
-  audioSnare = beat.snare() * 100.0;
-  audioHat = beat.hihat() * 100.0;
-
-  // update active sketch
-  sketches[activeSketchIndex]->update(beat);
-  
-  // update parameter window
+  audioManager->update();
   parameterWindow->update();
+
+//  // update active sketch
+//  sketches[activeSketchIndex]->update(beat);
+
 }
 
 //--------------------------------------------------------------
@@ -146,8 +117,6 @@ void ofApp::draw() {
     
     parameterWindow->draw();
   }
-
-  //cout << beat.kick() << "," << beat.snare() << "," << beat.hihat() << endl;
 }
 
 //--------------------------------------------------------------
@@ -156,6 +125,10 @@ void ofApp::exit() {
   // clean up
   midiIn.closePort();
   midiIn.removeListener(this);
+  
+  // release memory
+  delete parameterWindow;
+  delete audioManager;
 }
 
 //--------------------------------------------------------------
@@ -180,16 +153,16 @@ void ofApp::newMidiMessage(ofxMidiMessage& msg) {
   midiDelta = ofToString(midiMessage.deltatime);
 }
 
-//--------------------------------------------------------------
-void ofApp::audioReceived(float* input, int bufferSize, int nChannels) {
-  
-  // feed audio to beat detector
-  beat.audioReceived(input, bufferSize, nChannels);
-  
-  // feed audio to active sketch
-  if(sketches.size())
-    sketches[activeSketchIndex]->audioReceived(input, bufferSize, nChannels);
-}
+////--------------------------------------------------------------
+//void ofApp::audioReceived(float* input, int bufferSize, int nChannels) {
+//  
+//  // feed audio to beat detector
+//  beat.audioReceived(input, bufferSize, nChannels);
+//  
+//  // feed audio to active sketch
+//  if(sketches.size())
+//    sketches[activeSketchIndex]->audioReceived(input, bufferSize, nChannels);
+//}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){

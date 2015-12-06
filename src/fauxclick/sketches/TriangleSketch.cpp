@@ -14,7 +14,7 @@ void TriangleSketch::setup() {
   
 }
 
-void TriangleSketch::update(ofxBeat beat) {
+void TriangleSketch::update() {
 
 }
 
@@ -31,18 +31,6 @@ void TriangleSketch::draw() {
     }
   }
   
-}
-
-void TriangleSketch::audioReceived(float* input, int bufferSize, int nChannels) {
-  
-}
-
-const char* TriangleSketch::getName() {
-  return this->name;
-}
-
-void TriangleSketch::logName() {
-  ofLog(OF_LOG_NOTICE, ofToString(this->name));
 }
 
 void TriangleSketch::drawSegment( int row, int col ){
@@ -112,4 +100,12 @@ ofPoint TriangleSketch::equilateral( ofPoint one, ofPoint two, float rotation ){
   
   return three;
 
+}
+
+const char* TriangleSketch::getName() {
+  return this->name;
+}
+
+void TriangleSketch::logName() {
+  ofLog(OF_LOG_NOTICE, ofToString(this->name));
 }

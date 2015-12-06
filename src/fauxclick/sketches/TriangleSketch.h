@@ -29,10 +29,8 @@ class TriangleSketch : public SketchBase {
     ~TriangleSketch();
   
     void setup();
-    void update(ofxBeat beat);
+    void update();
     void draw();
-  
-    void audioReceived(float* input, int bufferSize, int nChannels);  
   
     const char* getName();
     void logName();

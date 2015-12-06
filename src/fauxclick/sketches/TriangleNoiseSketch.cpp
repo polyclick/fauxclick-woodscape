@@ -13,24 +13,25 @@ void TriangleNoiseSketch::setup(){
 
 }
 
-void TriangleNoiseSketch::update(ofxBeat beat){
-  this->beat = beat;
+void TriangleNoiseSketch::update(){
 }
 
 void TriangleNoiseSketch::draw() {
   ofNoFill();
   
   ofSetHexColor(0xffffff);
+  ofSetLineWidth(1);
   ofSetPolyMode(OF_POLY_WINDING_ODD);
   ofBeginShape();
-  int kickPoints = this->beat.kick() ? 10 : 3;
+  int kickPoints = this->app->audioManager->beat.kick() ? 10 : 3;
   for (int i = 0; i < kickPoints; i++){
     ofVertex(ofRandom(-250, ofGetWidth() + 250), ofRandom(-250, ofGetHeight() + 250));
   }
   ofEndShape();
   
-  if(this->beat.hihat()) {
+  if(this->app->audioManager->beat.hihat()) {
     ofSetHexColor(0x00ff00);
+    ofSetLineWidth(3);
     ofSetPolyMode(OF_POLY_WINDING_ODD);
     ofBeginShape();
     int hatPoints = 5;
@@ -39,10 +40,6 @@ void TriangleNoiseSketch::draw() {
     }
     ofEndShape();
   }
-}
-
-void TriangleNoiseSketch::audioReceived(float* input, int bufferSize, int nChannels) {
-  
 }
 
 const char* TriangleNoiseSketch::getName() {

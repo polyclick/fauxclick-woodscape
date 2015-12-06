@@ -5,9 +5,6 @@
 
 class FFTBarSketch : public SketchBase {
   
-  private:
-    ofxBeat beat;
-  
   protected:
     const char* name;
     ofApp* app;
@@ -17,10 +14,8 @@ class FFTBarSketch : public SketchBase {
     ~FFTBarSketch();
 
     void setup();
-    void update(ofxBeat beat);
+    void update();
     void draw();
-
-    void audioReceived(float* input, int bufferSize, int nChannels);  
   
     const char* getName();
     void logName();

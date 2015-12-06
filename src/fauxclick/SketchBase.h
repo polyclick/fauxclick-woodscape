@@ -9,10 +9,8 @@ class SketchBase {
   
   public:
     virtual void setup() = 0;
-    virtual void update(ofxBeat beat) = 0;
+    virtual void update() = 0;
     virtual void draw() = 0;
-  
-    virtual void audioReceived(float* input, int bufferSize, int nChannels) = 0;
 
     virtual const char* getName() = 0;
     virtual void logName() = 0;
