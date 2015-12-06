@@ -1,81 +1,43 @@
-#include "SoundwaveSketch.h"
+#include "PointCloudSketch.h"
 
-SoundwaveSketch::SoundwaveSketch(ofApp* app, const char* name){
+PointCloudSketch::PointCloudSketch(ofApp* app, const char* name){
   this->name = name;
   this->app = app;
 }
 
-SoundwaveSketch::~SoundwaveSketch(){
+PointCloudSketch::~PointCloudSketch(){
   // destructor
 }
 
-void SoundwaveSketch::setup(){
-
-}
-
-void SoundwaveSketch::update(){
+void PointCloudSketch::setup(){
   
 }
 
-void SoundwaveSketch::draw() {
-  ofNoFill();
+void PointCloudSketch::update(){
+  
+}
 
-  vector<float>left = this->app->audioManager->left;
-  vector<float>right = this->app->audioManager->right;
+void PointCloudSketch::draw() {
+  float width = ofGetWidth() / 3.0;
+  float height = ofGetHeight();
   
-  float pointInterval = (float)ofGetWidth() / (float)left.size();
+  ofFill();
+  ofSetColor(255, 255, 255);
   
-  ofPushStyle();
-		ofPushMatrix();
-
-      // set color
-      ofSetColor(245, 58, 135);
-      ofSetLineWidth(3);
-  
-      // y offset
-      ofTranslate(0, ofGetHeight() * 1.0 / 4.0, 0);
-  
-      // start drawing the line
-      ofBeginShape();
-  
-      // draw over the full width of the screen
-      for (unsigned int i = 0; i < left.size(); i++){
-        ofVertex(i * pointInterval, left[i] * ofGetHeight() / 4.0);
-      }
-  
-      // end drawing the line
-      ofEndShape(false);
-		ofPopMatrix();
-  ofPopStyle();
-  
-  ofPushStyle();
-		ofPushMatrix();
-  
-  // set color
-  ofSetColor(245, 58, 135);
-  ofSetLineWidth(3);
-  
-  // y offset
-  ofTranslate(0, ofGetHeight() * 3.0 / 4.0, 0);
-  
-  // start drawing the line
-  ofBeginShape();
-  
-  // draw over the full width of the screen
-  for (unsigned int i = 0; i < right.size(); i++){
-    ofVertex(i * pointInterval, right[i] * ofGetHeight() / 4.0);
+  if(this->app->audioManager->beat.isKick()) {
+    ofDrawRectangle(0, 0, width, height);
+    ofDrawRectangle(width * 2.0, 0, width, height);
   }
   
-  // end drawing the line
-  ofEndShape(false);
-		ofPopMatrix();
-  ofPopStyle();
+  if(this->app->audioManager->beat.isHat()) {
+    ofDrawRectangle(width, 0, width, height);
+  }
 }
 
-const char* SoundwaveSketch::getName() {
+const char* PointCloudSketch::getName() {
   return this->name;
 }
 
-void SoundwaveSketch::logName() {
+void PointCloudSketch::logName() {
   ofLog(OF_LOG_NOTICE, ofToString(this->name));
 }
