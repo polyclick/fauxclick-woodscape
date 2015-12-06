@@ -2,6 +2,8 @@
 
 #include "ofApp.h"
 
+class ofApp;
+
 class ClassName {
 
 private:

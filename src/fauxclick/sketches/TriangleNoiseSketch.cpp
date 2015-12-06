@@ -17,6 +17,9 @@ void TriangleNoiseSketch::update(){
 }
 
 void TriangleNoiseSketch::draw() {
+  ofPushStyle();
+  
+  ofBackgroundGradient(ofColor(60,60,60), ofColor(10,10,10));
   ofNoFill();
   
   ofSetHexColor(0xffffff);
@@ -40,6 +43,8 @@ void TriangleNoiseSketch::draw() {
     }
     ofEndShape();
   }
+  
+  ofPopStyle();
 }
 
 const char* TriangleNoiseSketch::getName() {
