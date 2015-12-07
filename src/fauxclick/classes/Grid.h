@@ -26,6 +26,6 @@ public:
   Grid();
   ~Grid();
   
-  vector<ofPoint> face( int row, int col );
+  vector<ofPoint> face( int row, int col, float scale = 1 );
 
 };

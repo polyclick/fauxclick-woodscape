@@ -20,7 +20,7 @@ Grid::~Grid(){
 //  
 //}
 
-vector<ofPoint> Grid::face(int row, int col){
+vector<ofPoint> Grid::face(int row, int col, float scale ){
   /**
    * Return three vertices that make up the given grid segment
    * defined by row and column
@@ -30,10 +30,12 @@ vector<ofPoint> Grid::face(int row, int col){
   vector<ofPoint> v;
   v.reserve(3);
   
-  // Define three vertices
+  // Define three vertices & a center point
   ofPoint a = ofPoint();
   ofPoint b = ofPoint();
   ofPoint c = ofPoint();
+  ofPoint p = ofPoint();
+  
   
   
   // The rotation in radians, used to determine the third coördinate
@@ -75,11 +77,52 @@ vector<ofPoint> Grid::face(int row, int col){
   b.y+= 8;
   c.y+= 8;
   
+  // Rotation required to find the third point
   rotation = ofDegToRad( rotation );
   
   c = equilateral( a, b, rotation );
   
-  // Return verteces
+  
+  // Calculate the center point p using the incircle
+  p.x = (a.x + b.x + c.x) / 3;
+  p.y = (a.y + b.y + c.y) / 3;
+  
+  /**
+   * To apply a relative scale, translate the triangle so that center point P 
+   * equals the origin. Then scale and translate back to the original position
+   */
+  
+  // Translate to origin
+  a.x -= p.x;
+  b.x -= p.x;
+  c.x -= p.x;
+  
+  a.y -= p.y;
+  b.y -= p.y;
+  c.y -= p.y;
+  
+  // Scale
+//  a.x *= scale;
+//  b.x *= scale;
+//  c.x *= scale;
+//  
+//  a.y *= scale;
+//  b.y *= scale;
+//  c.y *= scale;
+  a *= scale;
+  b *= scale;
+  c *= scale;
+  
+  // Translate back to original position
+  a.x += p.x;
+  b.x += p.x;
+  c.x += p.x;
+  
+  a.y += p.y;
+  b.y += p.y;
+  c.y += p.y;
+  
+  // Return vertices
   v.push_back(a);
   v.push_back(b);
   v.push_back(c);
