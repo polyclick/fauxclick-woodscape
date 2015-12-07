@@ -1,7 +1,15 @@
 #include "Grid.h"
 
 Grid::Grid(){
-
+  // Set inital face values
+  for (int i = 0; i < rows+1 ; i++) {
+    for (int j = 0; j < cols+1; j++) {
+      this->faceSizes[i][j] = 0.1;
+      this->faceCooldowns[i][j] = 0;
+      this->faceTimer[i][j] = 0;
+      this->pulseCue[i][j] = 0;
+    }
+  }
 }
 
 Grid::~Grid(){
@@ -13,14 +21,54 @@ Grid::~Grid(){
 //  /**
 //   * Return the vertices that make up the grid
 //   */
-//  
-//  vector<ofPoint> v;
-//  v.reserve(1000); // @todo: High val for testing
-//  
-//  
 //}
 
-vector<ofPoint> Grid::face(int row, int col, float scale ){
+void Grid::pulseFace(int row, int col, int delay){
+  /**
+   * Cue a pulse, don't actually execute it.
+   */
+  if(this->faceCooldowns[row][col] <= 0){
+    this->pulseCue[row][col] = 1;
+    this->faceTimer[row][col] = delay;
+    
+    // Set beat cooldown in frames
+    this->faceCooldowns[row][col] = 25;
+  }
+};
+
+void Grid::decay(){
+  for (int i = 0; i < rows+1 ; i++) {
+    for (int j = 0; j < cols+1; j++) {
+      // decay size
+      if (this->faceSizes[i][j] > 0) { //minimum size
+        this->faceSizes[i][j] *= 0.91;
+      }
+      
+      // decay cooldown
+      this->faceCooldowns[i][j] = this->faceCooldowns[i][j] - 1;
+      
+      // decay pulse timers
+      this->faceTimer[i][j] -= 1;
+      
+      // do the actual pulse
+      // @todo: this shouldn't be here...
+      if (this->pulseCue[i][j] == 1 && this->faceTimer[i][j] <= 0) {
+        this->faceSizes[i][j] = 1;
+        this->pulseCue[i][j]= 0;
+      }
+    }
+  }
+}
+
+bool Grid::faceVisible(int row, int col){
+  if (this->faceSizes[row][col] > 0.25) { //minimum size
+    return true;
+  }else{
+    return false;
+  }
+}
+
+vector<ofPoint> Grid::face(int row, int col, float scaleMultiplier ){
   /**
    * Return three vertices that make up the given grid segment
    * defined by row and column
@@ -102,16 +150,14 @@ vector<ofPoint> Grid::face(int row, int col, float scale ){
   c.y -= p.y;
   
   // Scale
-//  a.x *= scale;
-//  b.x *= scale;
-//  c.x *= scale;
-//  
-//  a.y *= scale;
-//  b.y *= scale;
-//  c.y *= scale;
-  a *= scale;
-  b *= scale;
-  c *= scale;
+  a *= this->faceSizes[row][col];
+  b *= this->faceSizes[row][col];
+  c *= this->faceSizes[row][col];
+  
+  // Apply multiplier
+  a *= scaleMultiplier;
+  b *= scaleMultiplier;
+  c *= scaleMultiplier;
   
   // Translate back to original position
   a.x += p.x;

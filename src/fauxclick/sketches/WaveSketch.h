@@ -4,14 +4,11 @@
 #include "SketchBase.h"
 #include "Grid.h"
 
-class PulseSketch : public SketchBase {
+class WaveSketch : public SketchBase {
 
   protected:
   
-    void drawFace( vector<ofPoint> vertices );
-
-    float faceSizes[11][16];
-//    float faceSizes[11][16];
+    void drawFace( vector<ofPoint> vertices);
   
     const char* name;
     ofApp* app;
@@ -26,12 +23,10 @@ class PulseSketch : public SketchBase {
     // Rows and columns are zero-indexed
     const int rows = 10;
     const int cols = 15;
-  
-    ofImage imgGrid;
 
   public:
-   PulseSketch(ofApp* app, const char* name);
-    ~PulseSketch();
+   WaveSketch(ofApp* app, const char* name);
+    ~WaveSketch();
   
     void setup();
     void update();
