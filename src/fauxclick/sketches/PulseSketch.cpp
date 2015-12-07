@@ -11,6 +11,13 @@ PulseSketch::~PulseSketch(){
 
 void PulseSketch::setup() {
   imgGrid.load("images/grid.png");
+  
+  // Set inital scale values
+  for (int i = 0; i < rows+1 ; i++) {
+    for (int j = 0; j < cols+1; j++) {
+      this->faceSizes[i][j] = 0.1;
+    }
+  }
 }
 
 void PulseSketch::update() {
@@ -21,7 +28,7 @@ void PulseSketch::draw() {
 //  imgGrid.draw(0,0);
   ofBackground(0);
   ofFill();
-  
+  ofSetColor(255, 255, 255);
   
 //  one face
 //  vector<ofPoint> face = grid.face(3,3);
@@ -37,24 +44,37 @@ void PulseSketch::draw() {
       
       if (i % 2 == 0) {
         if (this->app->audioManager->beat.isKick()) {
-          float alpha = this->app->audioManager->beat.kick();
-          
-          alpha *= 150;
-          
-          ofSetColor(255, 255, 255, alpha);
-          drawFace( grid.face(i,j));
+          this->faceSizes[i][j] = 1;
         }
+        
+        // Draw the face
+        ofSetColor(255, 255, 255);
+        drawFace( grid.face(i,j, this->faceSizes[i][j]));
+        ofSetColor(0, 0, 0);
+        drawFace( grid.face(i,j, this->faceSizes[i][j] * 0.5));
+        ofSetColor(255, 255, 255);
+        drawFace( grid.face(i,j, this->faceSizes[i][j] * 0.25));
       }
       
       if (!(i % 2 == 0)) {
         if (this->app->audioManager->beat.isHat()) {
-          float alpha = this->app->audioManager->beat.hihat();
-          
-          alpha *= 255;
-          
-          ofSetColor(255, 255, 255, alpha);
-          drawFace( grid.face(i,j, 0.5));
+          this->faceSizes[i][j] = 1;
         }
+        
+        ofSetColor(255, 255, 255);
+        drawFace( grid.face(i,j, this->faceSizes[i][j] * 0.85));
+        ofSetColor(0, 0, 0);
+        drawFace( grid.face(i,j, this->faceSizes[i][j] * 0.5));
+      }
+    }
+  }
+  
+  
+  // reduce the size each frame
+  for (int i = 0; i < rows+1 ; i++) {
+    for (int j = 0; j < cols+1; j++) {
+      if (this->faceSizes[i][j] > 0.3) { //minimum size
+        this->faceSizes[i][j] *= 0.94;
       }
     }
   }

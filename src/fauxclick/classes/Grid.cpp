@@ -102,13 +102,16 @@ vector<ofPoint> Grid::face(int row, int col, float scale ){
   c.y -= p.y;
   
   // Scale
-  a.x *= scale;
-  b.x *= scale;
-  c.x *= scale;
-  
-  a.y *= scale;
-  b.y *= scale;
-  c.y *= scale;
+//  a.x *= scale;
+//  b.x *= scale;
+//  c.x *= scale;
+//  
+//  a.y *= scale;
+//  b.y *= scale;
+//  c.y *= scale;
+  a *= scale;
+  b *= scale;
+  c *= scale;
   
   // Translate back to original position
   a.x += p.x;

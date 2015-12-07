@@ -10,8 +10,7 @@ class PulseSketch : public SketchBase {
   
     void drawFace( vector<ofPoint> vertices );
 
-    // @todo: hacking ofPoint class here to store faces;
-    vector< vector<ofPoint> > faces;
+    float faceSizes[11][16];
   
     const char* name;
     ofApp* app;
