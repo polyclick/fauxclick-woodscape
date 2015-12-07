@@ -37,8 +37,11 @@ void AudioManager::setup(){
   // else fallback to first device in list
   bool hasSetupA10 = this->setupAudioDeviceByName("Native Instruments: Traktor Audio 10");
   if(!hasSetupA10) {
-    cout << "Falling back to device 0" << endl;
-    this->setupAudioDeviceByID(0);
+    bool hasSetupAkai = this->setupAudioDeviceByName("Akai Professional, LP: EIE pro (Core Audio)");
+    if(!hasSetupAkai) {
+      cout << "Falling back to device 0" << endl;
+      this->setupAudioDeviceByID(0);
+    }
   }
   
   // setup the parameter gui
