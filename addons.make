@@ -1,6 +1,5 @@
-ofxAssimpModelLoader
-ofxBeat
+ofxAubio
+ofxDatGui
 ofxGui
 ofxMidi
-ofxSvg
 ofxSyphon

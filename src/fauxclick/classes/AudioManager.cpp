@@ -12,14 +12,26 @@ AudioManager::~AudioManager(){
 
 void AudioManager::setup(){
   
-  // log a list of all available devices
-  soundStream.printDeviceList();
+  // sound settings
+  sampleRate = 44100;
+  bufferSize = 256;
+  nBuffers = 4;
   
-  // cache list
-  deviceList = soundStream.getDeviceList();
   
-  // buffer size
-  bufferSize = beat.getBufferSize();
+  
+  // setup onset object
+  onset.setup();
+  
+  // setup pitch object
+  pitch.setup();
+  
+  // setup beat object
+  beat.setup();
+  
+  // setup mel bands object
+  bands.setup();
+  
+  
   
   // init left and right channel vectors
   left.assign(bufferSize, 0.0);
@@ -31,6 +43,14 @@ void AudioManager::setup(){
   // smoothed and scaled volume
   smoothedVolume = 0.0;
   normalizedVolume = 0.0;
+  
+  
+  
+  // log a list of all available devices
+  soundStream.printDeviceList();
+  
+  // cache list
+  deviceList = soundStream.getDeviceList();
 
   // try to setup audio a10 as default
   // else fallback to first device in list
@@ -42,6 +62,8 @@ void AudioManager::setup(){
       this->setupAudioDeviceByID(0);
     }
   }
+  
+  
   
   // setup the parameter gui
   this->setupGui();
@@ -65,7 +87,7 @@ void AudioManager::setupAudioDeviceByID(unsigned int id) {
   soundStream.close();
   soundStream.setDeviceID(id);
   soundStream.setInput(this);
-  soundStream.setup(0, 2, 44100, bufferSize, 4);
+  soundStream.setup(0, 2, sampleRate, bufferSize, nBuffers);
 }
 
 //--------------------------------------------------------------
@@ -82,19 +104,16 @@ void AudioManager::setupGui() {
   audioDropdown = new ofxDatGuiDropdown("AUDIO DEVICES", options);
   audioDropdown->onDropdownEvent(this, &AudioManager::onDropdownEvent);
   
-  // kick, snare, hihat plotters
+  // beat, onset plotters
   kickValuePlotter = new ofxDatGuiValuePlotter("KICK", 0, 100);
   kickValuePlotter->setSpeed(2.0);
-  snareValuePlotter = new ofxDatGuiValuePlotter("SNARE", 0, 100);
-  snareValuePlotter->setSpeed(2.0);
-  hihatValuePlotter = new ofxDatGuiValuePlotter("HIHAT", 0, 100);
-  hihatValuePlotter->setSpeed(2.0);
+  onsetValuePlotter = new ofxDatGuiValuePlotter("ONSET", 0, 100);
+  onsetValuePlotter->setSpeed(2.0);
   
   // audio folder
   audioFolder = new ofxDatGuiFolder("audio", ofColor::fromHex(0x1ED36F));
   audioFolder->attachItem(kickValuePlotter);
-  audioFolder->attachItem(snareValuePlotter);
-  audioFolder->attachItem(hihatValuePlotter);
+  audioFolder->attachItem(onsetValuePlotter);
   audioFolder->attachItem(audioDropdown);
   
   // add to parameter window
@@ -103,9 +122,6 @@ void AudioManager::setupGui() {
 
 //--------------------------------------------------------------
 void AudioManager::update(){
-  
-  // update beat detector
-  beat.update(ofGetElapsedTimeMillis());
   
   // lets scale the vol up to a 0-1 range
   normalizedVolume = ofMap(smoothedVolume, 0.0, 0.17, 0.0, 1.0, true);
@@ -118,17 +134,29 @@ void AudioManager::update(){
     volumeHistory.erase(volumeHistory.begin(), volumeHistory.begin() + 1);
   }
   
+  // cache beat/onset received yes/no
+  beatReceived = beat.received();
+  onsetReceived = onset.received();
+  
   // update parameter screen
-  kickValuePlotter->setValue(beat.kick() * 100.0);
-  snareValuePlotter->setValue(beat.snare() * 100.0);
-  hihatValuePlotter->setValue(beat.hihat() * 100.0);
+  kickValuePlotter->setValue(beatReceived ? 100.0 : 0.0);
+  onsetValuePlotter->setValue(onsetReceived ? 100.0 : 0.0);
 }
 
 //--------------------------------------------------------------
 void AudioManager::audioReceived(float* input, int bufferSize, int nChannels) {
   
-  // feed audio to beat detector
-  beat.audioReceived(input, bufferSize, nChannels);
+  // compute onset detection
+  onset.audioIn(input, bufferSize, nChannels);
+  
+  // compute pitch detection
+  pitch.audioIn(input, bufferSize, nChannels);
+  
+  // compute beat location
+  beat.audioIn(input, bufferSize, nChannels);
+
+  // compute bands
+  bands.audioIn(input, bufferSize, nChannels);
   
   // do our own analysis
   float currentVolume = 0.0;
@@ -152,6 +180,7 @@ void AudioManager::audioReceived(float* input, int bufferSize, int nChannels) {
   // this is how we get the root of rms :)
   currentVolume = sqrt(currentVolume);
   
+  // smoothed volume
   smoothedVolume *= 0.93;
   smoothedVolume += 0.07 * currentVolume;
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxBeat.h"
+#include "ofxAubio.h"
 #include "ofxDatGui.h"
 
 class ofApp;
@@ -25,23 +25,31 @@ public:
   void onDropdownEvent(ofxDatGuiDropdownEvent e);
   
   vector<ofSoundDevice> deviceList;
-	vector<float> left;            // left channel frequencies
-	vector<float> right;           // right channel frequencies
-  vector<float> volumeHistory;   // volume history
   
-  int bufferSize;
-  int volumeHistorySize = 400;    // amount of volume measurements to keep in our history vector
+	vector<float> left;               // left channel frequencies
+	vector<float> right;              // right channel frequencies
+  vector<float> volumeHistory;      // volume history
   
-  float smoothedVolume;           // volume with some smoothing applied between measurements
-  float normalizedVolume;         // volume normalized (0 - 1)
+  bool beatReceived = false;
+  bool onsetReceived = false;
+  
+  int sampleRate = 44100;
+  int bufferSize = 256;
+  int nBuffers = 4;
+  int volumeHistorySize = 400;      // amount of volume measurements to keep in our history vector
+  
+  float smoothedVolume;             // volume with some smoothing applied between measurements
+  float normalizedVolume;           // volume normalized (0 - 1)
   
   ofSoundStream soundStream;
-
-  ofxBeat beat;
+  
+  ofxAubioOnset onset;
+  ofxAubioPitch pitch;
+  ofxAubioBeat beat;
+  ofxAubioMelBands bands;
   
   ofxDatGuiFolder* audioFolder;
   ofxDatGuiDropdown* audioDropdown;
   ofxDatGuiValuePlotter* kickValuePlotter;
-  ofxDatGuiValuePlotter* snareValuePlotter;
-  ofxDatGuiValuePlotter* hihatValuePlotter;
+  ofxDatGuiValuePlotter* onsetValuePlotter;
 };

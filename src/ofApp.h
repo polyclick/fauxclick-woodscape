@@ -1,10 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxGui.h"
 #include "ofxSyphon.h"
 #include "ofxMidi.h"
-
+#include "ofxGui.h"
 #include "SketchBase.h"
 #include "ParameterWindow.h"
 #include "AudioManager.h"
@@ -45,13 +44,10 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-
-
     vector<SketchBase*> sketches;
 
     ofParameter<string> sketchLabel;
     ofParameter<string> screenSize;
-
     ofParameter<string> midiStatus;
     ofParameter<string> midiChannel;
     ofParameter<float> midiPitch;
@@ -59,7 +55,6 @@ public:
     ofParameter<float> midiControl;
     ofParameter<float> midiValue;
     ofParameter<string> midiDelta;
-
     ofParameterGroup summary;
     ofParameterGroup midi;
     ofParameterGroup debug;

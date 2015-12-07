@@ -26,13 +26,13 @@ void TriangleNoiseSketch::draw() {
   ofSetLineWidth(1);
   ofSetPolyMode(OF_POLY_WINDING_ODD);
   ofBeginShape();
-  int kickPoints = this->app->audioManager->beat.kick() ? 10 : 3;
+  int kickPoints = this->app->audioManager->beatReceived ? 10 : 3;
   for (int i = 0; i < kickPoints; i++){
     ofVertex(ofRandom(-250, ofGetWidth() + 250), ofRandom(-250, ofGetHeight() + 250));
   }
   ofEndShape();
   
-  if(this->app->audioManager->beat.hihat()) {
+  if(this->app->audioManager->onsetReceived) {
     ofSetHexColor(0x00ff00);
     ofSetLineWidth(3);
     ofSetPolyMode(OF_POLY_WINDING_ODD);

@@ -15,7 +15,7 @@ void SoundwaveSketch::setup(){
 
 void SoundwaveSketch::update(){
   this->showKick = false;
-  if(this->app->audioManager->beat.isKick()) {
+  if(this->app->audioManager->beatReceived) {
     this->showKick = true;
     this->randomSide = ofRandom(1) < 0.5 ? 0 : 1;
   }

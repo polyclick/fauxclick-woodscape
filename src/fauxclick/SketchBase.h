@@ -1,10 +1,5 @@
 #pragma once
 
-#include "ofMain.h"
-#include "ofxMidi.h"
-#include "ofxBeat.h"
-#include "ofLog.h"
-
 class SketchBase {
   
   public:

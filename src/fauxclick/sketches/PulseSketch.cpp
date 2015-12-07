@@ -43,7 +43,7 @@ void PulseSketch::draw() {
       float intensity;
       
       if (i % 2 == 0) {
-        if (this->app->audioManager->beat.isKick()) {
+        if (this->app->audioManager->beatReceived) {
           this->faceSizes[i][j] = 1;
         }
         
@@ -57,7 +57,7 @@ void PulseSketch::draw() {
       }
       
       if (!(i % 2 == 0)) {
-        if (this->app->audioManager->beat.isHat()) {
+        if (this->app->audioManager->onsetReceived) {
           this->faceSizes[i][j] = 1;
         }
         

@@ -19,18 +19,11 @@ void VolumeHistorySketch::setup(){
 
 void VolumeHistorySketch::update(){
   
-  float average =
-    this->app->audioManager->beat.getBand(0) +
-    this->app->audioManager->beat.getBand(1) +
-    this->app->audioManager->beat.getBand(2) +
-    this->app->audioManager->beat.getBand(3) +
-    this->app->audioManager->beat.getBand(4);
-  
-  average /= 5.0;
   
   // lets record the volume into an array
-  volumeHistory.push_back(average);
-  cout << this->app->audioManager->beat.getMagnitude() << endl;
+  volumeHistory.push_back(this->app->audioManager->normalizedVolume);
+  //cout << this->app->audioManager->beat.getMagnitude() << endl;
+  
   // if we are bigger the the size we want to record - lets drop the oldest value
   if(volumeHistory.size() >= volumeHistorySize){
     volumeHistory.erase(volumeHistory.begin(), volumeHistory.begin() + 1);
