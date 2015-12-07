@@ -19,8 +19,7 @@ void AudioManager::setup(){
   deviceList = soundStream.getDeviceList();
   
   // buffer size
-  //bufferSize = beat.getBufferSize();
-  bufferSize = 512;
+  bufferSize = beat.getBufferSize();
   
   // init left and right channel vectors
   left.assign(bufferSize, 0.0);
@@ -65,8 +64,8 @@ void AudioManager::setupAudioDeviceByID(unsigned int id) {
   soundStream.stop();
   soundStream.close();
   soundStream.setDeviceID(id);
-  soundStream.setup(0, 2, 44100, bufferSize, 4);
   soundStream.setInput(this);
+  soundStream.setup(0, 2, 44100, bufferSize, 4);
 }
 
 //--------------------------------------------------------------
@@ -155,6 +154,8 @@ void AudioManager::audioReceived(float* input, int bufferSize, int nChannels) {
   
   smoothedVolume *= 0.93;
   smoothedVolume += 0.07 * currentVolume;
+  
+  cout << smoothedVolume << endl;
 }
 
 //--------------------------------------------------------------
