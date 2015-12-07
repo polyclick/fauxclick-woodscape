@@ -14,27 +14,45 @@ void SoundwaveSketch::setup(){
 }
 
 void SoundwaveSketch::update(){
-  
+  this->showKick = false;
+  if(this->app->audioManager->beat.isKick()) {
+    this->showKick = true;
+    this->randomSide = ofRandom(1) < 0.5 ? 0 : 1;
+  }
 }
 
 void SoundwaveSketch::draw() {
-  ofNoFill();
   
+  // shortcut
   vector<float>left = this->app->audioManager->left;
   vector<float>right = this->app->audioManager->right;
   
-  float pointInterval = (float)ofGetWidth() / (float)left.size();
-  int kickStatus = 0;
-  int randomSide = ofRandom(1) < 0.5 ? 0 : 1;
-  if(this->app->audioManager->beat.isKick() && !randomSide) kickStatus = 1;
-  if(this->app->audioManager->beat.isKick() && randomSide) kickStatus = 0;
+  // scaling in width of screen
+  float widthRatio = (float)ofGetWidth() / (float)left.size();
   
+  // vars
+  int lineColor = 255;
+
+  
+  
+  // -------------------------------------- left channel
   ofPushStyle();
-		ofPushMatrix();
+  ofPushMatrix();
+  
+  // draw bg
+  if(showKick && randomSide == 0) {
+    ofFill();
+    ofSetColor(255);
+    ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight() / 2.0);
+  }
+  
+  // vars
+  lineColor = showKick && randomSide == 0 ? 0 : 255;
   
   // set color
-  ofSetColor(255, 255, 255);
-  ofSetLineWidth(3);
+  ofNoFill();
+  ofSetColor(lineColor);
+  ofSetLineWidth(5);
   
   // y offset
   ofTranslate(0, ofGetHeight() * 1.0 / 4.0, 0);
@@ -44,20 +62,35 @@ void SoundwaveSketch::draw() {
   
   // draw over the full width of the screen
   for (unsigned int i = 0; i < left.size(); i++){
-    ofVertex(i * pointInterval, left[i] * ofGetHeight() / 2.0);
+    ofVertex(i * widthRatio, left[i] * ofGetHeight() * 2.5);
   }
   
   // end drawing the line
   ofEndShape(false);
-		ofPopMatrix();
+  
+  ofPopMatrix();
   ofPopStyle();
   
+  
+  
+  // -------------------------------------- right channel
   ofPushStyle();
-		ofPushMatrix();
+  ofPushMatrix();
+  
+  // draw bg
+  if(showKick && randomSide == 1) {
+    ofFill();
+    ofSetColor(255);
+    ofDrawRectangle(0, ofGetHeight() / 2.0, ofGetWidth(), ofGetHeight() / 2.0);
+  }
+
+  // vars
+  lineColor = showKick && randomSide == 1 ? 0 : 255;
   
   // set color
-  ofSetColor(255, 255, 255);
-  ofSetLineWidth(3);
+  ofNoFill();
+  ofSetColor(lineColor);
+  ofSetLineWidth(5);
   
   // y offset
   ofTranslate(0, ofGetHeight() * 3.0 / 4.0, 0);
@@ -67,12 +100,13 @@ void SoundwaveSketch::draw() {
   
   // draw over the full width of the screen
   for (unsigned int i = 0; i < right.size(); i++){
-    ofVertex(i * pointInterval, right[i] * ofGetHeight() / 2.0);
+    ofVertex(i * widthRatio, right[i] * ofGetHeight() * 2.5);
   }
   
   // end drawing the line
   ofEndShape(false);
-		ofPopMatrix();
+  
+  ofPopMatrix();
   ofPopStyle();
 }
 

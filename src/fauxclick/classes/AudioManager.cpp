@@ -154,8 +154,6 @@ void AudioManager::audioReceived(float* input, int bufferSize, int nChannels) {
   
   smoothedVolume *= 0.93;
   smoothedVolume += 0.07 * currentVolume;
-  
-  cout << smoothedVolume << endl;
 }
 
 //--------------------------------------------------------------

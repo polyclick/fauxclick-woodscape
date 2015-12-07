@@ -4,22 +4,25 @@
 #include "SketchBase.h"
 
 class SoundwaveSketch : public SketchBase {
+
+private:
+  bool showKick = false;
+  int randomSide = 0;
   
-  private:
-    float yPosition = 0;
   
-  protected:
-    const char* name;
-    ofApp* app;
+protected:
+  const char* name;
+  ofApp* app;
   
-  public:
-    SoundwaveSketch(ofApp* app, const char* name);
-    ~SoundwaveSketch();
+public:
+  SoundwaveSketch(ofApp* app, const char* name);
+  ~SoundwaveSketch();
+
+  void setup();
+  void update();
+  void draw();
+
+  const char* getName();
+  void logName();
   
-    void setup();
-    void update();
-    void draw();
-  
-    const char* getName();
-    void logName();
 };
