@@ -19,10 +19,10 @@ void ofApp::setup(){
   ofDisableSmoothing();
   
   // libraries and stuff
+  this->setupGui();
   this->setupMidi();
   this->setupAudio();
   this->setupSyphon();
-  this->setupGui();
   
   // our sketches
   this->setupSketches();

@@ -24,12 +24,16 @@ void SoundwaveSketch::draw() {
   vector<float>right = this->app->audioManager->right;
   
   float pointInterval = (float)ofGetWidth() / (float)left.size();
+  int kickStatus = 0;
+  int randomSide = ofRandom(1) < 0.5 ? 0 : 1;
+  if(this->app->audioManager->beat.isKick() && !randomSide) kickStatus = 1;
+  if(this->app->audioManager->beat.isKick() && randomSide) kickStatus = 0;
   
   ofPushStyle();
 		ofPushMatrix();
   
   // set color
-  ofSetColor(245, 58, 135);
+  ofSetColor(255, 255, 255);
   ofSetLineWidth(3);
   
   // y offset
@@ -40,7 +44,7 @@ void SoundwaveSketch::draw() {
   
   // draw over the full width of the screen
   for (unsigned int i = 0; i < left.size(); i++){
-    ofVertex(i * pointInterval, left[i] * ofGetHeight() / 4.0);
+    ofVertex(i * pointInterval, left[i] * ofGetHeight() / 2.0);
   }
   
   // end drawing the line
@@ -52,7 +56,7 @@ void SoundwaveSketch::draw() {
 		ofPushMatrix();
   
   // set color
-  ofSetColor(245, 58, 135);
+  ofSetColor(255, 255, 255);
   ofSetLineWidth(3);
   
   // y offset
@@ -63,7 +67,7 @@ void SoundwaveSketch::draw() {
   
   // draw over the full width of the screen
   for (unsigned int i = 0; i < right.size(); i++){
-    ofVertex(i * pointInterval, right[i] * ofGetHeight() / 4.0);
+    ofVertex(i * pointInterval, right[i] * ofGetHeight() / 2.0);
   }
   
   // end drawing the line

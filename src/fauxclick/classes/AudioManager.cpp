@@ -11,19 +11,12 @@ AudioManager::~AudioManager(){
 }
 
 void AudioManager::setup(){
+  
+  // log a list of all available devices
   soundStream.printDeviceList();
   
-  // first try to get akai device
-  vector<ofSoundDevice> matches = soundStream.getMatchingDevices("Akai Professional, LP: EIE pro (Core Audio)");
-  
-  // else try traktor a10
-  if(!matches.size())
-    matches = soundStream.getMatchingDevices("Akai Professional, LP: EIE pro (Core Audio)");
-  
-  // if akai or traktor found, set as main
-  // this will automatically fallback to microphone audio if none of both was found
-  if(matches.size())
-    soundStream.setDevice(matches[0]);
+  // cache list
+  deviceList = soundStream.getDeviceList();
   
   // buffer size
   //bufferSize = beat.getBufferSize();
@@ -39,12 +32,73 @@ void AudioManager::setup(){
   // smoothed and scaled volume
   smoothedVolume = 0.0;
   normalizedVolume = 0.0;
+
+  // try to setup audio a10 as default
+  // else fallback to first device in list
+  bool hasSetupA10 = this->setupAudioDeviceByName("-------");
+  if(!hasSetupA10) {
+    this->setupAudioDeviceByID(0);
+  }
   
-  // setup the soundstream
+  // setup the parameter gui
+  this->setupGui();
+}
+
+//--------------------------------------------------------------
+bool AudioManager::setupAudioDeviceByName(string name) {
+  vector<ofSoundDevice> matches = soundStream.getMatchingDevices(name);
+  if(matches.size() == 1) {
+    this->setupAudioDeviceByID(matches[0].deviceID);
+    return true;
+  }
+  
+  cout << "No matching audio device with name: " << name << endl;
+  return false;
+}
+
+//--------------------------------------------------------------
+void AudioManager::setupAudioDeviceByID(unsigned int id) {
+  soundStream.stop();
+  soundStream.close();
+  soundStream.setDeviceID(id);
   soundStream.setup(0, 2, 44100, bufferSize, 4);
   soundStream.setInput(this);
 }
 
+//--------------------------------------------------------------
+void AudioManager::setupGui() {
+  
+  // list of audio device options for dropdown
+  vector<string> options;
+  for(int i = 0; i < deviceList.size(); i++) {
+    options.push_back(deviceList[i].name);
+    cout << deviceList[i].name << endl;
+  }
+  
+  // audio devices dropdown
+  audioDropdown = new ofxDatGuiDropdown("AUDIO DEVICES", options);
+  audioDropdown->onDropdownEvent(this, &AudioManager::onDropdownEvent);
+  
+  // kick, snare, hihat plotters
+  kickValuePlotter = new ofxDatGuiValuePlotter("KICK", 0, 100);
+  kickValuePlotter->setSpeed(2.0);
+  snareValuePlotter = new ofxDatGuiValuePlotter("SNARE", 0, 100);
+  snareValuePlotter->setSpeed(2.0);
+  hihatValuePlotter = new ofxDatGuiValuePlotter("HIHAT", 0, 100);
+  hihatValuePlotter->setSpeed(2.0);
+  
+  // audio folder
+  audioFolder = new ofxDatGuiFolder("audio", ofColor::fromHex(0x1ED36F));
+  audioFolder->attachItem(kickValuePlotter);
+  audioFolder->attachItem(snareValuePlotter);
+  audioFolder->attachItem(hihatValuePlotter);
+  audioFolder->attachItem(audioDropdown);
+  
+  // add to parameter window
+  this->app->parameterWindow->addFolder(audioFolder, 500, 0);
+}
+
+//--------------------------------------------------------------
 void AudioManager::update(){
   
   // update beat detector
@@ -62,9 +116,9 @@ void AudioManager::update(){
   }
   
   // update parameter screen
-  this->app->parameterWindow->kickValuePlotter->setValue(beat.kick() * 100.0);
-  this->app->parameterWindow->snareValuePlotter->setValue(beat.snare() * 100.0);
-  this->app->parameterWindow->hihatValuePlotter->setValue(beat.hihat() * 100.0);
+  kickValuePlotter->setValue(beat.kick() * 100.0);
+  snareValuePlotter->setValue(beat.snare() * 100.0);
+  hihatValuePlotter->setValue(beat.hihat() * 100.0);
 }
 
 //--------------------------------------------------------------
@@ -97,4 +151,9 @@ void AudioManager::audioReceived(float* input, int bufferSize, int nChannels) {
   
   smoothedVolume *= 0.93;
   smoothedVolume += 0.07 * currentVolume;
+}
+
+//--------------------------------------------------------------
+void AudioManager::onDropdownEvent(ofxDatGuiDropdownEvent e) {
+  this->setupAudioDeviceByName(deviceList[e.child].name);
 }
