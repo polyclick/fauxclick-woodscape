@@ -28,8 +28,9 @@ public:
   Grid();
   ~Grid();
   
+  bool faceVisible(int row, int col);
   void pulseFace(int row, int col, int delay = 0);
   void decay();
-  vector<ofPoint> face( int row, int col );
+  vector<ofPoint> face( int row, int col , float scaleMultiplier = 1);
 
 };

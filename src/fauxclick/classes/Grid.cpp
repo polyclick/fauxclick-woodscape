@@ -40,8 +40,8 @@ void Grid::decay(){
   for (int i = 0; i < rows+1 ; i++) {
     for (int j = 0; j < cols+1; j++) {
       // decay size
-      if (this->faceSizes[i][j] > 0.3) { //minimum size
-        this->faceSizes[i][j] *= 0.95;
+      if (this->faceSizes[i][j] > 0) { //minimum size
+        this->faceSizes[i][j] *= 0.91;
       }
       
       // decay cooldown
@@ -60,7 +60,15 @@ void Grid::decay(){
   }
 }
 
-vector<ofPoint> Grid::face(int row, int col ){
+bool Grid::faceVisible(int row, int col){
+  if (this->faceSizes[row][col] > 0.25) { //minimum size
+    return true;
+  }else{
+    return false;
+  }
+}
+
+vector<ofPoint> Grid::face(int row, int col, float scaleMultiplier ){
   /**
    * Return three vertices that make up the given grid segment
    * defined by row and column
@@ -145,6 +153,11 @@ vector<ofPoint> Grid::face(int row, int col ){
   a *= this->faceSizes[row][col];
   b *= this->faceSizes[row][col];
   c *= this->faceSizes[row][col];
+  
+  // Apply multiplier
+  a *= scaleMultiplier;
+  b *= scaleMultiplier;
+  c *= scaleMultiplier;
   
   // Translate back to original position
   a.x += p.x;

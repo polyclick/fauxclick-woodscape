@@ -8,7 +8,7 @@ class WaveSketch : public SketchBase {
 
   protected:
   
-    void drawFace( vector<ofPoint> vertices );
+    void drawFace( vector<ofPoint> vertices);
   
     const char* name;
     ofApp* app;

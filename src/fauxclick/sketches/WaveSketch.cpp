@@ -26,27 +26,44 @@ void WaveSketch::draw() {
   for (int i = 0; i < rows+1 ; i++) {
     for (int j = 0; j < cols+1; j++) {
       
-      float intensity;
-      
-      if (i % 2 == 0) {
-        if (this->app->audioManager->beat.isKick()) {
-          grid.pulseFace(i,j,j*1.5);
+        if (i % 2 == 0) {
+          if (this->app->audioManager->beat.isKick()) {
+            grid.pulseFace(i,j,j*1.5);
+          }
+          
+          if(grid.faceVisible(i,j)){
+            // Draw the face
+            ofSetColor(255, 255, 255);
+            drawFace( grid.face(i,j));
+          
+            // layer
+            ofSetColor(0, 0, 0);
+            drawFace( grid.face(i,j, 0.66));
+            
+            ofSetColor(255, 255, 255);
+            drawFace( grid.face(i,j, 0.33));
+          }
+          
         }
         
-        // Draw the face
-        ofSetColor(255, 255, 255);
-        drawFace( grid.face(i,j));
-      }
-      
-      if (i % 3 == 0) {
-        if (this->app->audioManager->beat.isKick()) {
-          grid.pulseFace(i,j,25 - (j*1.5));
+        if (i % 3 == 0) {
+          if (this->app->audioManager->beat.isKick()) {
+            grid.pulseFace(i,j,25 - (j*1.5));
+          }
+          
+          if(grid.faceVisible(i,j)){
+            // Draw the face
+            ofSetColor(255, 255, 255);
+            drawFace( grid.face(i,j));
+          
+            ofSetColor(0, 0, 0);
+            drawFace( grid.face(i,j, 0.66));
+            
+            ofSetColor(255, 255, 255);
+            drawFace( grid.face(i,j, 0.33));
+          }
         }
-        
-        // Draw the face
-        ofSetColor(255, 255, 255);
-        drawFace( grid.face(i,j));
-      }
+      
     }
   }
   
