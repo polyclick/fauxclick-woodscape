@@ -35,8 +35,9 @@ void AudioManager::setup(){
 
   // try to setup audio a10 as default
   // else fallback to first device in list
-  bool hasSetupA10 = this->setupAudioDeviceByName("-------");
+  bool hasSetupA10 = this->setupAudioDeviceByName("Native Instruments: Traktor Audio 10");
   if(!hasSetupA10) {
+    cout << "Falling back to device 0" << endl;
     this->setupAudioDeviceByID(0);
   }
   
