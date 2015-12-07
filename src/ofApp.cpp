@@ -97,8 +97,8 @@ void ofApp::update() {
   audioManager->update();
   parameterWindow->update();
 
-//  // update active sketch
-//  sketches[activeSketchIndex]->update(beat);
+  // update active sketch
+  sketches[activeSketchIndex]->update();
 
 }
 
@@ -156,17 +156,6 @@ void ofApp::newMidiMessage(ofxMidiMessage& msg) {
 
   midiDelta = ofToString(midiMessage.deltatime);
 }
-
-////--------------------------------------------------------------
-//void ofApp::audioReceived(float* input, int bufferSize, int nChannels) {
-//  
-//  // feed audio to beat detector
-//  beat.audioReceived(input, bufferSize, nChannels);
-//  
-//  // feed audio to active sketch
-//  if(sketches.size())
-//    sketches[activeSketchIndex]->audioReceived(input, bufferSize, nChannels);
-//}
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
