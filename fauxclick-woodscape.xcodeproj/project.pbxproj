@@ -45,6 +45,7 @@
 		C07969A41C14667900C88672 /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C079699F1C14667900C88672 /* Grid.cpp */; };
 		C07969A51C14667900C88672 /* ParameterWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C07969A11C14667900C88672 /* ParameterWindow.cpp */; };
 		C098DBE008A1B5C6D12ABFFD /* ofxBeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C6684F2AB3BF96EE746EF6DA /* ofxBeat.cpp */; };
+		C0A98B341C161E1B00A88CEB /* VolumeHistorySketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0A98B321C161E1B00A88CEB /* VolumeHistorySketch.cpp */; };
 		C0E435F61C15068D008149FF /* PulseSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0E435F41C15068D008149FF /* PulseSketch.cpp */; };
 		C0F22C231C145E1500BA94F7 /* ofxDatGuiComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0F22C171C145E1500BA94F7 /* ofxDatGuiComponent.cpp */; };
 		C0F22C241C145E1500BA94F7 /* ofxDatGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0F22C1D1C145E1500BA94F7 /* ofxDatGui.cpp */; };
@@ -183,6 +184,8 @@
 		C07969A01C14667900C88672 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
 		C07969A11C14667900C88672 /* ParameterWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParameterWindow.cpp; sourceTree = "<group>"; };
 		C07969A21C14667900C88672 /* ParameterWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterWindow.h; sourceTree = "<group>"; };
+		C0A98B321C161E1B00A88CEB /* VolumeHistorySketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VolumeHistorySketch.cpp; sourceTree = "<group>"; };
+		C0A98B331C161E1B00A88CEB /* VolumeHistorySketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumeHistorySketch.h; sourceTree = "<group>"; };
 		C0E435F41C15068D008149FF /* PulseSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PulseSketch.cpp; sourceTree = "<group>"; };
 		C0E435F51C15068D008149FF /* PulseSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulseSketch.h; sourceTree = "<group>"; };
 		C0E7EDA67EDF213FC0E83D17 /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiMessage.cpp; path = ../../../addons/ofxMidi/src/ofxMidiMessage.cpp; sourceTree = SOURCE_ROOT; };
@@ -599,6 +602,8 @@
 				C04303261C13451900C1BB18 /* TriangleNoiseSketch.h */,
 				C04303141C132A4800C1BB18 /* TriangleSketch.cpp */,
 				C04303151C132A4800C1BB18 /* TriangleSketch.h */,
+				C0A98B321C161E1B00A88CEB /* VolumeHistorySketch.cpp */,
+				C0A98B331C161E1B00A88CEB /* VolumeHistorySketch.h */,
 			);
 			path = sketches;
 			sourceTree = "<group>";
@@ -885,6 +890,7 @@
 				C0316D3E1C148DD600BD2257 /* PointCloudSketch.cpp in Sources */,
 				8D60C222CBD3F869382832E9 /* ofxSyphonServer.mm in Sources */,
 				11DF9AB1B4EAA63E3B190CA0 /* ofxSyphonServerDirectory.mm in Sources */,
+				C0A98B341C161E1B00A88CEB /* VolumeHistorySketch.cpp in Sources */,
 				C9109422648B170B07A778CF /* SyphonNameboundClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

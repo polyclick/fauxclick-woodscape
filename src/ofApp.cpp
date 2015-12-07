@@ -6,6 +6,7 @@
 #include "TriangleNoiseSketch.h"
 #include "SoundwaveSketch.h"
 #include "PointCloudSketch.h"
+#include "VolumeHistorySketch.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -81,6 +82,7 @@ void ofApp::setupSketches() {
   sketches.push_back(new TriangleNoiseSketch(this, "TriangleNoiseSketch"));
   sketches.push_back(new SoundwaveSketch(this, "SoundwaveSketch"));
   sketches.push_back(new PointCloudSketch(this, "PointCloudSketch"));
+  sketches.push_back(new VolumeHistorySketch(this, "VolumeHistorySketch"));
   
   // call setup
   for (auto &sketch : sketches) {
@@ -183,6 +185,14 @@ void ofApp::keyPressed(int key){
 
     case '5':
       activeSketchIndex = 4;
+      break;
+      
+    case '6':
+      activeSketchIndex = 5;
+      break;
+      
+    case '7':
+      activeSketchIndex = 6;
       break;
   }
 
