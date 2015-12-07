@@ -74,7 +74,7 @@ void PulseSketch::draw() {
   for (int i = 0; i < rows+1 ; i++) {
     for (int j = 0; j < cols+1; j++) {
       if (this->faceSizes[i][j] > 0.3) { //minimum size
-        this->faceSizes[i][j] *= 0.94;
+        this->faceSizes[i][j] *= 0.95;
       }
     }
   }
