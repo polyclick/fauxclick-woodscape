@@ -4,12 +4,14 @@
 class Grid {
 
 protected:
-
-//    ofPoint equilateral( ofPoint one, ofPoint two, float rotation );
-  
-//  vector<ofPoint> points();
   ofPoint equilateral( ofPoint one, ofPoint two, float rotation );
 
+  // @todo: store all info in one array
+  float faceSizes[11][16];
+  int faceCooldowns[11][16];
+  int faceTimer[11][16];
+  int pulseCue[11][16];
+  
   // Set unit width
   const int unitWidth = 101;
   
@@ -26,6 +28,8 @@ public:
   Grid();
   ~Grid();
   
-  vector<ofPoint> face( int row, int col, float scale = 1 );
+  void pulseFace(int row, int col, int delay = 0);
+  void decay();
+  vector<ofPoint> face( int row, int col );
 
 };
