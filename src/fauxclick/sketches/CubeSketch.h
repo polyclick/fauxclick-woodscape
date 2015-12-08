@@ -4,9 +4,12 @@
 #include "SketchBase.h"
 #include "Grid.h"
 
-class WaveSketch : public SketchBase {
+class CubeSketch : public SketchBase {
 
   protected:
+
+    void drawCube(int colOdd, int colEven, int rowBottom);
+
 
     const char* name;
     ofApp* app;
@@ -23,8 +26,8 @@ class WaveSketch : public SketchBase {
     const int cols = 15;
 
   public:
-   WaveSketch(ofApp* app, const char* name);
-    ~WaveSketch();
+   CubeSketch(ofApp* app, const char* name);
+    ~CubeSketch();
 
     void setup();
     void update();

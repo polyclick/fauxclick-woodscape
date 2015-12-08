@@ -34,14 +34,14 @@ void WaveSketch::draw() {
           if(grid.faceVisible(i,j)){
 //             Draw the face
             ofSetColor(255, 255, 255);
-            drawFace( grid.face(i,j));
+            grid.drawFace(i,j);
 
             // layer
             ofSetColor(0, 0, 0);
-            drawFace( grid.face(i,j, 0.66));
+            grid.drawFace(i,j, 0.66);
 
             ofSetColor(255, 255, 255);
-            drawFace( grid.face(i,j, 0.33));
+            grid.drawFace(i,j, 0.33);
           }
         }
 
@@ -53,13 +53,13 @@ void WaveSketch::draw() {
           if(grid.faceVisible(i,j)){
             // Draw the face
             ofSetColor(255, 255, 255);
-            drawFace( grid.face(i,j));
+            grid.drawFace(i,j);
 
             ofSetColor(0, 0, 0);
-            drawFace( grid.face(i,j, 0.66));
+            grid.drawFace(i,j, 0.66);
 
             ofSetColor(255, 255, 255);
-            drawFace( grid.face(i,j, 0.33));
+            grid.drawFace(i,j, 0.33);
           }
         }
 
@@ -69,11 +69,6 @@ void WaveSketch::draw() {
 
 
   grid.decay();
-}
-
-void WaveSketch::drawFace( vector<ofPoint> vertices) {
-  // @todo: if this'd draw a face with x amount of points, that'd be great
-  ofDrawTriangle( vertices[0].x, vertices[0].y, vertices[1].x, vertices[1].y, vertices[2].x, vertices[2].y );
 }
 
 const char* WaveSketch::getName() {

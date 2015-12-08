@@ -28,10 +28,12 @@ public:
   Grid();
   ~Grid();
   
+  vector<ofPoint> face( int row, int col , float scaleMultiplier = 1);
+  void drawFace(int row, int col, float scaleMultiplier = 1);
   void enablePulse();
   bool faceVisible(int row, int col);
   void pulseFace(int row, int col, int delay = 0);
   void decay();
-  vector<ofPoint> face( int row, int col , float scaleMultiplier = 1);
+  
 
 };

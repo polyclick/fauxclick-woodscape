@@ -25,6 +25,12 @@ Grid::~Grid(){
 //   */
 //}
 
+void Grid::drawFace(int row, int col, float scaleMultiplier) {
+  vector<ofPoint> triangleFace = face(row, col, scaleMultiplier);
+  
+  ofDrawTriangle( triangleFace[0].x, triangleFace[0].y, triangleFace[1].x, triangleFace[1].y, triangleFace[2].x, triangleFace[2].y );
+}
+
 void Grid::pulseFace(int row, int col, int delay){
   /**
    * Cue a pulse, don't actually execute it.
