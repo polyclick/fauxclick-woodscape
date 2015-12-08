@@ -1,11 +1,13 @@
 #include "Grid.h"
 
 Grid::Grid(){
+  
+  this->hasPulse = false;
+  
   // Set inital face values
   for (int i = 0; i < rows+1 ; i++) {
     for (int j = 0; j < cols+1; j++) {
       this->faceSizes[i][j] = 0.1;
-      this->faceCooldowns[i][j] = 0;
       this->faceTimer[i][j] = 0;
       this->pulseCue[i][j] = 0;
     }
@@ -27,37 +29,40 @@ void Grid::pulseFace(int row, int col, int delay){
   /**
    * Cue a pulse, don't actually execute it.
    */
-  if(this->faceCooldowns[row][col] <= 0){
+
     this->pulseCue[row][col] = 1;
     this->faceTimer[row][col] = delay;
-    
-    // Set beat cooldown in frames
-    this->faceCooldowns[row][col] = 25;
-  }
 };
 
 void Grid::decay(){
   for (int i = 0; i < rows+1 ; i++) {
     for (int j = 0; j < cols+1; j++) {
-      // decay size
-      if (this->faceSizes[i][j] > 0) { //minimum size
-        this->faceSizes[i][j] *= 0.91;
+      
+      // if this grid has pulse enabled
+      if(this->hasPulse){
+        if (this->faceSizes[i][j] > 0) { //minimum size
+          
+          // decay size
+          this->faceSizes[i][j] *= 0.91;
+          
+          // decay pulse timers
+          this->faceTimer[i][j] -= 1;
+          
+          // do the actual pulse
+          // @todo: this shouldn't be here...
+          if (this->pulseCue[i][j] == 1 && this->faceTimer[i][j] <= 0) {
+            this->faceSizes[i][j] = 1;
+            this->pulseCue[i][j]= 0;
+          }
+        }
       }
-      
-      // decay cooldown
-      this->faceCooldowns[i][j] = this->faceCooldowns[i][j] - 1;
-      
-      // decay pulse timers
-      this->faceTimer[i][j] -= 1;
-      
-      // do the actual pulse
-      // @todo: this shouldn't be here...
-      if (this->pulseCue[i][j] == 1 && this->faceTimer[i][j] <= 0) {
-        this->faceSizes[i][j] = 1;
-        this->pulseCue[i][j]= 0;
-      }
+
     }
   }
+}
+
+void Grid::enablePulse(){
+  this->hasPulse = true;
 }
 
 bool Grid::faceVisible(int row, int col){
@@ -150,9 +155,12 @@ vector<ofPoint> Grid::face(int row, int col, float scaleMultiplier ){
   c.y -= p.y;
   
   // Scale
-  a *= this->faceSizes[row][col];
-  b *= this->faceSizes[row][col];
-  c *= this->faceSizes[row][col];
+  if(this->hasPulse){
+    a *= this->faceSizes[row][col];
+    b *= this->faceSizes[row][col];
+    c *= this->faceSizes[row][col];
+  }
+  
   
   // Apply multiplier
   a *= scaleMultiplier;

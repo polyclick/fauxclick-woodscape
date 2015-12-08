@@ -10,6 +10,7 @@ WaveSketch::~WaveSketch(){
 }
 
 void WaveSketch::setup() {
+  grid.enablePulse();
 }
 
 void WaveSketch::update() {
@@ -17,7 +18,6 @@ void WaveSketch::update() {
 }
 void WaveSketch::draw() {
 
-//  imgGrid.draw(0,0);
   ofBackground(0);
   ofFill();
   ofSetColor(255, 255, 255);
@@ -25,14 +25,14 @@ void WaveSketch::draw() {
 
   for (int i = 0; i < rows+1 ; i++) {
     for (int j = 0; j < cols+1; j++) {
-
+      
         if (i % 2 == 0) {
           if (this->app->audioManager->beatReceived) {
             grid.pulseFace(i,j,j*1.5);
           }
-
+          
           if(grid.faceVisible(i,j)){
-            // Draw the face
+//             Draw the face
             ofSetColor(255, 255, 255);
             drawFace( grid.face(i,j));
 
@@ -43,7 +43,6 @@ void WaveSketch::draw() {
             ofSetColor(255, 255, 255);
             drawFace( grid.face(i,j, 0.33));
           }
-
         }
 
         if (i % 3 == 0) {

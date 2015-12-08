@@ -7,8 +7,8 @@ protected:
   ofPoint equilateral( ofPoint one, ofPoint two, float rotation );
 
   // @todo: store all info in one array
+  bool hasPulse;
   float faceSizes[11][16];
-  int faceCooldowns[11][16];
   int faceTimer[11][16];
   int pulseCue[11][16];
   
@@ -28,6 +28,7 @@ public:
   Grid();
   ~Grid();
   
+  void enablePulse();
   bool faceVisible(int row, int col);
   void pulseFace(int row, int col, int delay = 0);
   void decay();
