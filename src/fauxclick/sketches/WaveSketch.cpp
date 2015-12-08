@@ -11,7 +11,7 @@ WaveSketch::~WaveSketch(){
 
 void WaveSketch::setup() {
   grid.enablePulse();
-  grid.enableTransform();
+  grid.enableTransform(0.91);
 }
 
 void WaveSketch::update() {
@@ -32,7 +32,6 @@ void WaveSketch::draw() {
             grid.pulseFace(i,j,j*1.5);
           }
           
-          if(grid.faceVisible(i,j)){
 //             Draw the face
             ofSetColor(255, 255, 255);
             grid.drawFace(i,j);
@@ -43,7 +42,7 @@ void WaveSketch::draw() {
 
             ofSetColor(255, 255, 255);
             grid.drawFace(i,j, 0.33);
-          }
+
         }
 
         if (i % 3 == 0) {
@@ -51,7 +50,6 @@ void WaveSketch::draw() {
             grid.pulseFace(i,j,25 - (j*1.5));
           }
 
-          if(grid.faceVisible(i,j)){
             // Draw the face
             ofSetColor(255, 255, 255);
             grid.drawFace(i,j);
@@ -61,7 +59,7 @@ void WaveSketch::draw() {
 
             ofSetColor(255, 255, 255);
             grid.drawFace(i,j, 0.33);
-          }
+
         }
 
     }

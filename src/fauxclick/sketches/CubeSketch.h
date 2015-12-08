@@ -9,6 +9,7 @@ class CubeSketch : public SketchBase {
   protected:
 
     void drawCube(int colOdd, int colEven, int rowBottom);
+    void pulseCube(int colOdd, int colEven, int rowBottom, int delay=0);
 
 
     const char* name;

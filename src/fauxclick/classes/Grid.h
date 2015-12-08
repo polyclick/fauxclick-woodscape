@@ -9,6 +9,8 @@ protected:
   // @todo: store all info in one array
   bool hasPulse;
   bool hasTransform;
+  float scaleMultiplier;
+  float visibleTresh;
   float faceSizes[11][16];
   int faceTimer[11][16];
   int pulseCue[11][16];
@@ -32,7 +34,7 @@ public:
   vector<ofPoint> face( int row, int col , float scaleMultiplier = 1);
   void drawFace(int row, int col, float scaleMultiplier = 1);
   void enablePulse();
-  void enableTransform();
+  void enableTransform( float scaleMultiplier =1, float visibleTresh=0.25);
   bool faceVisible(int row, int col);
   void pulseFace(int row, int col, int delay = 0);
   void decay();

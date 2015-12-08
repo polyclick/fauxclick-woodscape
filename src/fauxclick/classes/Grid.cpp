@@ -27,9 +27,11 @@ Grid::~Grid(){
 //}
 
 void Grid::drawFace(int row, int col, float scaleMultiplier) {
-  vector<ofPoint> triangleFace = face(row, col, scaleMultiplier);
+  if(this->faceVisible(row, col)){
+    vector<ofPoint> triangleFace = face(row, col, scaleMultiplier);
   
-  ofDrawTriangle( triangleFace[0].x, triangleFace[0].y, triangleFace[1].x, triangleFace[1].y, triangleFace[2].x, triangleFace[2].y );
+    ofDrawTriangle( triangleFace[0].x, triangleFace[0].y, triangleFace[1].x, triangleFace[1].y, triangleFace[2].x, triangleFace[2].y );
+  }
 }
 
 void Grid::pulseFace(int row, int col, int delay){
@@ -51,7 +53,7 @@ void Grid::decay(){
           
           // decay size
           if(this->hasTransform){
-            this->faceSizes[i][j] *= 0.91;
+            this->faceSizes[i][j] *= this->scaleMultiplier;
           }
           
           
@@ -75,12 +77,14 @@ void Grid::enablePulse(){
   this->hasPulse = true;
 }
 
-void Grid::enableTransform(){
+void Grid::enableTransform( float scaleMultiplier, float visibleTresh ){
   this->hasTransform = true;
+  this->scaleMultiplier = scaleMultiplier;
+  this->visibleTresh = visibleTresh;
 }
 
 bool Grid::faceVisible(int row, int col){
-  if (this->faceSizes[row][col] > 0.25) { //minimum size
+  if (this->faceSizes[row][col] > this->visibleTresh) { //minimum size
     return true;
   }else{
     return false;
