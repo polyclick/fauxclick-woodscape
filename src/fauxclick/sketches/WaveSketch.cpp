@@ -11,6 +11,7 @@ WaveSketch::~WaveSketch(){
 
 void WaveSketch::setup() {
   grid.enablePulse();
+  grid.enableTransform();
 }
 
 void WaveSketch::update() {

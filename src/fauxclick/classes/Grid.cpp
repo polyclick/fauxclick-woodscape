@@ -3,11 +3,12 @@
 Grid::Grid(){
   
   this->hasPulse = false;
+  this->hasTransform = false;
   
   // Set inital face values
   for (int i = 0; i < rows+1 ; i++) {
     for (int j = 0; j < cols+1; j++) {
-      this->faceSizes[i][j] = 0.1;
+      this->faceSizes[i][j] = (this->hasTransform) ? 0.1 : 1;
       this->faceTimer[i][j] = 0;
       this->pulseCue[i][j] = 0;
     }
@@ -49,7 +50,10 @@ void Grid::decay(){
         if (this->faceSizes[i][j] > 0) { //minimum size
           
           // decay size
-          this->faceSizes[i][j] *= 0.91;
+          if(this->hasTransform){
+            this->faceSizes[i][j] *= 0.91;
+          }
+          
           
           // decay pulse timers
           this->faceTimer[i][j] -= 1;
@@ -69,6 +73,10 @@ void Grid::decay(){
 
 void Grid::enablePulse(){
   this->hasPulse = true;
+}
+
+void Grid::enableTransform(){
+  this->hasTransform = true;
 }
 
 bool Grid::faceVisible(int row, int col){

@@ -10,7 +10,7 @@ CubeSketch::~CubeSketch(){
 }
 
 void CubeSketch::setup() {
-//  grid.enablePulse();
+  grid.enablePulse();
 }
 
 void CubeSketch::update() {
