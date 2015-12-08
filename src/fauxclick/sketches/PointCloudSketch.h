@@ -3,15 +3,15 @@
 #include "ofApp.h"
 #include "SketchBase.h"
 
-class PointCloudSketch : public SketchBase {
+class FlashSketch : public SketchBase {
 
   protected:
     const char* name;
     ofApp* app;
 
   public:
-    PointCloudSketch(ofApp* app, const char* name);
-    ~PointCloudSketch();
+    FlashSketch(ofApp* app, const char* name);
+    ~FlashSketch();
 
     void setup();
     void update();

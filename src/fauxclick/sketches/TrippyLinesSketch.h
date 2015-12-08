@@ -3,15 +3,15 @@
 #include "ofApp.h"
 #include "SketchBase.h"
 
-class TriangleNoiseSketch : public SketchBase {
+class TrippyLinesSketch : public SketchBase {
 
   protected:
     const char* name;
     ofApp* app;
 
   public:
-    TriangleNoiseSketch(ofApp* app, const char* name);
-    ~TriangleNoiseSketch();
+    TrippyLinesSketch(ofApp* app, const char* name);
+    ~TrippyLinesSketch();
 
     void setup();
     void update();

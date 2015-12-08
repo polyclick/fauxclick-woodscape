@@ -3,15 +3,15 @@
 #include "ofApp.h"
 #include "SketchBase.h"
 
-class FFTBarSketch : public SketchBase {
+class FlashSketch : public SketchBase {
 
   protected:
     const char* name;
     ofApp* app;
 
   public:
-    FFTBarSketch(ofApp* app, const char* name);
-    ~FFTBarSketch();
+    FlashSketch(ofApp* app, const char* name);
+    ~FlashSketch();
 
     void setup();
     void update();

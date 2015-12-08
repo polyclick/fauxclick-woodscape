@@ -10,7 +10,7 @@ TriangleSketch::~TriangleSketch(){
 }
 
 void TriangleSketch::setup() {
-  imgGrid.load("images/grid.png");
+
 
 }
 
@@ -20,7 +20,6 @@ void TriangleSketch::update() {
 
 void TriangleSketch::draw() {
 
-  imgGrid.draw(0,0);
   ofNoFill();
   ofSetColor(255,0,0, 100);
 

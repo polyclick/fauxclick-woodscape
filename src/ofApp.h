@@ -19,48 +19,49 @@ private:
   void setupSketches();
 
 public:
-  bool bHideGui;
+  bool showDebugGrid = false;
+  bool showGui = true;
 
   AudioManager *audioManager;
   ParameterWindow *parameterWindow;
   SketchManager *sketchManager;
 
-    void setup();
-    void update();
-    void draw();
-    void exit();
+  void setup();
+  void update();
+  void draw();
+  void exit();
 
-    void newMidiMessage(ofxMidiMessage& eventArgs);
+  void newMidiMessage(ofxMidiMessage& eventArgs);
 
-    void keyPressed(int key);
-    void keyReleased(int key);
-    void mouseMoved(int x, int y );
-    void mouseDragged(int x, int y, int button);
-    void mousePressed(int x, int y, int button);
-    void mouseReleased(int x, int y, int button);
-    void mouseEntered(int x, int y);
-    void mouseExited(int x, int y);
-    void windowResized(int w, int h);
-    void dragEvent(ofDragInfo dragInfo);
-    void gotMessage(ofMessage msg);
+  void keyPressed(int key);
+  void keyReleased(int key);
+  void mouseMoved(int x, int y );
+  void mouseDragged(int x, int y, int button);
+  void mousePressed(int x, int y, int button);
+  void mouseReleased(int x, int y, int button);
+  void mouseEntered(int x, int y);
+  void mouseExited(int x, int y);
+  void windowResized(int w, int h);
+  void dragEvent(ofDragInfo dragInfo);
+  void gotMessage(ofMessage msg);
 
-    ofParameter<string> screenSize;
-    ofParameter<string> midiStatus;
-    ofParameter<string> midiChannel;
-    ofParameter<float> midiPitch;
-    ofParameter<float> midiVelocity;
-    ofParameter<float> midiControl;
-    ofParameter<float> midiValue;
-    ofParameter<string> midiDelta;
-    ofParameterGroup summary;
-    ofParameterGroup midi;
-    ofParameterGroup debug;
-    ofxPanel gui;
+  ofParameter<string> screenSize;
+  ofParameter<string> midiStatus;
+  ofParameter<string> midiChannel;
+  ofParameter<float> midiPitch;
+  ofParameter<float> midiVelocity;
+  ofParameter<float> midiControl;
+  ofParameter<float> midiValue;
+  ofParameter<string> midiDelta;
+  ofParameterGroup summary;
+  ofParameterGroup midi;
+  ofParameterGroup debug;
+  ofxPanel gui;
 
-  	ofxSyphonServer mainOutputSyphonServer;
+  ofImage debugGridImage;
 
-    ofxMidiIn midiIn;
-    ofxMidiMessage midiMessage;
+	ofxSyphonServer mainOutputSyphonServer;
 
-
+  ofxMidiIn midiIn;
+  ofxMidiMessage midiMessage;
 };

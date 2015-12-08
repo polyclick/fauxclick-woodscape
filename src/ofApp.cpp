@@ -61,8 +61,12 @@ void ofApp::setupGui() {
 
   gui.setup(debug);
 
+  // parameter window
   parameterWindow = new ParameterWindow(this);
   parameterWindow->setup();
+
+  // debug grid
+  debugGridImage.load("images/grid.png");
 }
 
 //--------------------------------------------------------------
@@ -90,8 +94,14 @@ void ofApp::draw() {
   // everything AFTER this line will not get send over syphon
   // use it to draw the gui, logs, ...
 
+  // show the triangle debug grid
+  if(showDebugGrid) {
+    ofSetColor(255, 255, 255, 50);
+    debugGridImage.draw(0, 0);
+  }
+
   // draw gui if needed
-  if(!bHideGui){
+  if(showGui) {
     ofSetColor(255);
     gui.draw();
 
@@ -137,7 +147,12 @@ void ofApp::newMidiMessage(ofxMidiMessage& msg) {
 void ofApp::keyPressed(int key){
   switch(key) {
     case 'h':
-      bHideGui = !bHideGui;
+      showGui = !showGui;
+      break;
+
+    case 'g':
+      showDebugGrid = !showDebugGrid;
+      break;
 
     case '1':
       this->sketchManager->activateSketch("WaveSketch");
@@ -152,22 +167,18 @@ void ofApp::keyPressed(int key){
       break;
 
     case '4':
-      this->sketchManager->activateSketch("FFTBarSketch");
+      this->sketchManager->activateSketch("TrippyLinesSketch");
       break;
 
     case '5':
-      this->sketchManager->activateSketch("TriangleNoiseSketch");
-      break;
-
-    case '6':
       this->sketchManager->activateSketch("SoundwaveSketch");
       break;
 
-    case '7':
-      this->sketchManager->activateSketch("PointCloudSketch");
+    case '6':
+      this->sketchManager->activateSketch("FlashSketch");
       break;
 
-    case '8':
+    case '7':
       this->sketchManager->activateSketch("VolumeHistorySketch");
       break;
   }

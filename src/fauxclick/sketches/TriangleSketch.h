@@ -22,8 +22,6 @@ class TriangleSketch : public SketchBase {
     const int rows = 10;
     const int cols = 15;
 
-    ofImage imgGrid;
-
   public:
     TriangleSketch(ofApp* app, const char* name);
     ~TriangleSketch();

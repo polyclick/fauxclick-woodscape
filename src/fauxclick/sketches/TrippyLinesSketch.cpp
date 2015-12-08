@@ -1,22 +1,22 @@
-#include "TriangleNoiseSketch.h"
+#include "TrippyLinesSketch.h"
 
-TriangleNoiseSketch::TriangleNoiseSketch(ofApp* app, const char* name){
+TrippyLinesSketch::TrippyLinesSketch(ofApp* app, const char* name){
   this->name = name;
   this->app = app;
 }
 
-TriangleNoiseSketch::~TriangleNoiseSketch(){
+TrippyLinesSketch::~TrippyLinesSketch(){
   // destructor
 }
 
-void TriangleNoiseSketch::setup(){
+void TrippyLinesSketch::setup(){
 
 }
 
-void TriangleNoiseSketch::update(){
+void TrippyLinesSketch::update(){
 }
 
-void TriangleNoiseSketch::draw() {
+void TrippyLinesSketch::draw() {
   ofPushStyle();
 
   ofBackgroundGradient(ofColor(60,60,60), ofColor(10,10,10));
@@ -47,10 +47,10 @@ void TriangleNoiseSketch::draw() {
   ofPopStyle();
 }
 
-const char* TriangleNoiseSketch::getName() {
+const char* TrippyLinesSketch::getName() {
   return this->name;
 }
 
-void TriangleNoiseSketch::logName() {
+void TrippyLinesSketch::logName() {
   ofLog(OF_LOG_NOTICE, ofToString(this->name));
 }
