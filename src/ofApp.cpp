@@ -1,14 +1,5 @@
 #include "ofApp.h"
 
-#include "WaveSketch.h"
-#include "PulseSketch.h"
-#include "TriangleSketch.h"
-#include "FFTBarSketch.h"
-#include "TriangleNoiseSketch.h"
-#include "SoundwaveSketch.h"
-#include "PointCloudSketch.h"
-#include "VolumeHistorySketch.h"
-
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -19,13 +10,13 @@ void ofApp::setup(){
   ofSetFrameRate(0);  // unlimited
   ofSetVerticalSync(true);
   ofDisableSmoothing();
-  
+
   // libraries and stuff
   this->setupGui();
   this->setupMidi();
   this->setupAudio();
   this->setupSyphon();
-  
+
   // our sketches
   this->setupSketches();
 }
@@ -52,11 +43,10 @@ void ofApp::setupSyphon() {
 
 //--------------------------------------------------------------
 void ofApp::setupGui() {
-  
+
   summary.setName("summary");
-  summary.add(sketchLabel.set("sketch", ""));
   summary.add(screenSize.set("resolution", ""));
-  
+
   midi.setName("midi");
   midi.add(midiStatus.set("status", ""));
   midi.add(midiChannel.set("channel", ""));
@@ -65,52 +55,34 @@ void ofApp::setupGui() {
   midi.add(midiControl.set("control", 0, 0, 127));
   midi.add(midiValue.set("value (normalized)", 0, 0, 100));
   midi.add(midiDelta.set("delta", ""));
-  
+
   debug.add(summary);
   debug.add(midi);
-  
+
   gui.setup(debug);
-  
+
   parameterWindow = new ParameterWindow(this);
   parameterWindow->setup();
 }
 
 //--------------------------------------------------------------
 void ofApp::setupSketches() {
-  sketches.push_back(new WaveSketch(this, "WaveSketch"));
-  sketches.push_back(new PulseSketch(this, "PulseSketch"));
-  sketches.push_back(new TriangleSketch(this, "TriangleSketch"));
-  sketches.push_back(new FFTBarSketch(this, "FFTBarSketch"));
-  sketches.push_back(new TriangleNoiseSketch(this, "TriangleNoiseSketch"));
-  sketches.push_back(new SoundwaveSketch(this, "SoundwaveSketch"));
-  sketches.push_back(new PointCloudSketch(this, "PointCloudSketch"));
-  sketches.push_back(new VolumeHistorySketch(this, "VolumeHistorySketch"));
-  
-  // call setup
-  for (auto &sketch : sketches) {
-    sketch->setup();
-  }
-  
-  // active sketch
-  activeSketchIndex = 0;
-  sketchLabel = sketches[activeSketchIndex]->getName();
+  sketchManager = new SketchManager(this);
+  sketchManager->setup();
 }
 
 //--------------------------------------------------------------
 void ofApp::update() {
   audioManager->update();
   parameterWindow->update();
-
-  // update active sketch
-  sketches[activeSketchIndex]->update();
-
+  sketchManager->update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 
-  // draw current sketch
-  sketches[activeSketchIndex]->draw();
+  // draw sketch
+  sketchManager->draw();
 
   // publish screen to syphon
   mainOutputSyphonServer.publishScreen();
@@ -122,7 +94,7 @@ void ofApp::draw() {
   if(!bHideGui){
     ofSetColor(255);
     gui.draw();
-    
+
     parameterWindow->draw();
   }
 }
@@ -133,7 +105,7 @@ void ofApp::exit() {
   // clean up
   midiIn.closePort();
   midiIn.removeListener(this);
-  
+
   // release memory
   delete parameterWindow;
   delete audioManager;
@@ -163,43 +135,42 @@ void ofApp::newMidiMessage(ofxMidiMessage& msg) {
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-  ofLog(OF_LOG_NOTICE, "the number is " + ofToString(key));
-
   switch(key) {
     case 'h':
       bHideGui = !bHideGui;
 
     case '1':
-      activeSketchIndex = 0;
+      this->sketchManager->activateSketch("WaveSketch");
       break;
 
     case '2':
-      activeSketchIndex = 1;
+      this->sketchManager->activateSketch("PulseSketch");
       break;
 
     case '3':
-      activeSketchIndex = 2;
+      this->sketchManager->activateSketch("TriangleSketch");
       break;
-      
+
     case '4':
-      activeSketchIndex = 3;
+      this->sketchManager->activateSketch("FFTBarSketch");
       break;
 
     case '5':
-      activeSketchIndex = 4;
+      this->sketchManager->activateSketch("TriangleNoiseSketch");
       break;
-      
+
     case '6':
-      activeSketchIndex = 5;
+      this->sketchManager->activateSketch("SoundwaveSketch");
       break;
-      
+
     case '7':
-      activeSketchIndex = 6;
+      this->sketchManager->activateSketch("PointCloudSketch");
+      break;
+
+    case '8':
+      this->sketchManager->activateSketch("VolumeHistorySketch");
       break;
   }
-
-  sketches[activeSketchIndex]->logName();
-  sketchLabel = sketches[activeSketchIndex]->getName();
 }
 
 //--------------------------------------------------------------

@@ -8,15 +8,15 @@ class TriangleNoiseSketch : public SketchBase {
   protected:
     const char* name;
     ofApp* app;
-  
+
   public:
     TriangleNoiseSketch(ofApp* app, const char* name);
     ~TriangleNoiseSketch();
-  
+
     void setup();
     void update();
     void draw();
-  
+
     const char* getName();
     void logName();
 };

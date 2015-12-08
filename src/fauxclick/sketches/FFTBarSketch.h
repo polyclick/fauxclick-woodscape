@@ -4,11 +4,11 @@
 #include "SketchBase.h"
 
 class FFTBarSketch : public SketchBase {
-  
+
   protected:
     const char* name;
     ofApp* app;
-  
+
   public:
     FFTBarSketch(ofApp* app, const char* name);
     ~FFTBarSketch();
@@ -16,7 +16,7 @@ class FFTBarSketch : public SketchBase {
     void setup();
     void update();
     void draw();
-  
+
     const char* getName();
     void logName();
 };

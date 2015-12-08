@@ -18,11 +18,11 @@ public:
   void update();
   void draw();
 
-  
+
   const char* getName();
   void logName();
-  
+
   vector<float> volumeHistory;
-  
+
   int volumeHistorySize = 500;
 };

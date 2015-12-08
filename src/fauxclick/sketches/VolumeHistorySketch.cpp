@@ -12,18 +12,18 @@ VolumeHistorySketch::~VolumeHistorySketch(){
 }
 
 void VolumeHistorySketch::setup(){
-  
+
   // vector to keep the volume changes
   volumeHistory.assign(volumeHistorySize, 0.0);
 }
 
 void VolumeHistorySketch::update(){
-  
-  
+
+
   // lets record the volume into an array
   volumeHistory.push_back(this->app->audioManager->normalizedVolume);
   //cout << this->app->audioManager->beat.getMagnitude() << endl;
-  
+
   // if we are bigger the the size we want to record - lets drop the oldest value
   if(volumeHistory.size() >= volumeHistorySize){
     volumeHistory.erase(volumeHistory.begin(), volumeHistory.begin() + 1);
@@ -36,24 +36,24 @@ void VolumeHistorySketch::draw() {
   ofPushMatrix();
 
   int height = ofGetHeight();
-  
+
   // scaling in width of screen
   float widthRatio = (float)ofGetWidth() / (float)volumeHistory.size();
-  
+
   ofTranslate(0.0, 0, 0);
-		
+
 		//lets draw the volume history as a graph
 		ofBeginShape();
 		for (unsigned int i = 0; i < volumeHistory.size(); i++){
       if( i == 0 ) ofVertex(0, height);
-      
+
       float volume = volumeHistory[i] * ofGetHeight() / 2.0;
       ofVertex(i * widthRatio, height - volume);
-      
+
       if(i == volumeHistory.size() - 1) ofVertex(i * widthRatio, height);
     }
 		ofEndShape(false);
-  
+
 		ofPopMatrix();
   ofPopStyle();
 }

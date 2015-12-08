@@ -10,25 +10,25 @@ PointCloudSketch::~PointCloudSketch(){
 }
 
 void PointCloudSketch::setup(){
-  
+
 }
 
 void PointCloudSketch::update(){
-  
+
 }
 
 void PointCloudSketch::draw() {
   float width = ofGetWidth() / 3.0;
   float height = ofGetHeight();
-  
+
   ofFill();
   ofSetColor(255, 255, 255);
-  
+
   if(this->app->audioManager->beatReceived) {
     ofDrawRectangle(0, 0, width, height);
     ofDrawRectangle(width * 2.0, 0, width, height);
   }
-  
+
   if(this->app->audioManager->onsetReceived) {
     ofDrawRectangle(width, 0, width, height);
   }

@@ -1,7 +1,7 @@
 #pragma once
 
 class SketchBase {
-  
+
   public:
     virtual void setup() = 0;
     virtual void update() = 0;
@@ -9,4 +9,5 @@ class SketchBase {
 
     virtual const char* getName() = 0;
     virtual void logName() = 0;
+
 };

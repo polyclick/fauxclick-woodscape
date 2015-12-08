@@ -11,7 +11,7 @@ PulseSketch::~PulseSketch(){
 
 void PulseSketch::setup() {
 //  imgGrid.load("images/grid.png");
-//  
+//
 //  // Set inital scale values
 //  for (int i = 0; i < rows+1 ; i++) {
 //    for (int j = 0; j < cols+1; j++) {
@@ -24,29 +24,29 @@ void PulseSketch::update() {
 
 }
 void PulseSketch::draw() {
-//  
+//
 ////  imgGrid.draw(0,0);
 //  ofBackground(0);
 //  ofFill();
 //  ofSetColor(255, 255, 255);
-//  
+//
 ////  one face
 ////  vector<ofPoint> face = grid.face(3,3);
-//  
+//
 //  // @todo: move to grid class?
 ////  one face
 ////  drawFace( face );
-//  
+//
 //  for (int i = 0; i < rows+1 ; i++) {
 //    for (int j = 0; j < cols+1; j++) {
-//      
+//
 //      float intensity;
-//      
+//
 //      if (i % 2 == 0) {
 //        if (this->app->audioManager->beat.isKick()) {
 //          this->faceSizes[i][j] = 1;
 //        }
-//        
+//
 //        // Draw the face
 //        ofSetColor(255, 255, 255);
 //        drawFace( grid.face(i,j, this->faceSizes[i][j]));
@@ -55,12 +55,12 @@ void PulseSketch::draw() {
 //        ofSetColor(255, 255, 255);
 //        drawFace( grid.face(i,j, this->faceSizes[i][j] * 0.25));
 //      }
-//      
+//
 //      if (!(i % 2 == 0)) {
 //        if (this->app->audioManager->beat.isHat()) {
 //          this->faceSizes[i][j] = 1;
 //        }
-//        
+//
 //        ofSetColor(255, 255, 255);
 //        drawFace( grid.face(i,j, this->faceSizes[i][j] * 0.85));
 //        ofSetColor(0, 0, 0);
@@ -68,8 +68,8 @@ void PulseSketch::draw() {
 //      }
 //    }
 //  }
-//  
-//  
+//
+//
 //  // reduce the size each frame
 //  for (int i = 0; i < rows+1 ; i++) {
 //    for (int j = 0; j < cols+1; j++) {
@@ -78,7 +78,7 @@ void PulseSketch::draw() {
 //      }
 //    }
 //  }
-//  
+//
 }
 
 void PulseSketch::drawFace( vector<ofPoint> vertices) {

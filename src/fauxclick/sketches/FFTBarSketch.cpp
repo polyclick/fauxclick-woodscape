@@ -1,6 +1,6 @@
 #include "FFTBarSketch.h"
 
-FFTBarSketch::FFTBarSketch(ofApp* app, const char* name){
+FFTBarSketch::FFTBarSketch(ofApp* app, const char* name) {
   this->name = name;
   this->app = app;
 }

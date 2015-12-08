@@ -4,27 +4,27 @@
 #include "ofxSyphon.h"
 #include "ofxMidi.h"
 #include "ofxGui.h"
-#include "SketchBase.h"
 #include "ParameterWindow.h"
 #include "AudioManager.h"
+#include "SketchManager.h"
 
 class ofApp : public ofBaseApp, public ofxMidiListener {
 
 private:
-  
+
   void setupGui();
   void setupMidi();
   void setupAudio();
   void setupSyphon();
   void setupSketches();
-  
+
 public:
   bool bHideGui;
-  int activeSketchIndex;
-  
+
   AudioManager *audioManager;
   ParameterWindow *parameterWindow;
-  
+  SketchManager *sketchManager;
+
     void setup();
     void update();
     void draw();
@@ -44,9 +44,6 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-    vector<SketchBase*> sketches;
-
-    ofParameter<string> sketchLabel;
     ofParameter<string> screenSize;
     ofParameter<string> midiStatus;
     ofParameter<string> midiChannel;
