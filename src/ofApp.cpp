@@ -185,10 +185,7 @@ void ofApp::keyPressed(int key){
     case '8':
       this->sketchManager->activateSketch("CubeSketch");
       break;
-      
-    case '9':
-      this->sketchManager->activateSketch("GridPulseSketch");
-      break;
+
   }
 }
 
