@@ -28,7 +28,7 @@ void SoundwaveSketch::draw() {
   vector<float>right = this->app->audioManager->right;
 
   // scaling in width of screen
-  float widthRatio = (float)ofGetWidth() / (float)left.size();
+  float widthRatio = (float)ofGetWidth() / ((float)left.size() - 1);
 
   // vars
   int lineColor = 255;

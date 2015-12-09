@@ -59,7 +59,6 @@ void VolumeHistorySketch::update(){
     onsetCounter++;
     if(onsetCounter == 3) {
       onsetCounter = 0;
-      cout << "change" << endl;
       int randomIndex = rand() % images.size();
       currentImage = images[randomIndex];
     }

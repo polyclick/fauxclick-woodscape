@@ -2,6 +2,7 @@
 
 #include "ofApp.h"
 #include "SketchBase.h"
+#include "ofxPostGlitch.h"
 
 class SoundwaveSketch : public SketchBase {
 
@@ -24,5 +25,4 @@ public:
 
   const char* getName();
   void logName();
-
 };

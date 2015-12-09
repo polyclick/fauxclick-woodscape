@@ -21,7 +21,7 @@ void TrippyLinesSketch::draw() {
   ofNoFill();
   
   if(this->app->audioManager->beatReceived) {
-    ofSetHexColor(0xFF3B20);
+    ofSetHexColor(0x20FF9C);
     ofSetLineWidth(10);
     ofSetPolyMode(OF_POLY_WINDING_ODD);
     ofFill();
