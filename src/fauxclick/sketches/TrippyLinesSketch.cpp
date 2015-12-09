@@ -18,27 +18,27 @@ void TrippyLinesSketch::update(){
 
 void TrippyLinesSketch::draw() {
   ofPushStyle();
-
-  ofBackgroundGradient(ofColor(60,60,60), ofColor(10,10,10));
   ofNoFill();
-
-  ofSetHexColor(0xffffff);
-  ofSetLineWidth(1);
-  ofSetPolyMode(OF_POLY_WINDING_ODD);
-  ofBeginShape();
-  int kickPoints = this->app->audioManager->beatReceived ? 10 : 3;
-  for (int i = 0; i < kickPoints; i++){
-    ofVertex(ofRandom(-250, ofGetWidth() + 250), ofRandom(-250, ofGetHeight() + 250));
+  
+  if(this->app->audioManager->beatReceived) {
+    ofSetHexColor(0x20FF9C);
+    ofSetLineWidth(10);
+    ofSetPolyMode(OF_POLY_WINDING_ODD);
+    ofFill();
+    ofBeginShape();
+    for (int i = 0; i < 5; i++){
+      ofVertex(ofRandom(-250, ofGetWidth() + 250), ofRandom(-250, ofGetHeight() + 250));
+    }
+    ofEndShape();
   }
-  ofEndShape();
-
+  
   if(this->app->audioManager->onsetReceived) {
-    ofSetHexColor(0x00ff00);
-    ofSetLineWidth(3);
+    ofSetHexColor(0xffffff);
+      ofNoFill();
+    ofSetLineWidth(10);
     ofSetPolyMode(OF_POLY_WINDING_ODD);
     ofBeginShape();
-    int hatPoints = 5;
-    for (int i = 0; i < hatPoints; i++){
+    for (int i = 0; i < 5; i++){
       ofVertex(ofRandom(-250, ofGetWidth() + 250), ofRandom(-250, ofGetHeight() + 250));
     }
     ofEndShape();

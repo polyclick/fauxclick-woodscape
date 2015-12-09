@@ -190,6 +190,9 @@ void ofApp::keyPressed(int key){
       this->sketchManager->activateSketch("BoidSketch");
       break;
 
+    case '0':
+      this->sketchManager->activateSketch("EinsteinSketch");
+      break;
   }
 }
 

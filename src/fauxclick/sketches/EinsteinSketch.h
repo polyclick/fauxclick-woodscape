@@ -2,22 +2,16 @@
 
 #include "ofApp.h"
 #include "SketchBase.h"
-#include "ofxPostGlitch.h"
 
-class SoundwaveSketch : public SketchBase {
-
-private:
-  bool showKick = false;
-  int randomSide = 0;
-
+class EinsteinSketch : public SketchBase {
 
 protected:
   const char* name;
   ofApp* app;
 
 public:
-  SoundwaveSketch(ofApp* app, const char* name);
-  ~SoundwaveSketch();
+  EinsteinSketch(ofApp* app, const char* name);
+  ~EinsteinSketch();
 
   void setup();
   void update();
@@ -25,4 +19,7 @@ public:
 
   const char* getName();
   void logName();
+  
+  int count = 0;
+  int symbol = 0;
 };

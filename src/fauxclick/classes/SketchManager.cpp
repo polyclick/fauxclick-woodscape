@@ -10,6 +10,7 @@
 #include "WaveSketch.h"
 #include "CubeSketch.h"
 #include "BoidSketch.h"
+#include "EinsteinSketch.h"
 
 SketchManager::SketchManager(ofApp* app){
   this->app = app;
@@ -29,6 +30,7 @@ void SketchManager::setup(){
   sketches.push_back(new SoundwaveSketch(this->app, "SoundwaveSketch"));
   sketches.push_back(new FlashSketch(this->app, "FlashSketch"));
   sketches.push_back(new VolumeHistorySketch(this->app, "VolumeHistorySketch"));
+  sketches.push_back(new EinsteinSketch(this->app, "EinsteinSketch"));
 
   // call setup
   for (auto &sketch : sketches) {

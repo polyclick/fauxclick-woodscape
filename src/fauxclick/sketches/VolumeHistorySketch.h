@@ -1,6 +1,7 @@
 #pragma once
 #include "SketchBase.h"
 #include "ofApp.h"
+#include "ofxPostGlitch.h"
 
 class ofApp;
 
@@ -23,6 +24,16 @@ public:
   void logName();
 
   vector<float> volumeHistory;
-
-  int volumeHistorySize = 500;
+  vector<ofImage> images;
+  
+  int volumeHistorySize = 16;
+  int beatCounter = 0;
+  int onsetCounter = 0;
+  
+  uint64_t elaspedSinceLastBeatOnset;
+  
+  ofImage currentImage;
+  ofFbo myFbo;
+  
+  ofxPostGlitch myGlitch;
 };
