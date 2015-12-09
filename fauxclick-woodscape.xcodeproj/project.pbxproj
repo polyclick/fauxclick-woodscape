@@ -41,6 +41,8 @@
 		C0702F5F1C16BD060007CC4A /* SketchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0702F5D1C16BD060007CC4A /* SketchManager.cpp */; };
 		C07106311C1645E0000E7A62 /* WaveSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C071062F1C1645E0000E7A62 /* WaveSketch.cpp */; };
 		C093D07E1C1633C7007F2C2F /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C093D07D1C1633C7007F2C2F /* aubio.framework */; };
+		C0FB85D81C18A01D002E4849 /* CubeSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0FB85D61C18A01D002E4849 /* CubeSketch.cpp */; };
+		C0FB85DE1C18C25B002E4849 /* ofxPostGlitch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0FB85DC1C18C25B002E4849 /* ofxPostGlitch.cpp */; };
 		C60077973A257D8F44947E2E /* ofxAubioBlock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 737C0C27DB7B0C9484DCEBAE /* ofxAubioBlock.cpp */; };
 		C6FE64F74F1EA1D98C8F9847 /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0E7EDA67EDF213FC0E83D17 /* ofxMidiMessage.cpp */; };
 		C9109422648B170B07A778CF /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E3405C5AE387BDDC2AD19473 /* SyphonNameboundClient.m */; };
@@ -168,6 +170,10 @@
 		C093D07D1C1633C7007F2C2F /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = aubio.framework; sourceTree = "<group>"; };
 		C0E7EDA67EDF213FC0E83D17 /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiMessage.cpp; path = ../../../addons/ofxMidi/src/ofxMidiMessage.cpp; sourceTree = SOURCE_ROOT; };
 		C0F57D6E7ABC67D0CF3FF8D6 /* FlashSketch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = FlashSketch.h; path = src/fauxclick/sketches/FlashSketch.h; sourceTree = SOURCE_ROOT; };
+		C0FB85D61C18A01D002E4849 /* CubeSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CubeSketch.cpp; path = fauxclick/sketches/CubeSketch.cpp; sourceTree = "<group>"; };
+		C0FB85D71C18A01D002E4849 /* CubeSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeSketch.h; path = fauxclick/sketches/CubeSketch.h; sourceTree = "<group>"; };
+		C0FB85DC1C18C25B002E4849 /* ofxPostGlitch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPostGlitch.cpp; sourceTree = "<group>"; };
+		C0FB85DD1C18C25B002E4849 /* ofxPostGlitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPostGlitch.h; sourceTree = "<group>"; };
 		C6CE2A751623518B26D7D22D /* TriangleSketch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = TriangleSketch.h; path = src/fauxclick/sketches/TriangleSketch.h; sourceTree = SOURCE_ROOT; };
 		C70D8946940288799E82131E /* ofxSliderGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSliderGroup.h; path = ../../../addons/ofxGui/src/ofxSliderGroup.h; sourceTree = SOURCE_ROOT; };
 		C84ED7FCC017328C6F58283D /* ofxDatGuiColorPicker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiColorPicker.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h; sourceTree = SOURCE_ROOT; };
@@ -481,6 +487,8 @@
 		A81E47D696061DB3B2DBD05D /* sketches */ = {
 			isa = PBXGroup;
 			children = (
+				C0FB85D61C18A01D002E4849 /* CubeSketch.cpp */,
+				C0FB85D71C18A01D002E4849 /* CubeSketch.h */,
 				60876AEDDD12B0287DBA167B /* FlashSketch.cpp */,
 				C0F57D6E7ABC67D0CF3FF8D6 /* FlashSketch.h */,
 				7D73200D771F5A08E13D5560 /* PulseSketch.cpp */,
@@ -507,8 +515,27 @@
 				480A780D8D0308AE4A368801 /* ofxGui */,
 				2413C01760B1811BED0F502D /* ofxMidi */,
 				7F3C04577424427D348B1425 /* ofxSyphon */,
+				C0FB85DA1C18C25B002E4849 /* ofxPostGlitch */,
 			);
 			name = addons;
+			sourceTree = "<group>";
+		};
+		C0FB85DA1C18C25B002E4849 /* ofxPostGlitch */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB85DB1C18C25B002E4849 /* src */,
+			);
+			name = ofxPostGlitch;
+			sourceTree = "<group>";
+		};
+		C0FB85DB1C18C25B002E4849 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				C0FB85DC1C18C25B002E4849 /* ofxPostGlitch.cpp */,
+				C0FB85DD1C18C25B002E4849 /* ofxPostGlitch.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxPostGlitch/src;
 			sourceTree = "<group>";
 		};
 		D8DD1043C333F6F63C8685E6 /* ofxDatGui */ = {
@@ -669,11 +696,13 @@
 				487EF70EE040D66B538A0BDB /* ParameterWindow.cpp in Sources */,
 				DCB1F91F764D35903CFA538A /* FlashSketch.cpp in Sources */,
 				91195718174C7479B1CE580B /* PulseSketch.cpp in Sources */,
+				C0FB85DE1C18C25B002E4849 /* ofxPostGlitch.cpp in Sources */,
 				FAF35839FD75A1A709AD14B2 /* SoundwaveSketch.cpp in Sources */,
 				873C6A46EA3AB01A1D635C1C /* TrippyLinesSketch.cpp in Sources */,
 				318E1A30E2B6DEA6221C4852 /* TriangleSketch.cpp in Sources */,
 				1738F7885B5BB0AFE7195AE9 /* VolumeHistorySketch.cpp in Sources */,
 				479DCA850DD8BB469A777AD4 /* ofxAubioBeat.cpp in Sources */,
+				C0FB85D81C18A01D002E4849 /* CubeSketch.cpp in Sources */,
 				C60077973A257D8F44947E2E /* ofxAubioBlock.cpp in Sources */,
 				67383740F5CC47ED5F955A76 /* ofxAubioMelBands.cpp in Sources */,
 				9C7B8B4D99CDFC508E76CC3A /* ofxAubioOnset.cpp in Sources */,
@@ -871,6 +900,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -922,6 +952,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
 			};

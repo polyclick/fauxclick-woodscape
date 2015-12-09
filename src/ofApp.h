@@ -64,4 +64,5 @@ public:
 
   ofxMidiIn midiIn;
   ofxMidiMessage midiMessage;
+
 };
