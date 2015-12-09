@@ -1,7 +1,8 @@
 #include "Particle.h"
 
 Particle::Particle(int v, int f){
-  this->size = 30;
+  this->size = 3;
+  this->scale = 3;
   this->energy = 0;
   this->decaySize = 0;
   this->smoothedSize = 0;
@@ -33,19 +34,19 @@ void Particle::move(){
 
 void Particle::draw(){
   
-    this->power = exp(this->energy*1.5);
-    this->size = this->power * 15;
+    this->power = exp(this->energy*6.5);
+    this->size = this->scale * this->power;
   
-//  this->decaySize = max(this->decaySize, this->size);
-//  this->smoothedSize += ( this->decaySize - this->smoothedSize) * 0.3;
+  this->decaySize = max(this->decaySize, this->size);
+  this->smoothedSize += ( this->decaySize - this->smoothedSize) * 0.3;
   
-//  this->decaySize*= 0.8;
+  this->decaySize*= 0.8;
   
   if(this->position.x > ofGetWidth() || this->position.x < 0 || this->position.y > ofGetHeight() || this->position.y < 0){
     reset();
   }
   
-  ofDrawCircle(this->position.x, this->position.y, this->size );
+  ofDrawCircle(this->position.x, this->position.y, this->smoothedSize );
 }
 
 ofPoint Particle::getPosition(){

@@ -7,6 +7,7 @@ protected:
   ofPoint position;
   float power;
   float size;
+  float scale;
   float decaySize;
   float smoothedSize;
   

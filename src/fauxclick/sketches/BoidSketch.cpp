@@ -12,7 +12,7 @@ BoidSketch::~BoidSketch(){
 
 void BoidSketch::setup() {
   for(int i=0; i<199 ; i++){
-    this->particles.push_back( new Particle(1, 100));
+    this->particles.push_back( new Particle(ofRandom(1,1.5), ofRandom(10,500)));
     this->particleBands.push_back((int)ofRandom(0,32));
   }
 }
