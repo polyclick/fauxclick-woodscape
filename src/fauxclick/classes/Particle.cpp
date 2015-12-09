@@ -2,7 +2,7 @@
 
 Particle::Particle(int v, int f){
   this->size = 3;
-  this->scale = 3;
+  this->scale = 5;
   this->energy = 0;
   this->decaySize = 0;
   this->smoothedSize = 0;
@@ -34,7 +34,7 @@ void Particle::move(){
 
 void Particle::draw(){
   
-    this->power = exp(this->energy*6.5);
+    this->power = exp(this->energy*3);
     this->size = this->scale * this->power;
   
   this->decaySize = max(this->decaySize, this->size);

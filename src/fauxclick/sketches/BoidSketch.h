@@ -13,8 +13,15 @@ protected:
   
   vector <Particle*> particles;
   vector <int> particleBands;
+  vector <int> lineFrom;
+  vector <int> lineTo;
+  int numParticles;
+  int numLines;
+  float treshold;
   
   float bandValue;
+  
+  void setLines();
 public:
   BoidSketch(ofApp* app, const char* name);
   ~BoidSketch();
