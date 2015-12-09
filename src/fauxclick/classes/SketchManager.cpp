@@ -9,6 +9,7 @@
 #include "VolumeHistorySketch.h"
 #include "WaveSketch.h"
 #include "CubeSketch.h"
+#include "BoidSketch.h"
 
 SketchManager::SketchManager(ofApp* app){
   this->app = app;
@@ -19,6 +20,7 @@ SketchManager::~SketchManager(){
 }
 
 void SketchManager::setup(){
+  sketches.push_back(new BoidSketch(this->app, "BoidSketch"));
   sketches.push_back(new CubeSketch(this->app, "CubeSketch"));
   sketches.push_back(new WaveSketch(this->app, "WaveSketch"));
   sketches.push_back(new PulseSketch(this->app, "PulseSketch"));
