@@ -10,11 +10,12 @@ CubeSketch::~CubeSketch(){
 }
 
 void CubeSketch::setup() {
+  
   this->stepCounter = 0;
   this->cooldown = 0;
   
-  this->cLeft = ofColor(6, 103, 111);
-  this->cRight = ofColor(70, 186, 177);
+  this->cRight = ofColor(6, 103, 111);
+  this->cLeft = ofColor(70, 186, 177);
   this->cTop = ofColor(158, 224, 208);
   
   this->cDark = ofColor(6, 103, 111);
@@ -53,18 +54,18 @@ void CubeSketch::draw() {
   }
 
   this->cooldown-= 1;
-//  grid.decay();
+
 }
 
 void CubeSketch::drawCube( int colOdd, int colEven, int rowBottom) {
   
   // Dark shade
-  ofSetColor(this->cLeft);
+  ofSetColor(this->cRight);
   grid.drawFace(rowBottom, colOdd);
   grid.drawFace(rowBottom - 1, colOdd);
   
   // Mid shade
-  ofSetColor(this->cRight);
+  ofSetColor(this->cLeft);
   grid.drawFace(rowBottom, colEven);
   grid.drawFace(rowBottom - 1, colEven);
   
@@ -76,34 +77,37 @@ void CubeSketch::drawCube( int colOdd, int colEven, int rowBottom) {
 
 void CubeSketch::shiftColor(){
   
+  if(this->stepCounter > 1 ){ this->stepCounter = 0; }
+  
   switch (this->stepCounter) {
       cout << this->stepCounter << endl;
       
     case 0:
       cout << "step0" << endl;
-      this->cLeft = this->cDark;
       this->cTop =this->cBright;
-      this->cRight = this->cMid;
+      this->cLeft = this->cMid;
+      this->cRight = this->cDark;
       break;
       
     case 1:
       cout << "step1" << endl;
-      this->cLeft = this->cMid;
-      this->cTop =this->cDark;
-      this->cRight = this->cBright;
+      this->cTop =this->cBright;
+      this->cLeft = this->cDark;
+      this->cRight = this->cMid;
       break;
       
-    case 2:
-      cout << "step2" << endl;
-      this->cLeft = this->cBright;
-      this->cTop =this->cMid;
-      this->cRight = this->cDark;
-      break;
+//    case 2:
+//      cout << "step2" << endl;
+//      this->cTop =this->cBright;
+//      this->cLeft = this->cDark;
+//      this->cRight = this->cMid;
+//      break;
   }
   
   this->stepCounter++;
+  
 
-  if(this->stepCounter > 1 ){ this->stepCounter = 0; }
+  
 }
 
 void CubeSketch::pulseCube( int colOdd, int colEven, int rowBottom, int delay) {
