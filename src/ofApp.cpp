@@ -181,6 +181,10 @@ void ofApp::keyPressed(int key){
     case '7':
       this->sketchManager->activateSketch("VolumeHistorySketch");
       break;
+      
+    case '9':
+      this->sketchManager->activateSketch("EinsteinSketch");
+      break;
   }
 }
 
