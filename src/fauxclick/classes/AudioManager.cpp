@@ -58,8 +58,11 @@ void AudioManager::setup(){
   if(!hasSetupA10) {
     bool hasSetupAkai = this->setupAudioDeviceByName("Akai Professional, LP: EIE pro (Core Audio)");
     if(!hasSetupAkai) {
-      cout << "Falling back to device 0" << endl;
-      this->setupAudioDeviceByID(0);
+      bool hasSetupRoland = this->setupAudioDeviceByName("Apple Inc.: TR-8 Aggregated");
+      if(!hasSetupRoland) {
+        cout << "Falling back to device 0" << endl;
+        this->setupAudioDeviceByID(0);
+      }
     }
   }
   
