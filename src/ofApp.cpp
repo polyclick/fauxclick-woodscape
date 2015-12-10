@@ -127,34 +127,30 @@ void ofApp::keyPressed(int key){
       break;
 
     case '3':
-      this->sketchManager->activateSketch("TriangleSketch");
-      break;
-
-    case '4':
       this->sketchManager->activateSketch("TrippyLinesSketch");
       break;
 
-    case '5':
+    case '4':
       this->sketchManager->activateSketch("SoundwaveSketch");
       break;
 
-    case '6':
+    case '5':
       this->sketchManager->activateSketch("FlashSketch");
       break;
 
-    case '7':
+    case '6':
       this->sketchManager->activateSketch("VolumeHistorySketch");
       break;
       
-    case '8':
+    case '7':
       this->sketchManager->activateSketch("CubeSketch");
       break;
       
-    case '9':
+    case '8':
       this->sketchManager->activateSketch("BoidSketch");
       break;
 
-    case '0':
+    case '9':
       this->sketchManager->activateSketch("EinsteinSketch");
       break;
   }
