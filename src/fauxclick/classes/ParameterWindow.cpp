@@ -34,7 +34,7 @@ void ParameterWindow::setup(){
   settingsFolder->onButtonEvent(this, &ParameterWindow::onButtonEvent);
   
   // add folder
-  this->addFolder(settingsFolder);
+  this->addFolder(settingsFolder, 0, 80);
 }
 
 void ParameterWindow::update(){

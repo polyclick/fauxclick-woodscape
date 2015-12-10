@@ -117,7 +117,7 @@ void AudioManager::setupGui() {
   audioFolder->attachItem(audioDropdown);
   
   // add to parameter window
-  this->app->parameterWindow->addFolder(audioFolder, 500, 0);
+  this->app->parameterWindow->addFolder(audioFolder, 0, 200);
 }
 
 //--------------------------------------------------------------

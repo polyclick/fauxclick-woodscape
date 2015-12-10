@@ -44,8 +44,11 @@ public:
   void windowResized(int w, int h);
   void dragEvent(ofDragInfo dragInfo);
   void gotMessage(ofMessage msg);
+  void updateResolutionLabel();
+  
+  ofxDatGuiLabel *resolutionLabel;
+  ofxDatGuiFolder* summaryFolder;
 
-  ofParameter<string> screenSize;
   ofParameter<string> midiStatus;
   ofParameter<string> midiChannel;
   ofParameter<float> midiPitch;
@@ -53,7 +56,6 @@ public:
   ofParameter<float> midiControl;
   ofParameter<float> midiValue;
   ofParameter<string> midiDelta;
-  ofParameterGroup summary;
   ofParameterGroup midi;
   ofParameterGroup debug;
   ofxPanel gui;

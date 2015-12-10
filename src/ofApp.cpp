@@ -44,9 +44,6 @@ void ofApp::setupSyphon() {
 //--------------------------------------------------------------
 void ofApp::setupGui() {
 
-  summary.setName("summary");
-  summary.add(screenSize.set("resolution", ""));
-
   midi.setName("midi");
   midi.add(midiStatus.set("status", ""));
   midi.add(midiChannel.set("channel", ""));
@@ -55,15 +52,27 @@ void ofApp::setupGui() {
   midi.add(midiControl.set("control", 0, 0, 127));
   midi.add(midiValue.set("value (normalized)", 0, 0, 100));
   midi.add(midiDelta.set("delta", ""));
-
-  debug.add(summary);
   debug.add(midi);
-
   gui.setup(debug);
 
   // parameter window
   parameterWindow = new ParameterWindow(this);
   parameterWindow->setup();
+  
+  // add label for the resolution
+  resolutionLabel = new ofxDatGuiLabel("");
+  
+  // create group
+  summaryFolder = new ofxDatGuiFolder("summary", ofColor::fromHex(0xFFD00B));
+  summaryFolder->attachItem(resolutionLabel);
+  
+  // add to parameter window
+  this->parameterWindow->addFolder(summaryFolder, 0, 0);
+  
+  // call once for initial resolution
+  this->updateResolutionLabel();
+  
+  
 
   // debug grid
   debugGridImage.load("images/grid.png");
@@ -233,7 +242,7 @@ void ofApp::mouseExited(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-  screenSize = ofToString(w) + "x" + ofToString(h);
+  this->updateResolutionLabel();
 }
 
 //--------------------------------------------------------------
@@ -244,4 +253,8 @@ void ofApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){
 
+}
+
+void ofApp::updateResolutionLabel() {
+  resolutionLabel->setLabel(ofToString(ofGetWidth()) + "x" + ofToString(ofGetHeight()));
 }
