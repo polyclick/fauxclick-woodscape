@@ -19,14 +19,14 @@ void AudioManager::setup(){
   
   
   
+  // setup beat object
+  beat.setup();
+  
   // setup onset object
   onset.setup();
   
   // setup pitch object
   pitch.setup();
-  
-  // setup beat object
-  beat.setup();
   
   // setup mel bands object
   bands.setup();
@@ -134,6 +134,16 @@ void AudioManager::update(){
     volumeHistory.erase(volumeHistory.begin(), volumeHistory.begin() + 1);
   }
   
+  int numBands = 1;
+  float avgLowEndEnergy = 0;
+  for(int j = 0; j < numBands ; j++) {
+    avgLowEndEnergy += bands.energies[j] * 1000;
+  }
+  avgLowEndEnergy /= numBands;
+    cout << avgLowEndEnergy << endl;
+  if(avgLowEndEnergy > 5)
+    //beatReceived = beat.received();
+  
   // cache beat/onset received yes/no
   beatReceived = beat.received();
   onsetReceived = onset.received();
@@ -146,14 +156,14 @@ void AudioManager::update(){
 //--------------------------------------------------------------
 void AudioManager::audioReceived(float* input, int bufferSize, int nChannels) {
   
+  // compute beat location
+  beat.audioIn(input, bufferSize, nChannels);
+  
   // compute onset detection
   onset.audioIn(input, bufferSize, nChannels);
   
   // compute pitch detection
   pitch.audioIn(input, bufferSize, nChannels);
-  
-  // compute beat location
-  beat.audioIn(input, bufferSize, nChannels);
 
   // compute bands
   bands.audioIn(input, bufferSize, nChannels);
@@ -165,7 +175,7 @@ void AudioManager::audioReceived(float* input, int bufferSize, int nChannels) {
   int numCounted = 0;
   
   //lets go through each sample and calculate the root mean square which is a rough way to calculate volume
-  for (int i = 0; i < bufferSize; i++){
+  for (int i = 0; i < bufferSize; i++) {
     left[i] = input[i * 2] * 0.5;
     right[i] = input[i * 2 + 1] * 0.5;
     

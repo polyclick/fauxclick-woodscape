@@ -10,6 +10,8 @@ class AudioManager : public ofBaseSoundInput, public ofBaseSoundOutput {
 
 private:
   ofApp *app;
+  ofxAubioOnset onset;  // keep private to block direct access to onset object, use onsetReceived
+  ofxAubioBeat beat;    // keep private to block direct access to beat object, use beatReceived
 
 public:
   AudioManager(ofApp* app);
@@ -43,9 +45,7 @@ public:
   
   ofSoundStream soundStream;
   
-  ofxAubioOnset onset;
   ofxAubioPitch pitch;
-  ofxAubioBeat beat;
   ofxAubioMelBands bands;
   
   ofxDatGuiFolder* audioFolder;
