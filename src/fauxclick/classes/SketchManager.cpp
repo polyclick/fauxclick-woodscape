@@ -38,6 +38,16 @@ void SketchManager::setup(){
   for (auto &sketch : sketches) {
     sketch->setup();
   }
+  
+  // setup gui
+  sketchLabel = new ofxDatGuiLabel("");
+  
+  // display folder
+  ofxDatGuiFolder* sketchFolder = new ofxDatGuiFolder("sketch", ofColor::fromHex(0xFFD00B));
+  sketchFolder->attachItem(sketchLabel);
+  
+  // add folder
+  this->app->parameterWindow->addFolder(sketchFolder);
 
   // activate first sketch
   this->activateSketch(sketches[0]->getName());
@@ -57,14 +67,21 @@ void SketchManager::draw() {
 void SketchManager::activateSketch(const char* sketchName) {
   for(int i = 0; i < sketches.size(); i++) {
     if(strcmp(sketches[i]->getName(), sketchName) == 0) {
+
+      // deactivate previous
       if(activeSketchIndex > -1)
         sketches[activeSketchIndex]->deactivate();
       
+      // activate
       sketches[i]->activate();
       
       // set new index so draw loop calls draw method of that sketch
       activeSketchIndex = i;
       sketches[activeSketchIndex]->logName();
+      
+      // set name on param window
+      sketchLabel->setLabel(sketches[activeSketchIndex]->getName());
+      
       return;
     }
   }

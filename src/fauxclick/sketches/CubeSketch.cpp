@@ -88,21 +88,18 @@ void CubeSketch::shiftColor(){
       cout << this->stepCounter << endl;
 
     case 0:
-      cout << "step0" << endl;
       this->cTop =this->cBright;
       this->cLeft = this->cMid;
       this->cRight = this->cDark;
       break;
 
     case 1:
-      cout << "step1" << endl;
       this->cTop =this->cBright;
       this->cLeft = this->cDark;
       this->cRight = this->cMid;
       break;
 
 //    case 2:
-//      cout << "step2" << endl;
 //      this->cTop =this->cBright;
 //      this->cLeft = this->cDark;
 //      this->cRight = this->cMid;
