@@ -10,7 +10,6 @@ private:
   bool showKick = false;
   int randomSide = 0;
 
-
 protected:
   const char* name;
   ofApp* app;
@@ -20,8 +19,10 @@ public:
   ~SoundwaveSketch();
 
   void setup();
+  void activate();
   void update();
   void draw();
+  void deactivate();
 
   const char* getName();
   void logName();

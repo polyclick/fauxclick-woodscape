@@ -5,18 +5,20 @@
 
 class TrippyLinesSketch : public SketchBase {
 
-  protected:
-    const char* name;
-    ofApp* app;
+protected:
+  const char* name;
+  ofApp* app;
 
-  public:
-    TrippyLinesSketch(ofApp* app, const char* name);
-    ~TrippyLinesSketch();
+public:
+  TrippyLinesSketch(ofApp* app, const char* name);
+  ~TrippyLinesSketch();
 
-    void setup();
-    void update();
-    void draw();
+  void setup();
+  void activate();
+  void update();
+  void draw();
+  void deactivate();
 
-    const char* getName();
-    void logName();
+  const char* getName();
+  void logName();
 };

@@ -16,24 +16,26 @@ public:
   ~VolumeHistorySketch();
 
   void setup();
+  void activate();
   void update();
   void draw();
-
+  void deactivate();
 
   const char* getName();
   void logName();
 
   vector<float> volumeHistory;
   vector<ofImage> images;
-  
+
   int volumeHistorySize = 16;
   int beatCounter = 0;
   int onsetCounter = 0;
-  
+
   uint64_t elaspedSinceLastBeatOnset;
-  
+
   ofImage currentImage;
   ofFbo myFbo;
-  
+
   ofxPostGlitch myGlitch;
+
 };

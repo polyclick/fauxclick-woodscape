@@ -13,6 +13,10 @@ void SoundwaveSketch::setup(){
 
 }
 
+void SoundwaveSketch::activate() {
+
+}
+
 void SoundwaveSketch::update(){
   this->showKick = false;
   if(this->app->audioManager->beatReceived) {
@@ -108,6 +112,10 @@ void SoundwaveSketch::draw() {
 
   ofPopMatrix();
   ofPopStyle();
+}
+
+void SoundwaveSketch::deactivate() {
+
 }
 
 const char* SoundwaveSketch::getName() {

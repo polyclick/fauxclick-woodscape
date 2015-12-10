@@ -11,6 +11,9 @@ TriangleSketch::~TriangleSketch(){
 
 void TriangleSketch::setup() {
 
+}
+
+void TriangleSketch::activate() {
 
 }
 
@@ -98,6 +101,10 @@ ofPoint TriangleSketch::equilateral( ofPoint one, ofPoint two, float rotation ){
   three.y = (sin(rotation) * dX + cos(rotation) * dY) + one.y;
 
   return three;
+
+}
+
+void TriangleSketch::deactivate() {
 
 }
 

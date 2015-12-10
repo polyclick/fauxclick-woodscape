@@ -13,7 +13,12 @@ void EinsteinSketch::setup(){
 
 }
 
+void EinsteinSketch::activate() {
+  cout << "active einstein" << endl;
+}
+
 void EinsteinSketch::update(){
+  cout << "update einstein" << endl;
   if(this->app->audioManager->beatReceived) {
     count++;
     if(count > 16) {
@@ -26,6 +31,7 @@ void EinsteinSketch::update(){
 }
 
 void EinsteinSketch::draw() {
+  cout << "draw einstein" << endl;
   float width = ofGetWidth() / 3.0;
   float height = ofGetHeight();
 
@@ -34,12 +40,12 @@ void EinsteinSketch::draw() {
 
   int size = 75;
   int wrapper = ofGetWidth() / 16;
-  
+
   for(int j = 0 ; j < 7 ; j++) {
     for(int i = 0 ; i < 16 ; i++) {
       int centerX = (i * wrapper) + (size / 2.0);
       int centerY = (j * wrapper) + (size / 2.0);
-      
+
       if(i == count) {
         ofSetColor(255, 86, 97, 255);
         if(symbol == 0) {
@@ -55,6 +61,10 @@ void EinsteinSketch::draw() {
       }
     }
   }
+}
+
+void EinsteinSketch::deactivate() {
+  cout << "deactivate einstein" << endl;
 }
 
 const char* EinsteinSketch::getName() {

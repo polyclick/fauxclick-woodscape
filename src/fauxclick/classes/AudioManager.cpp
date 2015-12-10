@@ -134,16 +134,6 @@ void AudioManager::update(){
     volumeHistory.erase(volumeHistory.begin(), volumeHistory.begin() + 1);
   }
   
-  int numBands = 1;
-  float avgLowEndEnergy = 0;
-  for(int j = 0; j < numBands ; j++) {
-    avgLowEndEnergy += bands.energies[j] * 1000;
-  }
-  avgLowEndEnergy /= numBands;
-    cout << avgLowEndEnergy << endl;
-  if(avgLowEndEnergy > 5)
-    //beatReceived = beat.received();
-  
   // cache beat/onset received yes/no
   beatReceived = beat.received();
   onsetReceived = onset.received();

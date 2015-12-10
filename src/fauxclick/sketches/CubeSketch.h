@@ -6,45 +6,48 @@
 
 class CubeSketch : public SketchBase {
 
-  protected:
+protected:
 
-    void drawCube(int colOdd, int colEven, int rowBottom);
-    void shiftColor();
-    void pulseCube(int colOdd, int colEven, int rowBottom, int delay=0);
+  void drawCube(int colOdd, int colEven, int rowBottom);
+  void shiftColor();
+  void pulseCube(int colOdd, int colEven, int rowBottom, int delay=0);
 
-    int stepCounter;
-    int cooldown;
-   
-    ofColor cDark;
-    ofColor cMid;
-    ofColor cBright;
-  
-    ofColor cLeft;
-    ofColor cRight;
-    ofColor cTop;
-  
-    const char* name;
-    ofApp* app;
-    Grid grid;
+  int stepCounter;
+  int cooldown;
 
-    // Set unit width
-    const int unitWidth = 101;
- 
-    // Set unit height
-    const int unitHeight = 118;
+  ofColor cDark;
+  ofColor cMid;
+  ofColor cBright;
 
-    // Rows and columns are zero-indexed
-    const int rows = 10;
-    const int cols = 15;
+  ofColor cLeft;
+  ofColor cRight;
+  ofColor cTop;
 
-  public:
-   CubeSketch(ofApp* app, const char* name);
-    ~CubeSketch();
+  const char* name;
+  ofApp* app;
+  Grid grid;
 
-    void setup();
-    void update();
-    void draw();
+  // Set unit width
+  const int unitWidth = 101;
 
-    const char* getName();
-    void logName();
+  // Set unit height
+  const int unitHeight = 118;
+
+  // Rows and columns are zero-indexed
+  const int rows = 10;
+  const int cols = 15;
+
+public:
+  CubeSketch(ofApp* app, const char* name);
+  ~CubeSketch();
+
+  void setup();
+  void activate();
+  void update();
+  void draw();
+  void deactivate();
+
+  const char* getName();
+  void logName();
+
 };

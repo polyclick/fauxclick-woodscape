@@ -21,6 +21,8 @@ SketchManager::~SketchManager(){
 }
 
 void SketchManager::setup(){
+  
+  // all sketches
   sketches.push_back(new BoidSketch(this->app, "BoidSketch"));
   sketches.push_back(new CubeSketch(this->app, "CubeSketch"));
   sketches.push_back(new WaveSketch(this->app, "WaveSketch"));
@@ -32,13 +34,13 @@ void SketchManager::setup(){
   sketches.push_back(new VolumeHistorySketch(this->app, "VolumeHistorySketch"));
   sketches.push_back(new EinsteinSketch(this->app, "EinsteinSketch"));
 
-  // call setup
+  // call setup of each sketch
   for (auto &sketch : sketches) {
     sketch->setup();
   }
 
-  // active sketch
-  activeSketchIndex = 0;
+  // activate first sketch
+  this->activateSketch(sketches[0]->getName());
 }
 
 void SketchManager::update() {
@@ -49,13 +51,21 @@ void SketchManager::draw() {
   sketches[activeSketchIndex]->draw();
 }
 
+// Activate a sketch by name
+// If we have a current active sketch, first deactivate it
+// then switch the index so the draw method gets called
 void SketchManager::activateSketch(const char* sketchName) {
   for(int i = 0; i < sketches.size(); i++) {
     if(strcmp(sketches[i]->getName(), sketchName) == 0) {
+      if(activeSketchIndex > -1)
+        sketches[activeSketchIndex]->deactivate();
+      
+      sketches[i]->activate();
+      
+      // set new index so draw loop calls draw method of that sketch
       activeSketchIndex = i;
+      sketches[activeSketchIndex]->logName();
       return;
     }
   }
-
-  sketches[activeSketchIndex]->logName();
 }

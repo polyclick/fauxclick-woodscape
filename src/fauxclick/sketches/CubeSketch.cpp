@@ -10,30 +10,35 @@ CubeSketch::~CubeSketch(){
 }
 
 void CubeSketch::setup() {
-  
+
   this->stepCounter = 0;
   this->cooldown = 0;
-  
+
   this->cRight = ofColor(6, 103, 111);
   this->cLeft = ofColor(70, 186, 177);
   this->cTop = ofColor(158, 224, 208);
-  
+
   this->cDark = ofColor(6, 103, 111);
   this->cMid = ofColor(70, 186, 177);
   this->cBright = ofColor(158, 224, 208);
 }
 
+void CubeSketch::activate() {
+
+}
+
 void CubeSketch::update() {
 
 }
+
 void CubeSketch::draw() {
 
   ofBackground(0);
   ofFill();
-  
+
   for(int i=0; i<17; i+=2) {
     for(int j=10; j>0 ; j-=3){
-      
+
       int delay = 20 - 1.5*j;
 
       if (j%2 == 0) {
@@ -58,17 +63,17 @@ void CubeSketch::draw() {
 }
 
 void CubeSketch::drawCube( int colOdd, int colEven, int rowBottom) {
-  
+
   // Dark shade
   ofSetColor(this->cRight);
   grid.drawFace(rowBottom, colOdd);
   grid.drawFace(rowBottom - 1, colOdd);
-  
+
   // Mid shade
   ofSetColor(this->cLeft);
   grid.drawFace(rowBottom, colEven);
   grid.drawFace(rowBottom - 1, colEven);
-  
+
   // Bright shade
   ofSetColor(this->cTop);
   grid.drawFace(rowBottom - 2, colOdd);
@@ -76,26 +81,26 @@ void CubeSketch::drawCube( int colOdd, int colEven, int rowBottom) {
 }
 
 void CubeSketch::shiftColor(){
-  
+
   if(this->stepCounter > 1 ){ this->stepCounter = 0; }
-  
+
   switch (this->stepCounter) {
       cout << this->stepCounter << endl;
-      
+
     case 0:
       cout << "step0" << endl;
       this->cTop =this->cBright;
       this->cLeft = this->cMid;
       this->cRight = this->cDark;
       break;
-      
+
     case 1:
       cout << "step1" << endl;
       this->cTop =this->cBright;
       this->cLeft = this->cDark;
       this->cRight = this->cMid;
       break;
-      
+
 //    case 2:
 //      cout << "step2" << endl;
 //      this->cTop =this->cBright;
@@ -103,28 +108,31 @@ void CubeSketch::shiftColor(){
 //      this->cRight = this->cMid;
 //      break;
   }
-  
-  this->stepCounter++;
-  
 
-  
+  this->stepCounter++;
+
+
+
 }
 
 void CubeSketch::pulseCube( int colOdd, int colEven, int rowBottom, int delay) {
-  
+
   // Dark shade
   grid.pulseFace(rowBottom, colOdd, delay);
   grid.pulseFace(rowBottom - 1, colOdd, delay);
-  
+
   // Mid shade
   grid.pulseFace(rowBottom, colEven, delay);
   grid.pulseFace(rowBottom - 1, colEven, delay);
-  
+
   // Bright shade
   grid.pulseFace(rowBottom - 2, colOdd, delay);
   grid.pulseFace(rowBottom - 2, colEven, delay);
 }
 
+void CubeSketch::deactivate() {
+
+}
 
 const char* CubeSketch::getName() {
   return this->name;

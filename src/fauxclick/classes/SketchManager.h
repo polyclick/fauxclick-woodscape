@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "ofxDatGui.h"
 #include "SketchBase.h"
 
 using namespace std;
@@ -21,6 +22,8 @@ public:
 
   void activateSketch(const char* sketchName);
 
-  int activeSketchIndex;
+  int activeSketchIndex = -1;
   vector<SketchBase*> sketches;
+  
+  ofxDatGuiLabel *sketchLabel;
 };

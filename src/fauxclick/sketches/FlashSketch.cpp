@@ -13,6 +13,10 @@ void FlashSketch::setup(){
 
 }
 
+void FlashSketch::activate() {
+
+}
+
 void FlashSketch::update(){
 
 }
@@ -32,6 +36,10 @@ void FlashSketch::draw() {
   if(this->app->audioManager->onsetReceived) {
     ofDrawRectangle(width, 0, width, height);
   }
+}
+
+void FlashSketch::deactivate() {
+
 }
 
 const char* FlashSketch::getName() {

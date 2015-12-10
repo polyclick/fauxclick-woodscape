@@ -13,13 +13,17 @@ void TrippyLinesSketch::setup(){
 
 }
 
+void TrippyLinesSketch::activate() {
+
+}
+
 void TrippyLinesSketch::update(){
 }
 
 void TrippyLinesSketch::draw() {
   ofPushStyle();
   ofNoFill();
-  
+
   if(this->app->audioManager->beatReceived) {
     ofSetHexColor(0x20FF9C);
     ofSetLineWidth(10);
@@ -31,7 +35,7 @@ void TrippyLinesSketch::draw() {
     }
     ofEndShape();
   }
-  
+
   if(this->app->audioManager->onsetReceived) {
     ofSetHexColor(0xffffff);
       ofNoFill();
@@ -45,6 +49,10 @@ void TrippyLinesSketch::draw() {
   }
 
   ofPopStyle();
+}
+
+void TrippyLinesSketch::deactivate() {
+
 }
 
 const char* TrippyLinesSketch::getName() {

@@ -14,9 +14,14 @@ void WaveSketch::setup() {
   grid.enableTransform(0.91);
 }
 
+void WaveSketch::activate() {
+
+}
+
 void WaveSketch::update() {
 
 }
+
 void WaveSketch::draw() {
 
   ofBackground(0);
@@ -26,12 +31,12 @@ void WaveSketch::draw() {
 
   for (int i = 0; i < rows+1 ; i++) {
     for (int j = 0; j < cols+1; j++) {
-      
+
         if (i % 2 == 0) {
           if (this->app->audioManager->beatReceived) {
             grid.pulseFace(i,j,j*1.5);
           }
-          
+
 //             Draw the face
             ofSetColor(255, 255, 255);
             grid.drawFace(i,j);
@@ -68,6 +73,10 @@ void WaveSketch::draw() {
 
 
   grid.decay();
+}
+
+void WaveSketch::deactivate() {
+
 }
 
 const char* WaveSketch::getName() {

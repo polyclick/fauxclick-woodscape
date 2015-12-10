@@ -14,12 +14,15 @@ public:
   ~EinsteinSketch();
 
   void setup();
+  void activate();
   void update();
   void draw();
+  void deactivate();
 
   const char* getName();
   void logName();
-  
+
   int count = 0;
   int symbol = 0;
+
 };
