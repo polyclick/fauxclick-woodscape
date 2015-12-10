@@ -26,4 +26,5 @@ public:
   vector<SketchBase*> sketches;
   
   ofxDatGuiLabel *sketchLabel;
+  ofxDatGuiFolder* sketchFolder;
 };

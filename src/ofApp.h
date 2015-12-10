@@ -2,13 +2,12 @@
 
 #include "ofMain.h"
 #include "ofxSyphon.h"
-#include "ofxMidi.h"
-#include "ofxGui.h"
 #include "ParameterWindow.h"
 #include "AudioManager.h"
 #include "SketchManager.h"
+#include "MidiManager.h"
 
-class ofApp : public ofBaseApp, public ofxMidiListener {
+class ofApp : public ofBaseApp {
 
 private:
 
@@ -25,13 +24,12 @@ public:
   AudioManager *audioManager;
   ParameterWindow *parameterWindow;
   SketchManager *sketchManager;
+  MidiManager *midiManager;
 
   void setup();
   void update();
   void draw();
   void exit();
-
-  void newMidiMessage(ofxMidiMessage& eventArgs);
 
   void keyPressed(int key);
   void keyReleased(int key);
@@ -49,22 +47,8 @@ public:
   ofxDatGuiLabel *resolutionLabel;
   ofxDatGuiFolder* summaryFolder;
 
-  ofParameter<string> midiStatus;
-  ofParameter<string> midiChannel;
-  ofParameter<float> midiPitch;
-  ofParameter<float> midiVelocity;
-  ofParameter<float> midiControl;
-  ofParameter<float> midiValue;
-  ofParameter<string> midiDelta;
-  ofParameterGroup midi;
-  ofParameterGroup debug;
-  ofxPanel gui;
-
   ofImage debugGridImage;
 
 	ofxSyphonServer mainOutputSyphonServer;
-
-  ofxMidiIn midiIn;
-  ofxMidiMessage midiMessage;
-
+  
 };

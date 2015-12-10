@@ -43,7 +43,7 @@ void SketchManager::setup(){
   sketchLabel = new ofxDatGuiLabel("");
   
   // display folder
-  ofxDatGuiFolder* sketchFolder = new ofxDatGuiFolder("sketch", ofColor::fromHex(0xFFD00B));
+  sketchFolder = new ofxDatGuiFolder("sketch", ofColor::fromHex(0xFFD00B));
   sketchFolder->attachItem(sketchLabel);
   
   // add folder

@@ -16,9 +16,8 @@
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		1F558B76FB3412843DDAA031 /* ofxSyphonClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03EA4DA95B5E1B8409FC058E /* ofxSyphonClient.mm */; };
 		318E1A30E2B6DEA6221C4852 /* TriangleSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6680B96E22A75CD65CF3606 /* TriangleSketch.cpp */; };
-		392C43751C18BDAE00CBD622 /* BoidSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392C43731C18BDAE00CBD622 /* BoidSketch.cpp */; settings = {ASSET_TAGS = (); }; };
-		392C43781C18C33D00CBD622 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392C43761C18C33D00CBD622 /* Particle.cpp */; settings = {ASSET_TAGS = (); }; };
-		397B870D1C177E39006FA0C1 /* CubeSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 397B870B1C177E39006FA0C1 /* CubeSketch.cpp */; settings = {ASSET_TAGS = (); }; };
+		392C43751C18BDAE00CBD622 /* BoidSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392C43731C18BDAE00CBD622 /* BoidSketch.cpp */; };
+		392C43781C18C33D00CBD622 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392C43761C18C33D00CBD622 /* Particle.cpp */; };
 		3AEFE4FA8AD5C72671AD07F8 /* ofxRtMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 712B183BC00EBFFB1EEA5AB8 /* ofxRtMidiOut.cpp */; };
 		479DCA850DD8BB469A777AD4 /* ofxAubioBeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A96B8F6D2ECF14F9304EBD6C /* ofxAubioBeat.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
@@ -41,6 +40,7 @@
 		B35439E42C56728B59A413F2 /* ofxDatGuiTemplate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A09D5353E55C9970EAD6C2D3 /* ofxDatGuiTemplate.cpp */; };
 		B56FE57CC35806596D38118C /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 802251BAF1B35B1D67B32FD0 /* ofxSliderGroup.cpp */; };
 		BCC8D420CBA9217E437D2D76 /* ofxRtMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F634AA6CA2E3C60F3B87B59A /* ofxRtMidiIn.cpp */; };
+		C06EB3431C19E60F001B168A /* MidiManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C06EB3411C19E60F001B168A /* MidiManager.cpp */; };
 		C0702F5F1C16BD060007CC4A /* SketchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0702F5D1C16BD060007CC4A /* SketchManager.cpp */; };
 		C07106311C1645E0000E7A62 /* WaveSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C071062F1C1645E0000E7A62 /* WaveSketch.cpp */; };
 		C093D07E1C1633C7007F2C2F /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C093D07D1C1633C7007F2C2F /* aubio.framework */; };
@@ -172,6 +172,8 @@
 		BCC84C6EB3417706F4F762F0 /* ofxDatGuiComponent.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiComponent.h; path = ../../../addons/ofxDatGui/src/core/ofxDatGuiComponent.h; sourceTree = SOURCE_ROOT; };
 		BD0E7AC8BE205034D5B377A6 /* ofxMidiMessage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMidiMessage.h; path = ../../../addons/ofxMidi/src/ofxMidiMessage.h; sourceTree = SOURCE_ROOT; };
 		C06D7702A496FC00BC5E272D /* Grid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Grid.h; path = src/fauxclick/classes/Grid.h; sourceTree = SOURCE_ROOT; };
+		C06EB3411C19E60F001B168A /* MidiManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MidiManager.cpp; path = fauxclick/classes/MidiManager.cpp; sourceTree = "<group>"; };
+		C06EB3421C19E60F001B168A /* MidiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MidiManager.h; path = fauxclick/classes/MidiManager.h; sourceTree = "<group>"; };
 		C0702F5D1C16BD060007CC4A /* SketchManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SketchManager.cpp; path = fauxclick/classes/SketchManager.cpp; sourceTree = "<group>"; };
 		C0702F5E1C16BD060007CC4A /* SketchManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SketchManager.h; path = fauxclick/classes/SketchManager.h; sourceTree = "<group>"; };
 		C071062F1C1645E0000E7A62 /* WaveSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaveSketch.cpp; path = fauxclick/sketches/WaveSketch.cpp; sourceTree = "<group>"; };
@@ -464,6 +466,8 @@
 				390CB9520E90DD0E636317B8 /* AudioManager.h */,
 				2A6EB442934951591546348A /* Grid.cpp */,
 				C06D7702A496FC00BC5E272D /* Grid.h */,
+				C06EB3411C19E60F001B168A /* MidiManager.cpp */,
+				C06EB3421C19E60F001B168A /* MidiManager.h */,
 				392C43761C18C33D00CBD622 /* Particle.cpp */,
 				392C43771C18C33D00CBD622 /* Particle.h */,
 				FEE07A8E048102DF5B1EE451 /* ParameterWindow.cpp */,
@@ -753,6 +757,7 @@
 				8D60C222CBD3F869382832E9 /* ofxSyphonServer.mm in Sources */,
 				11DF9AB1B4EAA63E3B190CA0 /* ofxSyphonServerDirectory.mm in Sources */,
 				C9109422648B170B07A778CF /* SyphonNameboundClient.m in Sources */,
+				C06EB3431C19E60F001B168A /* MidiManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

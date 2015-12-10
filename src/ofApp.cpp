@@ -23,11 +23,8 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::setupMidi() {
-  midiIn.listPorts();
-  midiIn.openPort("Ableton Push User Port");
-  midiIn.ignoreTypes(false, false, false);  // sysex, timing, active sense
-  midiIn.addListener(this);
-  midiIn.setVerbose(true);
+  midiManager = new MidiManager(this);
+  midiManager->setup();
 }
 
 //--------------------------------------------------------------
@@ -43,17 +40,6 @@ void ofApp::setupSyphon() {
 
 //--------------------------------------------------------------
 void ofApp::setupGui() {
-
-  midi.setName("midi");
-  midi.add(midiStatus.set("status", ""));
-  midi.add(midiChannel.set("channel", ""));
-  midi.add(midiPitch.set("pitch", 0, 0, 127));
-  midi.add(midiVelocity.set("velocity", 0, 0, 127));
-  midi.add(midiControl.set("control", 0, 0, 127));
-  midi.add(midiValue.set("value (normalized)", 0, 0, 100));
-  midi.add(midiDelta.set("delta", ""));
-  debug.add(midi);
-  gui.setup(debug);
 
   // parameter window
   parameterWindow = new ParameterWindow(this);
@@ -72,8 +58,6 @@ void ofApp::setupGui() {
   // call once for initial resolution
   this->updateResolutionLabel();
   
-  
-
   // debug grid
   debugGridImage.load("images/grid.png");
 }
@@ -111,45 +95,16 @@ void ofApp::draw() {
 
   // draw gui if needed
   if(showGui) {
-    ofSetColor(255);
-    gui.draw();
-
     parameterWindow->draw();
   }
 }
 
 //--------------------------------------------------------------
 void ofApp::exit() {
-
-  // clean up
-  midiIn.closePort();
-  midiIn.removeListener(this);
-
-  // release memory
   delete parameterWindow;
   delete audioManager;
-}
-
-//--------------------------------------------------------------
-void ofApp::newMidiMessage(ofxMidiMessage& msg) {
-
-  // make a copy of the latest message
-  midiMessage = msg;
-
-  // show in debug
-  midiStatus = ofxMidiMessage::getStatusString(midiMessage.status);
-  midiChannel = ofToString(midiMessage.channel);
-  midiPitch = midiMessage.pitch;
-  midiVelocity = midiMessage.velocity;
-  midiControl = midiMessage.control;
-
-  if(midiMessage.status == MIDI_PITCH_BEND) {
-    midiValue = ofMap(midiMessage.value, 0, MIDI_MAX_BEND, 0, 100);
-  } else {
-    midiValue = ofMap(midiMessage.value, 0, 127, 0, 100);
-  }
-
-  midiDelta = ofToString(midiMessage.deltatime);
+  delete sketchManager;
+  delete midiManager;
 }
 
 //--------------------------------------------------------------
