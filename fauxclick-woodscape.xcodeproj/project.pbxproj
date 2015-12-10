@@ -15,7 +15,6 @@
 		1A86B7721CAEBC6F1C572C45 /* ofxBaseMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94B3C3C21F92F9310CA90986 /* ofxBaseMidi.cpp */; };
 		1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 907C5B5E104864A2D3A25745 /* ofxToggle.cpp */; };
 		1F558B76FB3412843DDAA031 /* ofxSyphonClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03EA4DA95B5E1B8409FC058E /* ofxSyphonClient.mm */; };
-		318E1A30E2B6DEA6221C4852 /* TriangleSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6680B96E22A75CD65CF3606 /* TriangleSketch.cpp */; };
 		392C43751C18BDAE00CBD622 /* BoidSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392C43731C18BDAE00CBD622 /* BoidSketch.cpp */; };
 		392C43781C18C33D00CBD622 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392C43761C18C33D00CBD622 /* Particle.cpp */; };
 		3AEFE4FA8AD5C72671AD07F8 /* ofxRtMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 712B183BC00EBFFB1EEA5AB8 /* ofxRtMidiOut.cpp */; };
@@ -188,7 +187,6 @@
 		C0FB85DD1C18C25B002E4849 /* ofxPostGlitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPostGlitch.h; sourceTree = "<group>"; };
 		C0FB85DF1C18DB52002E4849 /* EinsteinSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EinsteinSketch.cpp; path = fauxclick/sketches/EinsteinSketch.cpp; sourceTree = "<group>"; };
 		C0FB85E01C18DB52002E4849 /* EinsteinSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EinsteinSketch.h; path = fauxclick/sketches/EinsteinSketch.h; sourceTree = "<group>"; };
-		C6CE2A751623518B26D7D22D /* TriangleSketch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = TriangleSketch.h; path = src/fauxclick/sketches/TriangleSketch.h; sourceTree = SOURCE_ROOT; };
 		C70D8946940288799E82131E /* ofxSliderGroup.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxSliderGroup.h; path = ../../../addons/ofxGui/src/ofxSliderGroup.h; sourceTree = SOURCE_ROOT; };
 		C84ED7FCC017328C6F58283D /* ofxDatGuiColorPicker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiColorPicker.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiColorPicker.h; sourceTree = SOURCE_ROOT; };
 		C88333E71C9457E441C33474 /* ofxButton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxButton.cpp; path = ../../../addons/ofxGui/src/ofxButton.cpp; sourceTree = SOURCE_ROOT; };
@@ -196,7 +194,6 @@
 		CDF7278CB636137FE7BF91A5 /* ofxDatGuiMatrix.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiMatrix.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiMatrix.h; sourceTree = SOURCE_ROOT; };
 		D0D6A66BEBA820EA1D396889 /* ofxDatGuiSlider.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiSlider.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiSlider.h; sourceTree = SOURCE_ROOT; };
 		D58DCB2C0AEFDE6171E29540 /* Syphon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Syphon.framework; path = ../../../addons/ofxSyphon/libs/Syphon/lib/osx/Syphon.framework; sourceTree = "<group>"; };
-		D6680B96E22A75CD65CF3606 /* TriangleSketch.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = TriangleSketch.cpp; path = src/fauxclick/sketches/TriangleSketch.cpp; sourceTree = SOURCE_ROOT; };
 		E100ED9DCB412957A879CD5A /* ofxDatGuiControls.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxDatGuiControls.h; path = ../../../addons/ofxDatGui/src/components/ofxDatGuiControls.h; sourceTree = SOURCE_ROOT; };
 		E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxPanel.cpp; path = ../../../addons/ofxGui/src/ofxPanel.cpp; sourceTree = SOURCE_ROOT; };
 		E16BB73D19DD0713FDCC7986 /* ofxMidiTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMidiTypes.h; path = ../../../addons/ofxMidi/src/ofxMidiTypes.h; sourceTree = SOURCE_ROOT; };
@@ -517,8 +514,6 @@
 				754A4D1E58F88E3C0536CE98 /* SoundwaveSketch.h */,
 				1970BCEA9EF8DE98660F9B6F /* TrippyLinesSketch.cpp */,
 				CCCA2C3AFF8859F450A3C196 /* TrippyLinesSketch.h */,
-				D6680B96E22A75CD65CF3606 /* TriangleSketch.cpp */,
-				C6CE2A751623518B26D7D22D /* TriangleSketch.h */,
 				FDFB7365D884709C1BEE7B65 /* VolumeHistorySketch.cpp */,
 				5EE8E59E85F22B8200AD124D /* VolumeHistorySketch.h */,
 				C071062F1C1645E0000E7A62 /* WaveSketch.cpp */,
@@ -726,7 +721,6 @@
 				C0FB85DE1C18C25B002E4849 /* ofxPostGlitch.cpp in Sources */,
 				FAF35839FD75A1A709AD14B2 /* SoundwaveSketch.cpp in Sources */,
 				873C6A46EA3AB01A1D635C1C /* TrippyLinesSketch.cpp in Sources */,
-				318E1A30E2B6DEA6221C4852 /* TriangleSketch.cpp in Sources */,
 				1738F7885B5BB0AFE7195AE9 /* VolumeHistorySketch.cpp in Sources */,
 				479DCA850DD8BB469A777AD4 /* ofxAubioBeat.cpp in Sources */,
 				C0FB85D81C18A01D002E4849 /* CubeSketch.cpp in Sources */,
