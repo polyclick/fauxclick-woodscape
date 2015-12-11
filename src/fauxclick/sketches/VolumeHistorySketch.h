@@ -33,6 +33,8 @@ public:
   int volumeHistorySize = 16;
   int beatCounter = 0;
   int onsetCounter = 0;
+  
+  float volumeMidiValue = -1.0;
 
   uint64_t elaspedSinceLastBeatOnset;
 

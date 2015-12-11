@@ -14,11 +14,10 @@ void EinsteinSketch::setup(){
 }
 
 void EinsteinSketch::activate() {
-  cout << "active einstein" << endl;
+
 }
 
 void EinsteinSketch::update(){
-  cout << "update einstein" << endl;
   if(this->app->audioManager->beatReceived) {
     count++;
     if(count > 16) {
@@ -31,7 +30,6 @@ void EinsteinSketch::update(){
 }
 
 void EinsteinSketch::draw() {
-  cout << "draw einstein" << endl;
   float width = ofGetWidth() / 3.0;
   float height = ofGetHeight();
 
@@ -70,7 +68,7 @@ void EinsteinSketch::draw() {
 }
 
 void EinsteinSketch::deactivate() {
-  cout << "deactivate einstein" << endl;
+
 }
 
 const char* EinsteinSketch::getName() {

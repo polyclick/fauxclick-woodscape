@@ -23,9 +23,9 @@ public:
 
   ofxDatGuiLabel* statusLabel;
   ofxDatGuiLabel* channelLabel;
-  ofxDatGuiSlider* pitchSlider;
+  ofxDatGuiLabel* controlLabel;
+  ofxDatGuiLabel* pitchLabel;
   ofxDatGuiSlider* velocitySlider;
-  ofxDatGuiSlider* controlSlider;
   ofxDatGuiSlider* valueSlider;
   ofxDatGuiLabel* deltaLabel;
   ofxDatGuiFolder* midiFolder;

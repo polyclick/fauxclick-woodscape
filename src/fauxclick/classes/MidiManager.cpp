@@ -16,8 +16,8 @@ void MidiManager::setup(){
   // setup midi
   midiIn.listPorts();
   //midiIn.openPort("Ableton Push User Port");
-  midiIn.openPort("TR-8");
-  //midiIn.openPort("VMPK Output");
+  //midiIn.openPort("TR-8");
+  midiIn.openPort("VMPK Output");
   midiIn.ignoreTypes(false, false, false);  // sysex, timing, active sense
   midiIn.addListener(this);
   midiIn.setVerbose(true);
@@ -25,19 +25,19 @@ void MidiManager::setup(){
   // setup gui
   statusLabel = new ofxDatGuiLabel("");
   channelLabel = new ofxDatGuiLabel("");
-  pitchSlider = new ofxDatGuiSlider("pitch", 0, 127, 0);
-  velocitySlider = new ofxDatGuiSlider("velocity", 0, 127, 0);
-  controlSlider = new ofxDatGuiSlider("control", 0, 127, 0);
-  valueSlider = new ofxDatGuiSlider("value", 0, 100, 0);
+  controlLabel = new ofxDatGuiLabel("");
+  pitchLabel = new ofxDatGuiLabel("");
+  velocitySlider = new ofxDatGuiSlider("velocity", 0, 1, 0);
+  valueSlider = new ofxDatGuiSlider("value", 0, 1, 0);
   deltaLabel = new ofxDatGuiLabel("");
 
   // display folder
   midiFolder = new ofxDatGuiFolder("midi", ofColor::fromHex(0xFFD00B));
   midiFolder->attachItem(statusLabel);
   midiFolder->attachItem(channelLabel);
-  midiFolder->attachItem(pitchSlider);
+  midiFolder->attachItem(controlLabel);
+  midiFolder->attachItem(pitchLabel);
   midiFolder->attachItem(velocitySlider);
-  midiFolder->attachItem(controlSlider);
   midiFolder->attachItem(valueSlider);
   midiFolder->attachItem(deltaLabel);
 
@@ -50,19 +50,20 @@ void MidiManager::update() {
 //  // update debug
 //  statusLabel->setLabel(ofxMidiMessage::getStatusString(midiMessage.status));
 //  channelLabel->setLabel(ofToString(midiMessage.channel));
-//  pitchSlider->setValue(midiMessage.pitch);
-//  velocitySlider->setValue(midiMessage.velocity);
-//  controlSlider->setValue(midiMessage.control);
-//  
-//  // pitch bend
-//  if(midiMessage.status == MIDI_PITCH_BEND) {
-//    valueSlider->setLabel(ofToString(ofMap(midiMessage.value, 0, MIDI_MAX_BEND, 0, 100)));
-//  } else {
-//    valueSlider->setLabel(ofToString(ofMap(midiMessage.value, 0, 127, 0, 100)));
-//  }
-//  
-//  // delta
-//  deltaLabel->setLabel(ofToString(midiMessage.deltatime));
+  controlLabel->setLabel(ofToString(midiMessage.control));
+  pitchLabel->setLabel(ofToString(midiMessage.pitch));
+  velocitySlider->setValue(ofMap(midiMessage.velocity, 0, 127, 0, 1));
+
+  
+  // pitch bend
+  if(midiMessage.status == MIDI_PITCH_BEND) {
+    valueSlider->setValue(ofMap(midiMessage.value, 0, MIDI_MAX_BEND, 0, 1));
+  } else {
+    valueSlider->setValue(ofMap(midiMessage.value, 0, 127, 0, 1));
+  }
+  
+  // delta
+  deltaLabel->setLabel(ofToString(midiMessage.deltatime));
 }
 
 //--------------------------------------------------------------

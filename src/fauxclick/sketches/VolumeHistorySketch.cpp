@@ -45,6 +45,11 @@ void VolumeHistorySketch::activate() {
 }
 
 void VolumeHistorySketch::update(){
+  
+  // scaling multiplier
+  float multiplier = volumeMidiValue < 0.0 ? 1.5 : volumeMidiValue * 5.0;
+
+  // disable glitch effect after the cooldown
   if(ofGetElapsedTimeMillis() - elaspedSinceLastBeatOnset > 50) {
     myGlitch.setFx(OFXPOSTGLITCH_CUTSLIDER, false);
     myGlitch.setFx(OFXPOSTGLITCH_INVERT, false);
@@ -104,7 +109,7 @@ void VolumeHistorySketch::update(){
     if(i == 0)
       ofVertex(0, 0);
 
-    float volume = volumeHistory[i] * ofGetHeight() * 1.5;
+    float volume = volumeHistory[i] * ofGetHeight() * multiplier;
     ofVertex(i * widthRatio, volume);
 
     if(i == volumeHistory.size() - 1)
@@ -118,7 +123,7 @@ void VolumeHistorySketch::update(){
     if(i == 0)
       ofVertex(0, ofGetHeight());
 
-    float volume = volumeHistory[i] * ofGetHeight() * 1.5;
+    float volume = volumeHistory[i] * ofGetHeight() * multiplier;
     ofVertex(i * widthRatio, ofGetHeight() - volume);
 
     if(i == volumeHistory.size() - 1)
@@ -144,8 +149,8 @@ void VolumeHistorySketch::deactivate() {
 }
 
 void VolumeHistorySketch::newMidiMessage(ofxMidiMessage &msg) {
-  if(msg.control == 7) {
-    cout << "change volume" << endl;
+  if(msg.control == 11 && msg.value != volumeMidiValue) {
+    volumeMidiValue = ofMap(msg.value, 0, 127, 0, 1);
   }
 }
 
