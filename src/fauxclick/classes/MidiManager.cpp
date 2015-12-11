@@ -16,9 +16,9 @@ void MidiManager::setup(){
   // setup midi
   midiIn.listPorts();
   //midiIn.openPort("Ableton Push User Port");
-  //midiIn.openPort("TR-8");
-  midiIn.openPort("VMPK Output");
-  midiIn.ignoreTypes(false, false, false);  // sysex, timing, active sense
+  midiIn.openPort("TR-8");
+  //midiIn.openPort("VMPK Output");
+  midiIn.ignoreTypes(false, true, false);  // sysex, timing, active sense
   midiIn.addListener(this);
   midiIn.setVerbose(true);
 
@@ -87,39 +87,39 @@ void MidiManager::newMidiMessage(ofxMidiMessage& msg) {
   }
   
   switch (midiMessage.pitch) {
-    case 50:
+    case 36:
       this->app->sketchManager->activateSketch("WaveSketch");
       break;
       
-    case 51:
+    case 38:
       this->app->sketchManager->activateSketch("PulseSketch");
       break;
       
-    case 52:
+    case 43:
       this->app->sketchManager->activateSketch("TrippyLinesSketch");
       break;
       
-    case 53:
+    case 47:
       this->app->sketchManager->activateSketch("SoundwaveSketch");
       break;
       
-    case 54:
+    case 50:
       this->app->sketchManager->activateSketch("FlashSketch");
       break;
       
-    case 55:
+    case 37:
       this->app->sketchManager->activateSketch("VolumeHistorySketch");
       break;
       
-    case 56:
+    case 39:
       this->app->sketchManager->activateSketch("CubeSketch");
       break;
       
-    case 57:
+    case 42:
       this->app->sketchManager->activateSketch("BoidSketch");
       break;
       
-    case 58:
+    case 46:
       this->app->sketchManager->activateSketch("EinsteinSketch");
       break;
   }

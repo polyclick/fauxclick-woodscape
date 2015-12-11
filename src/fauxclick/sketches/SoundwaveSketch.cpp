@@ -14,7 +14,7 @@ void SoundwaveSketch::setup(){
 }
 
 void SoundwaveSketch::activate() {
-
+  this->app->midiManager->midiIn.addListener(this);
 }
 
 void SoundwaveSketch::update(){
@@ -36,8 +36,7 @@ void SoundwaveSketch::draw() {
 
   // vars
   int lineColor = 255;
-
-
+  float multiplier = volumeMidiValue < 0.0 ? 2.5 : volumeMidiValue * 5.0;
 
   // -------------------------------------- left channel
   ofPushStyle();
@@ -66,7 +65,7 @@ void SoundwaveSketch::draw() {
 
   // draw over the full width of the screen
   for (unsigned int i = 0; i < left.size(); i++){
-    ofVertex(i * widthRatio, left[i] * ofGetHeight() * 2.5);
+    ofVertex(i * widthRatio, left[i] * ofGetHeight() * multiplier);
   }
 
   // end drawing the line
@@ -104,7 +103,7 @@ void SoundwaveSketch::draw() {
 
   // draw over the full width of the screen
   for (unsigned int i = 0; i < right.size(); i++){
-    ofVertex(i * widthRatio, right[i] * ofGetHeight() * 2.5);
+    ofVertex(i * widthRatio, right[i] * ofGetHeight() * multiplier);
   }
 
   // end drawing the line
@@ -115,7 +114,13 @@ void SoundwaveSketch::draw() {
 }
 
 void SoundwaveSketch::deactivate() {
+  this->app->midiManager->midiIn.removeListener(this);
+}
 
+void SoundwaveSketch::newMidiMessage(ofxMidiMessage &msg) {
+  if(msg.control == 51 && msg.value != volumeMidiValue) {
+    volumeMidiValue = ofMap(msg.value, 0, 127, 0, 1);
+  }
 }
 
 const char* SoundwaveSketch::getName() {

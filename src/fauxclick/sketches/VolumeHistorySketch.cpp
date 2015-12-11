@@ -47,7 +47,7 @@ void VolumeHistorySketch::activate() {
 void VolumeHistorySketch::update(){
   
   // scaling multiplier
-  float multiplier = volumeMidiValue < 0.0 ? 1.5 : volumeMidiValue * 5.0;
+  float multiplier = volumeMidiValue < 0.0 ? 1.5 : volumeMidiValue * 3.0;
 
   // disable glitch effect after the cooldown
   if(ofGetElapsedTimeMillis() - elaspedSinceLastBeatOnset > 50) {
@@ -149,7 +149,7 @@ void VolumeHistorySketch::deactivate() {
 }
 
 void VolumeHistorySketch::newMidiMessage(ofxMidiMessage &msg) {
-  if(msg.control == 11 && msg.value != volumeMidiValue) {
+  if(msg.control == 57 && msg.value != volumeMidiValue) {
     volumeMidiValue = ofMap(msg.value, 0, 127, 0, 1);
   }
 }
