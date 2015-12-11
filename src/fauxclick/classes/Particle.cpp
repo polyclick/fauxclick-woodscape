@@ -34,7 +34,7 @@ void Particle::move(){
 
 void Particle::draw(){
   
-    this->power = exp(this->energy*3);
+    this->power = exp(this->energy*8);
     this->size = this->scale * this->power;
   
   this->decaySize = max(this->decaySize, this->size);

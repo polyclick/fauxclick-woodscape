@@ -1,10 +1,11 @@
 #pragma once
 
 #include "ofApp.h"
+#include "ofxMidi.h"
 #include "SketchBase.h"
 #include "Grid.h"
 
-class PulseSketch : public SketchBase {
+class PulseSketch : public SketchBase, public ofxMidiListener {
 
 protected:
 
@@ -21,7 +22,10 @@ protected:
   // Rows and columns are zero-indexed
   const int rows = 10;
   const int cols = 15;
-
+  
+  // midi value
+  float midiValue = -1.0;
+  
 public:
   PulseSketch(ofApp* app, const char* name);
   ~PulseSketch();
@@ -31,6 +35,8 @@ public:
   void update();
   void draw();
   void deactivate();
+  
+  void newMidiMessage(ofxMidiMessage &msg);
 
   const char* getName();
   void logName();

@@ -14,6 +14,7 @@ void SoundwaveSketch::setup(){
 }
 
 void SoundwaveSketch::activate() {
+  volumeMidiValue = -1.0;
   this->app->midiManager->midiIn.addListener(this);
 }
 

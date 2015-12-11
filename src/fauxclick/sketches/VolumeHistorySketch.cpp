@@ -41,6 +41,7 @@ void VolumeHistorySketch::setup(){
 }
 
 void VolumeHistorySketch::activate() {
+  volumeMidiValue = -1.0;
   this->app->midiManager->midiIn.addListener(this);
 }
 

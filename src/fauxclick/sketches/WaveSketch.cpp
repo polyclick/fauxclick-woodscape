@@ -15,7 +15,8 @@ void WaveSketch::setup() {
 }
 
 void WaveSketch::activate() {
-
+  rowMidiValue = -1.0;
+  this->app->midiManager->midiIn.addListener(this);
 }
 
 void WaveSketch::update() {
@@ -31,8 +32,8 @@ void WaveSketch::draw() {
 
   for (int i = 0; i < rows+1 ; i++) {
     for (int j = 0; j < cols+1; j++) {
-
-        if (i % 2 == 0) {
+        int rows = rowMidiValue < 0.0 ? 2 : (int)ofMap(rowMidiValue, 0.0, 1.0, 5.0, 1.0);
+        if (i % rows == 0) {
           if (this->app->audioManager->beatReceived) {
             grid.pulseFace(i,j,j*1.5);
           }
@@ -50,22 +51,22 @@ void WaveSketch::draw() {
 
         }
 
-        if (i % 3 == 0) {
-          if (this->app->audioManager->beatReceived) {
-            grid.pulseFace(i,j,25 - (j*1.5));
-          }
-
-            // Draw the face
-            ofSetColor(255, 255, 255);
-            grid.drawFace(i,j);
-
-            ofSetColor(0, 0, 0);
-            grid.drawFace(i,j, 0.66);
-
-            ofSetColor(255, 255, 255);
-            grid.drawFace(i,j, 0.33);
-
-        }
+//        if (i % 3 == 0) {
+//          if (this->app->audioManager->beatReceived) {
+//            grid.pulseFace(i,j,25 - (j*1.5));
+//          }
+//
+//            // Draw the face
+//            ofSetColor(255, 255, 255);
+//            grid.drawFace(i,j);
+//
+//            ofSetColor(0, 0, 0);
+//            grid.drawFace(i,j, 0.66);
+//
+//            ofSetColor(255, 255, 255);
+//            grid.drawFace(i,j, 0.33);
+//
+//        }
 
     }
   }
@@ -76,7 +77,13 @@ void WaveSketch::draw() {
 }
 
 void WaveSketch::deactivate() {
+  this->app->midiManager->midiIn.removeListener(this);
+}
 
+void WaveSketch::newMidiMessage(ofxMidiMessage &msg) {
+  if(msg.control == 24 && msg.value != rowMidiValue) {
+    rowMidiValue = ofMap(msg.value, 0, 127, 0, 1);
+  }
 }
 
 const char* WaveSketch::getName() {
