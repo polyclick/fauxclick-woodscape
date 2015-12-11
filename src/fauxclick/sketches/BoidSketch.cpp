@@ -13,7 +13,8 @@ BoidSketch::~BoidSketch(){
 void BoidSketch::setup() {
   this->numParticles = 200;
   this->numLines = 15;
-  this->treshold = 50;
+//  this->treshold = 50;
+  this->treshold =50;
 
   for(int i=0; i<numParticles ; i++){
     this->particles.push_back( new Particle(ofRandom(1,1.5), ofRandom(10,500)));
@@ -49,7 +50,7 @@ void BoidSketch::draw() {
     for(int i=0; i<numParticles ; i++){
       int bandIndex =this->particleBands[i];
       this->bandValue = this->app->audioManager->bands.energies[bandIndex];
-
+      
       Particle* particle = this->particles[i];
 
       particle->energy = this->bandValue;
@@ -59,11 +60,16 @@ void BoidSketch::draw() {
 
 
   if(this->app->audioManager->beatReceived){
-    this->treshold = 130;
+//    this->treshold = 130;
+      this->treshold = 65;
   };
 
   this->setLines();
-  this->treshold *= 0.94;
+  
+  if(treshold > 25){
+    this->treshold *= 0.94;
+  }
+  
 
   // Draw lines
   for (int i=0 ; i<lineFrom.size(); i++) {

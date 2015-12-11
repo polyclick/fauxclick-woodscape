@@ -16,10 +16,12 @@ protected:
   int pulseCue[11][16];
   
   // Set unit width
-  const int unitWidth = 101;
+//  const int unitWidth = 101;
+  const int unitWidth = 50;
   
   // Set unit height
-  const int unitHeight = 118;
+//  const int unitHeight = 118;
+  const int unitHeight = 59;
   
   // Rows and columns are zero-indexed
   const int rows = 10;
