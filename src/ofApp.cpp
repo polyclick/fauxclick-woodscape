@@ -71,8 +71,9 @@ void ofApp::setupSketches() {
 //--------------------------------------------------------------
 void ofApp::update() {
   audioManager->update();
-  parameterWindow->update();
+  midiManager->update();
   sketchManager->update();
+  parameterWindow->update();
 }
 
 //--------------------------------------------------------------
@@ -81,17 +82,17 @@ void ofApp::draw() {
   // draw sketch
   sketchManager->draw();
 
-  // publish screen to syphon
-  mainOutputSyphonServer.publishScreen();
-
-  // everything AFTER this line will not get send over syphon
-  // use it to draw the gui, logs, ...
-
   // show the triangle debug grid
   if(showDebugGrid) {
     ofSetColor(255, 255, 255, 50);
     debugGridImage.draw(0, 0);
   }
+  
+  // publish screen to syphon
+  mainOutputSyphonServer.publishScreen();
+
+  // everything AFTER this line will not get send over syphon
+  // use it to draw the gui, logs, ...
 
   // draw gui if needed
   if(showGui) {
@@ -101,10 +102,7 @@ void ofApp::draw() {
 
 //--------------------------------------------------------------
 void ofApp::exit() {
-  delete parameterWindow;
-  delete audioManager;
-  delete sketchManager;
-  delete midiManager;
+
 }
 
 //--------------------------------------------------------------

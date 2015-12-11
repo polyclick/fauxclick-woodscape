@@ -14,9 +14,11 @@ public:
   ~MidiManager();
 
   void setup();
-  void newMidiMessage(ofxMidiMessage& eventArgs);
-
+  void update();
+  void newMidiMessage(ofxMidiMessage& msg);
+  
   ofxMidiIn midiIn;
+  
   ofxMidiMessage midiMessage;
 
   ofxDatGuiLabel* statusLabel;

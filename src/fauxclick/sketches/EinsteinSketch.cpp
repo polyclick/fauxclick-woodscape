@@ -35,6 +35,9 @@ void EinsteinSketch::draw() {
   float width = ofGetWidth() / 3.0;
   float height = ofGetHeight();
 
+  ofPushMatrix();
+  ofPushStyle();
+  
   ofFill();
   ofTranslate(15, 15);
 
@@ -61,6 +64,9 @@ void EinsteinSketch::draw() {
       }
     }
   }
+  
+  ofPopStyle();
+  ofPopMatrix();
 }
 
 void EinsteinSketch::deactivate() {

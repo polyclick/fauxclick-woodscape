@@ -2,10 +2,11 @@
 #include "SketchBase.h"
 #include "ofApp.h"
 #include "ofxPostGlitch.h"
+#include "ofxMidi.h"
 
 class ofApp;
 
-class VolumeHistorySketch : public SketchBase {
+class VolumeHistorySketch : public SketchBase, public ofxMidiListener {
 
 protected:
   const char* name;
@@ -20,6 +21,8 @@ public:
   void update();
   void draw();
   void deactivate();
+  
+  void newMidiMessage(ofxMidiMessage &msg);
 
   const char* getName();
   void logName();

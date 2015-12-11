@@ -41,7 +41,7 @@ void VolumeHistorySketch::setup(){
 }
 
 void VolumeHistorySketch::activate() {
-
+  this->app->midiManager->midiIn.addListener(this);
 }
 
 void VolumeHistorySketch::update(){
@@ -140,7 +140,13 @@ void VolumeHistorySketch::draw() {
 }
 
 void VolumeHistorySketch::deactivate() {
+  this->app->midiManager->midiIn.removeListener(this);
+}
 
+void VolumeHistorySketch::newMidiMessage(ofxMidiMessage &msg) {
+  if(msg.control == 7) {
+    cout << "change volume" << endl;
+  }
 }
 
 const char* VolumeHistorySketch::getName() {

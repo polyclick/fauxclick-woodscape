@@ -38,14 +38,14 @@ void ParameterWindow::setup(){
 }
 
 void ParameterWindow::update(){
-  for (auto &folder : this->folders) {
-    folder->update();
+  for(int i = 0 ; i < this->folders.size() ; i++) {
+    this->folders[i]->update();
   }
 }
 
 void ParameterWindow::draw() {
-  for (auto &folder : this->folders) {
-    folder->draw();
+  for(int i = 0 ; i < this->folders.size() ; i++) {
+    this->folders[i]->draw();
   }
 }
 

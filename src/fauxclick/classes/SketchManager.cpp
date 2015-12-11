@@ -33,8 +33,8 @@ void SketchManager::setup(){
   sketches.push_back(new EinsteinSketch(this->app, "EinsteinSketch"));
 
   // call setup of each sketch
-  for (auto &sketch : sketches) {
-    sketch->setup();
+  for(int i = 0 ; i < sketches.size() ; i++) {
+    sketches[i]->setup();
   }
   
   // setup gui
