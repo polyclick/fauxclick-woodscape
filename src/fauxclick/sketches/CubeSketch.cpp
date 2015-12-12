@@ -21,6 +21,10 @@ void CubeSketch::setup() {
   this->cDark = ofColor(6, 103, 111);
   this->cMid = ofColor(70, 186, 177);
   this->cBright = ofColor(158, 224, 208);
+  
+//  this->cDark = ofColor(0, 0, 0);
+//  this->cMid = ofColor(180, 180, 180);
+//  this->cBright = ofColor(255, 255, 255);
 }
 
 void CubeSketch::activate() {

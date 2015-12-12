@@ -151,6 +151,11 @@ void ofApp::keyPressed(int key){
     case '9':
       this->sketchManager->activateSketch("EinsteinSketch");
       break;
+      
+    case '0':
+      this->sketchManager->activateSketch("RandomSketch");
+      break;
+
   }
 }
 

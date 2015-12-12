@@ -43,7 +43,7 @@ void BoidSketch::draw() {
   ofBackground(0);
   ofFill();
   ofSetColor(255, 255, 255, 255);
-  ofSetLineWidth(3);
+  ofSetLineWidth(4);
 
 
 
@@ -68,6 +68,7 @@ void BoidSketch::draw() {
   this->treshold *= 0.94;
 
   // Draw lines
+  ofSetColor(255, 255, 255, 255);
   for (int i=0 ; i<lineFrom.size(); i++) {
     int iFrom = this->lineFrom[i];
     int iTo = this->lineTo[i];

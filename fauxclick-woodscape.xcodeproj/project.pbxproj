@@ -17,6 +17,8 @@
 		1F558B76FB3412843DDAA031 /* ofxSyphonClient.mm in Sources */ = {isa = PBXBuildFile; fileRef = 03EA4DA95B5E1B8409FC058E /* ofxSyphonClient.mm */; };
 		392C43751C18BDAE00CBD622 /* BoidSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392C43731C18BDAE00CBD622 /* BoidSketch.cpp */; };
 		392C43781C18C33D00CBD622 /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 392C43761C18C33D00CBD622 /* Particle.cpp */; };
+		39657F581C1B5829002E794A /* GraterSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39657F561C1B5829002E794A /* GraterSketch.cpp */; settings = {ASSET_TAGS = (); }; };
+		39AC2C0C1C1C994300A7696C /* RandomSketch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39AC2C0A1C1C994300A7696C /* RandomSketch.cpp */; settings = {ASSET_TAGS = (); }; };
 		3AEFE4FA8AD5C72671AD07F8 /* ofxRtMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 712B183BC00EBFFB1EEA5AB8 /* ofxRtMidiOut.cpp */; };
 		479DCA850DD8BB469A777AD4 /* ofxAubioBeat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A96B8F6D2ECF14F9304EBD6C /* ofxAubioBeat.cpp */; };
 		483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78D67A00EB899FAC09430597 /* ofxLabel.cpp */; };
@@ -119,8 +121,12 @@
 		392C43741C18BDAE00CBD622 /* BoidSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoidSketch.h; path = fauxclick/sketches/BoidSketch.h; sourceTree = "<group>"; };
 		392C43761C18C33D00CBD622 /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Particle.cpp; path = fauxclick/classes/Particle.cpp; sourceTree = "<group>"; };
 		392C43771C18C33D00CBD622 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Particle.h; path = fauxclick/classes/Particle.h; sourceTree = "<group>"; };
+		39657F561C1B5829002E794A /* GraterSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GraterSketch.cpp; path = fauxclick/sketches/GraterSketch.cpp; sourceTree = "<group>"; };
+		39657F571C1B5829002E794A /* GraterSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraterSketch.h; path = fauxclick/sketches/GraterSketch.h; sourceTree = "<group>"; };
 		397B870B1C177E39006FA0C1 /* CubeSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CubeSketch.cpp; path = fauxclick/sketches/CubeSketch.cpp; sourceTree = "<group>"; };
 		397B870C1C177E39006FA0C1 /* CubeSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeSketch.h; path = fauxclick/sketches/CubeSketch.h; sourceTree = "<group>"; };
+		39AC2C0A1C1C994300A7696C /* RandomSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RandomSketch.cpp; path = fauxclick/sketches/RandomSketch.cpp; sourceTree = "<group>"; };
+		39AC2C0B1C1C994300A7696C /* RandomSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RandomSketch.h; path = fauxclick/sketches/RandomSketch.h; sourceTree = "<group>"; };
 		3B2109163FBFB935DA7EE14F /* AudioManager.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = AudioManager.cpp; path = src/fauxclick/classes/AudioManager.cpp; sourceTree = SOURCE_ROOT; };
 		3B6AFA97F893CE28547CFCDC /* ofxAubio.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxAubio.h; path = ../../../addons/ofxAubio/src/ofxAubio.h; sourceTree = SOURCE_ROOT; };
 		3DD359247F3ED1550D8BB5C9 /* ofxMidiIn.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiIn.cpp; path = ../../../addons/ofxMidi/src/ofxMidiIn.cpp; sourceTree = SOURCE_ROOT; };
@@ -182,7 +188,6 @@
 		C0E7EDA67EDF213FC0E83D17 /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiMessage.cpp; path = ../../../addons/ofxMidi/src/ofxMidiMessage.cpp; sourceTree = SOURCE_ROOT; };
 		C0F57D6E7ABC67D0CF3FF8D6 /* FlashSketch.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = FlashSketch.h; path = src/fauxclick/sketches/FlashSketch.h; sourceTree = SOURCE_ROOT; };
 		C0FB85D61C18A01D002E4849 /* CubeSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CubeSketch.cpp; path = fauxclick/sketches/CubeSketch.cpp; sourceTree = "<group>"; };
-		C0FB85D71C18A01D002E4849 /* CubeSketch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CubeSketch.h; path = fauxclick/sketches/CubeSketch.h; sourceTree = "<group>"; };
 		C0FB85DC1C18C25B002E4849 /* ofxPostGlitch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPostGlitch.cpp; sourceTree = "<group>"; };
 		C0FB85DD1C18C25B002E4849 /* ofxPostGlitch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxPostGlitch.h; sourceTree = "<group>"; };
 		C0FB85DF1C18DB52002E4849 /* EinsteinSketch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EinsteinSketch.cpp; path = fauxclick/sketches/EinsteinSketch.cpp; sourceTree = "<group>"; };
@@ -503,7 +508,6 @@
 			isa = PBXGroup;
 			children = (
 				C0FB85D61C18A01D002E4849 /* CubeSketch.cpp */,
-				C0FB85D71C18A01D002E4849 /* CubeSketch.h */,
 				C0FB85DF1C18DB52002E4849 /* EinsteinSketch.cpp */,
 				C0FB85E01C18DB52002E4849 /* EinsteinSketch.h */,
 				60876AEDDD12B0287DBA167B /* FlashSketch.cpp */,
@@ -522,6 +526,10 @@
 				397B870C1C177E39006FA0C1 /* CubeSketch.h */,
 				392C43731C18BDAE00CBD622 /* BoidSketch.cpp */,
 				392C43741C18BDAE00CBD622 /* BoidSketch.h */,
+				39657F561C1B5829002E794A /* GraterSketch.cpp */,
+				39657F571C1B5829002E794A /* GraterSketch.h */,
+				39AC2C0A1C1C994300A7696C /* RandomSketch.cpp */,
+				39AC2C0B1C1C994300A7696C /* RandomSketch.h */,
 			);
 			name = sketches;
 			sourceTree = "<group>";
@@ -722,6 +730,7 @@
 				FAF35839FD75A1A709AD14B2 /* SoundwaveSketch.cpp in Sources */,
 				873C6A46EA3AB01A1D635C1C /* TrippyLinesSketch.cpp in Sources */,
 				1738F7885B5BB0AFE7195AE9 /* VolumeHistorySketch.cpp in Sources */,
+				39657F581C1B5829002E794A /* GraterSketch.cpp in Sources */,
 				479DCA850DD8BB469A777AD4 /* ofxAubioBeat.cpp in Sources */,
 				C0FB85D81C18A01D002E4849 /* CubeSketch.cpp in Sources */,
 				C60077973A257D8F44947E2E /* ofxAubioBlock.cpp in Sources */,
@@ -741,6 +750,7 @@
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
 				BCC8D420CBA9217E437D2D76 /* ofxRtMidiIn.cpp in Sources */,
 				3AEFE4FA8AD5C72671AD07F8 /* ofxRtMidiOut.cpp in Sources */,
+				39AC2C0C1C1C994300A7696C /* RandomSketch.cpp in Sources */,
 				1A86B7721CAEBC6F1C572C45 /* ofxBaseMidi.cpp in Sources */,
 				63F9FE1D90234FA6DE6F509E /* ofxMidi.cpp in Sources */,
 				0BFC9C20FD7E3C8D5873AA97 /* ofxMidiIn.cpp in Sources */,

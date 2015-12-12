@@ -11,7 +11,7 @@ WaveSketch::~WaveSketch(){
 
 void WaveSketch::setup() {
   grid.enablePulse();
-  grid.enableTransform(0.91);
+  grid.enableTransform(0.75);
 }
 
 void WaveSketch::activate() {
@@ -35,7 +35,7 @@ void WaveSketch::draw() {
         int rows = rowMidiValue < 0.0 ? 2 : (int)ofMap(rowMidiValue, 0.0, 1.0, 5.0, 1.0);
         if (i % rows == 0) {
           if (this->app->audioManager->beatReceived) {
-            grid.pulseFace(i,j,j*1.5);
+            grid.pulseFace(i,j,j);
           }
 
 //             Draw the face
@@ -43,11 +43,11 @@ void WaveSketch::draw() {
             grid.drawFace(i,j);
 
             // layer
-            ofSetColor(0, 0, 0);
-            grid.drawFace(i,j, 0.66);
-
-            ofSetColor(255, 255, 255);
-            grid.drawFace(i,j, 0.33);
+//            ofSetColor(0, 0, 0);
+//            grid.drawFace(i,j, 0.66);
+//
+//            ofSetColor(255, 255, 255);
+//            grid.drawFace(i,j, 0.33);
 
         }
 
