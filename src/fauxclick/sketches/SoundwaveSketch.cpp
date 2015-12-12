@@ -56,10 +56,10 @@ void SoundwaveSketch::draw() {
   // set color
   ofNoFill();
   ofSetColor(lineColor);
-  ofSetLineWidth(5);
+  ofSetLineWidth(10);
 
   // y offset
-  ofTranslate(0, ofGetHeight() * 1.0 / 4.0, 0);
+  ofTranslate(0, ofGetHeight() * 1.25 / 4.0, 0);
 
   // start drawing the line
   ofBeginShape();
@@ -94,10 +94,10 @@ void SoundwaveSketch::draw() {
   // set color
   ofNoFill();
   ofSetColor(lineColor);
-  ofSetLineWidth(5);
+  ofSetLineWidth(10);
 
   // y offset
-  ofTranslate(0, ofGetHeight() * 3.0 / 4.0, 0);
+  ofTranslate(0, ofGetHeight() * 2.75 / 4.0, 0);
 
   // start drawing the line
   ofBeginShape();

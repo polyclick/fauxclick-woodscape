@@ -22,13 +22,42 @@ void VolumeHistorySketch::setup(){
 
   // image paths
   vector<const char*> paths;
-  paths.push_back("images/landscape-01.jpg");
-  paths.push_back("images/landscape-02.jpg");
-  paths.push_back("images/landscape-03.jpg");
-  paths.push_back("images/landscape-04.jpg");
-  paths.push_back("images/landscape-05.jpg");
-  paths.push_back("images/tits.jpg");
-
+//  paths.push_back("images/landscape-01.jpg");
+//  paths.push_back("images/landscape-02.jpg");
+//  paths.push_back("images/landscape-03.jpg");
+//  paths.push_back("images/landscape-04.jpg");
+//  paths.push_back("images/landscape-05.jpg");
+//  paths.push_back("images/tits.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwabqkSxpo1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwb3bgJt5Q1tuy5mao1_1280.png");
+  paths.push_back("images/rs-day-two/tumblr_nwbm7gAVRI1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwefj0YD1v1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwf2fsa1UA1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwfx2w5Vbv1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwh3qy5XdJ1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwksqhB5kU1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwku4kGV8R1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwnp3cQo3D1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwohxrdPRs1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwowe1F3WW1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwp22r4L1X1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nws9fyQmds1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwsye7B9d51tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwyta3nhBL1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytaj9hlm1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytapjXw61tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytb06MlP1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytb9lTRn1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytbqfrDH1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytbqGIGM1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytbsPwKk1tuy5mao1_1280.png");
+  paths.push_back("images/rs-day-two/tumblr_nwytcgghnv1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytcyDCna1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytd1tl7o1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytdkcsVP1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytdqw98X1tuy5mao1_1280.jpg");
+  paths.push_back("images/rs-day-two/tumblr_nwytdwgfxt1tuy5mao1_1280.jpg");
+  
   // load images
   for(int i = 0 ; i < paths.size() ; i++) {
     ofImage image;
