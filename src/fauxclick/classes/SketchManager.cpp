@@ -10,6 +10,8 @@
 #include "CubeSketch.h"
 #include "BoidSketch.h"
 #include "EinsteinSketch.h"
+#include "RandomSketch.h"
+
 
 SketchManager::SketchManager(ofApp* app){
   this->app = app;
@@ -31,6 +33,7 @@ void SketchManager::setup(){
   sketches.push_back(new FlashSketch(this->app, "FlashSketch"));
   sketches.push_back(new VolumeHistorySketch(this->app, "VolumeHistorySketch"));
   sketches.push_back(new EinsteinSketch(this->app, "EinsteinSketch"));
+  sketches.push_back(new RandomSketch(this->app, "RandomSketch"));
 
   // call setup of each sketch
   for(int i = 0 ; i < sketches.size() ; i++) {

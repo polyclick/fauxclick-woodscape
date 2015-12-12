@@ -1,28 +1,28 @@
-#include "PulseSketch.h"
+#include "GraterSketch.h"
 
-PulseSketch::PulseSketch(ofApp* app, const char* name){
+GraterSketch::GraterSketch(ofApp* app, const char* name){
   this->name = name;
   this->app = app;
 }
 
-PulseSketch::~PulseSketch(){
+GraterSketch::~GraterSketch(){
   // destructor
 }
 
-void PulseSketch::setup() {
+void GraterSketch::setup() {
   grid.enablePulse();
-  grid.enableTransform(0.75);
+  grid.enableTransform(0.95);
 }
 
-void PulseSketch::activate() {
+void GraterSketch::activate() {
   midiValue = -1.0;
   this->app->midiManager->midiIn.addListener(this);
 }
 
-void PulseSketch::update() {
+void GraterSketch::update() {
 
 }
-void PulseSketch::draw() {
+void GraterSketch::draw() {
 
   ofBackground(0);
   ofFill();
@@ -43,11 +43,11 @@ void PulseSketch::draw() {
         grid.drawFace(i,j);
 
         // layer
-//        ofSetColor(0, 0, 0);
-//        grid.drawFace(i,j, 0.66);
-//
-//        ofSetColor(255, 255, 255);
-//        grid.drawFace(i,j, 0.33);
+        ofSetColor(0, 0, 0);
+        grid.drawFace(i,j, 0.66);
+
+        ofSetColor(255, 255, 255);
+        grid.drawFace(i,j, 0.33);
 
       }
 
@@ -76,20 +76,20 @@ void PulseSketch::draw() {
   grid.decay();
 }
 
-void PulseSketch::deactivate() {
+void GraterSketch::deactivate() {
   this->app->midiManager->midiIn.removeListener(this);
 }
 
-void PulseSketch::newMidiMessage(ofxMidiMessage &msg) {
+void GraterSketch::newMidiMessage(ofxMidiMessage &msg) {
   if(msg.control == 29 && msg.value != midiValue) {
     midiValue = ofMap(msg.value, 0, 127, 0, 1);
   }
 }
 
-const char* PulseSketch::getName() {
+const char* GraterSketch::getName() {
   return this->name;
 }
 
-void PulseSketch::logName() {
+void GraterSketch::logName() {
   ofLog(OF_LOG_NOTICE, ofToString(this->name));
 }
