@@ -27,7 +27,7 @@ void VolumeHistorySketch::setup(){
   paths.push_back("images/landscape-03.jpg");
   paths.push_back("images/landscape-04.jpg");
   paths.push_back("images/landscape-05.jpg");
-  //paths.push_back("images/tits.jpg");
+  paths.push_back("images/tits.jpg");
 
   // load images
   for(int i = 0 ; i < paths.size() ; i++) {

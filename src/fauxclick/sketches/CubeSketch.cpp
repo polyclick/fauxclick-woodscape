@@ -85,8 +85,6 @@ void CubeSketch::shiftColor(){
   if(this->stepCounter > 1 ){ this->stepCounter = 0; }
 
   switch (this->stepCounter) {
-      cout << this->stepCounter << endl;
-
     case 0:
       this->cTop =this->cBright;
       this->cLeft = this->cMid;

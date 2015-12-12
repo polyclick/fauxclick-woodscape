@@ -31,6 +31,8 @@ void BoidSketch::setup() {
 }
 
 void BoidSketch::activate() {
+  this->faderMidiValue = -1.0;
+  this->app->midiManager->midiIn.addListener(this);
 }
 
 void BoidSketch::update() {
@@ -40,7 +42,7 @@ void BoidSketch::update() {
 void BoidSketch::draw() {
   ofBackground(0);
   ofFill();
-  ofSetColor(255, 255, 255, 180);
+  ofSetColor(255, 255, 255, 255);
   ofSetLineWidth(3);
 
 
@@ -111,7 +113,13 @@ void BoidSketch::setLines(){
 }
 
 void BoidSketch::deactivate() {
+  this->app->midiManager->midiIn.removeListener(this);
+}
 
+void BoidSketch::newMidiMessage(ofxMidiMessage &msg) {
+  if(msg.control == 63 && msg.value != faderMidiValue) {
+    faderMidiValue = ofMap(msg.value, 0, 127, 0, 1);
+  }
 }
 
 const char* BoidSketch::getName() {

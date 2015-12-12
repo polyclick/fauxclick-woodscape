@@ -84,7 +84,7 @@ void ofApp::draw() {
 
   // show the triangle debug grid
   if(showDebugGrid) {
-    ofSetColor(255, 255, 255, 50);
+    ofSetColor(255, 255, 255, 255);
     debugGridImage.draw(0, 0);
   }
   

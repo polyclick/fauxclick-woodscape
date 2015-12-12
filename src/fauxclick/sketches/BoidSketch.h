@@ -1,10 +1,11 @@
 #pragma once
 
 #include "ofApp.h"
+#include "ofxMidi.h"
 #include "SketchBase.h"
 #include "Particle.h"
 
-class BoidSketch : public SketchBase {
+class BoidSketch : public SketchBase, public ofxMidiListener {
 
 protected:
 
@@ -17,9 +18,11 @@ protected:
   vector <int> lineTo;
   int numParticles;
   int numLines;
-  float treshold;
 
+  float treshold;
   float bandValue;
+  float faderMidiValue = -1.0;
+  
 
   void setLines();
 
@@ -32,6 +35,8 @@ public:
   void update();
   void draw();
   void deactivate();
+  
+  void newMidiMessage(ofxMidiMessage &msg);
 
   const char* getName();
   void logName();
