@@ -95,32 +95,36 @@ void MidiManager::newMidiMessage(ofxMidiMessage& msg) {
       this->app->sketchManager->activateSketch("PulseSketch");
       break;
       
-    case 43:
+    case 39:
       this->app->sketchManager->activateSketch("TrippyLinesSketch");
       break;
       
-    case 47:
+    case 50:
       this->app->sketchManager->activateSketch("SoundwaveSketch");
       break;
       
-    case 50:
+    case 47:
       this->app->sketchManager->activateSketch("FlashSketch");
       break;
       
     case 37:
       this->app->sketchManager->activateSketch("VolumeHistorySketch");
       break;
-      
-    case 39:
-      this->app->sketchManager->activateSketch("CubeSketch");
-      break;
+//      
+//    case 39:
+//      this->app->sketchManager->activateSketch("CubeSketch");
+//      break;
       
     case 42:
       this->app->sketchManager->activateSketch("BoidSketch");
       break;
       
-    case 46:
-      this->app->sketchManager->activateSketch("EinsteinSketch");
+//    case 46:
+//      this->app->sketchManager->activateSketch("EinsteinSketch");
+//      break;
+      
+    case 43:
+      this->app->sketchManager->activateSketch("RandomSketch");
       break;
   }
 }

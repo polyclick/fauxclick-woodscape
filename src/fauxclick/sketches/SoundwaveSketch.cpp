@@ -119,7 +119,7 @@ void SoundwaveSketch::deactivate() {
 }
 
 void SoundwaveSketch::newMidiMessage(ofxMidiMessage &msg) {
-  if(msg.control == 51 && msg.value != volumeMidiValue) {
+  if(msg.control == 54 && msg.value != volumeMidiValue) {
     volumeMidiValue = ofMap(msg.value, 0, 127, 0, 1);
   }
 }

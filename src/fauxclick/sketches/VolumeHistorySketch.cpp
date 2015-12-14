@@ -27,7 +27,7 @@ void VolumeHistorySketch::setup(){
 //  paths.push_back("images/landscape-03.jpg");
 //  paths.push_back("images/landscape-04.jpg");
 //  paths.push_back("images/landscape-05.jpg");
-//  paths.push_back("images/tits.jpg");
+    //paths.push_back("images/rs-day-one/tits.jpg");
   paths.push_back("images/rs-day-two/tumblr_nwabqkSxpo1tuy5mao1_1280.jpg");
   paths.push_back("images/rs-day-two/tumblr_nwb3bgJt5Q1tuy5mao1_1280.png");
   paths.push_back("images/rs-day-two/tumblr_nwbm7gAVRI1tuy5mao1_1280.jpg");
