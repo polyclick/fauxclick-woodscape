@@ -11,6 +11,7 @@
 #include "BoidSketch.h"
 #include "EinsteinSketch.h"
 #include "RandomSketch.h"
+#include "GraterSketch.h"
 
 
 SketchManager::SketchManager(ofApp* app){
@@ -34,6 +35,7 @@ void SketchManager::setup(){
   sketches.push_back(new VolumeHistorySketch(this->app, "VolumeHistorySketch"));
   sketches.push_back(new EinsteinSketch(this->app, "EinsteinSketch"));
   sketches.push_back(new RandomSketch(this->app, "RandomSketch"));
+  sketches.push_back(new GraterSketch(this->app, "GraterSketch"));
 
   // call setup of each sketch
   for(int i = 0 ; i < sketches.size() ; i++) {

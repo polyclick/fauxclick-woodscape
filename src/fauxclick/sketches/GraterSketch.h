@@ -11,17 +11,10 @@ protected:
 
   const char* name;
   ofApp* app;
+  
   Grid grid;
-
-  // Set unit width
-  const int unitWidth = 101;
-
-  // Set unit height
-  const int unitHeight = 118;
-
-  // Rows and columns are zero-indexed
-  const int rows = 10;
-  const int cols = 15;
+  
+  ofMesh mesh;
   
   // midi value
   float midiValue = -1.0;

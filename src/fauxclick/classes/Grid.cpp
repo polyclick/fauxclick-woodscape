@@ -20,11 +20,24 @@ Grid::~Grid(){
 }
 
 // @todo: postponed
-//vector<ofPoint> Grid::points(){
-//  /**
-//   * Return the vertices that make up the grid
-//   */
-//}
+ofMesh Grid::pointMesh(){
+  ofMesh mesh;
+  
+  for (int i = 0; i < rows+1 ; i++) {
+    for (int j = 0; j < cols+1; j++) {
+     
+       vector<ofPoint> lel = face(i, j, 1);
+      
+        
+        mesh.addVertex(lel[0]);
+        mesh.addVertex(lel[1]);
+        mesh.addVertex(lel[2]);
+    }
+  }
+  
+  return mesh;
+ 
+}
 
 void Grid::drawFace(int row, int col, float scaleMultiplier) {
   if(this->faceVisible(row, col)){

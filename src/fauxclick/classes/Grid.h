@@ -32,6 +32,8 @@ public:
   ~Grid();
   
   vector<ofPoint> face( int row, int col , float scaleMultiplier = 1);
+  
+  ofMesh pointMesh();
   void drawFace(int row, int col, float scaleMultiplier = 1);
   void enablePulse();
   void enableTransform( float scaleMultiplier =1, float visibleTresh=0.25);

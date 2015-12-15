@@ -141,7 +141,7 @@ void ofApp::keyPressed(int key){
       break;
       
     case '7':
-      this->sketchManager->activateSketch("CubeSketch");
+      this->sketchManager->activateSketch("GraterSketch");
       break;
       
     case '8':
