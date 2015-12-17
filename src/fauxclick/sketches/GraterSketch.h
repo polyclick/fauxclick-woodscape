@@ -15,6 +15,11 @@ protected:
   Grid grid;
   
   ofMesh mesh;
+  ofMesh meshCopy;
+  
+  float multiplier;
+  ofVec3f center;
+  Boolean enabled;
   
   // midi value
   float midiValue = -1.0;
