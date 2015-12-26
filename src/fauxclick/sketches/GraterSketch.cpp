@@ -59,7 +59,7 @@ void GraterSketch::draw() {
   if (this->app->audioManager->beatReceived) {
     multiplier = 2;
   }else{
-    multiplier*= 0.85; //@todo: Map to midi twist knob
+    multiplier*= 0.75; //@todo: Map to midi twist knob
   }
   
   
@@ -71,7 +71,7 @@ void GraterSketch::draw() {
       
       
       // Small distance to mouse should yield a small displacement
-      float displacement = ofMap(distanceToCenter, 0, 600, 300.0, 0, true);
+      float displacement = ofMap(distanceToCenter, 0, 400, 300.0, 0, true);
       
       displacement *= multiplier;
       
@@ -102,7 +102,7 @@ void GraterSketch::deactivate() {
 }
 
 void GraterSketch::newMidiMessage(ofxMidiMessage &msg) {
-  if(msg.control == 29 && msg.value != midiValue) {
+  if(msg.control == 82 && msg.value != midiValue) {
     midiValue = ofMap(msg.value, 0, 127, 0, 1);
   }
 }

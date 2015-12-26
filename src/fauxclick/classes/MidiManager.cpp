@@ -126,5 +126,9 @@ void MidiManager::newMidiMessage(ofxMidiMessage& msg) {
     case 43:
       this->app->sketchManager->activateSketch("RandomSketch");
       break;
+      
+    case 46:
+      this->app->sketchManager->activateSketch("GraterSketch");
+      break;
   }
 }
