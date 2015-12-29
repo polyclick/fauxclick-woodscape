@@ -119,9 +119,9 @@ void SoundwaveSketch::deactivate() {
 }
 
 void SoundwaveSketch::newMidiMessage(ofxMidiMessage &msg) {
-  if(msg.control == 54 && msg.value != volumeMidiValue) {
-    volumeMidiValue = ofMap(msg.value, 0, 127, 0, 1);
-  }
+//  if(msg.control == 54 && msg.value != volumeMidiValue) {
+//    volumeMidiValue = ofMap(msg.value, 0, 127, 0, 1);
+//  }
 }
 
 const char* SoundwaveSketch::getName() {

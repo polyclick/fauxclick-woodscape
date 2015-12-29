@@ -102,9 +102,9 @@ void GraterSketch::deactivate() {
 }
 
 void GraterSketch::newMidiMessage(ofxMidiMessage &msg) {
-  if(msg.control == 82 && msg.value != midiValue) {
-    midiValue = ofMap(msg.value, 0, 127, 0, 1);
-  }
+//  if(msg.control == 82 && msg.value != midiValue) {
+//    midiValue = ofMap(msg.value, 0, 127, 0, 1);
+//  }
 }
 
 const char* GraterSketch::getName() {

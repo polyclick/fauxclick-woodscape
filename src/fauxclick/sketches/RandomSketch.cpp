@@ -55,9 +55,9 @@ void RandomSketch::deactivate() {
 }
 
 void RandomSketch::newMidiMessage(ofxMidiMessage &msg) {
-  if(msg.control == 48 && msg.value != midiValue) {
-    midiValue = ofMap(msg.value, 0, 127, 0, 1);
-  }
+//  if(msg.control == 48 && msg.value != midiValue) {
+//    midiValue = ofMap(msg.value, 0, 127, 0, 1);
+//  }
 }
 
 const char* RandomSketch::getName() {

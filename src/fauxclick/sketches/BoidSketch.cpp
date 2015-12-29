@@ -118,9 +118,9 @@ void BoidSketch::deactivate() {
 }
 
 void BoidSketch::newMidiMessage(ofxMidiMessage &msg) {
-  if(msg.control == 60 && msg.value != faderMidiValue) {
-    faderMidiValue = ofMap(msg.value, 0, 127, 0, 1);
-  }
+//  if(msg.control == 60 && msg.value != faderMidiValue) {
+//    faderMidiValue = ofMap(msg.value, 0, 127, 0, 1);
+//  }
 }
 
 const char* BoidSketch::getName() {

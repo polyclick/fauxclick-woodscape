@@ -81,9 +81,9 @@ void WaveSketch::deactivate() {
 }
 
 void WaveSketch::newMidiMessage(ofxMidiMessage &msg) {
-  if(msg.control == 24 && msg.value != rowMidiValue) {
-    rowMidiValue = ofMap(msg.value, 0, 127, 0, 1);
-  }
+//  if(msg.control == 24 && msg.value != rowMidiValue) {
+//    rowMidiValue = ofMap(msg.value, 0, 127, 0, 1);
+//  }
 }
 
 const char* WaveSketch::getName() {

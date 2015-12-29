@@ -179,9 +179,9 @@ void VolumeHistorySketch::deactivate() {
 }
 
 void VolumeHistorySketch::newMidiMessage(ofxMidiMessage &msg) {
-  if(msg.control == 57 && msg.value != volumeMidiValue) {
-    volumeMidiValue = ofMap(msg.value, 0, 127, 0, 1);
-  }
+//  if(msg.control == 57 && msg.value != volumeMidiValue) {
+//    volumeMidiValue = ofMap(msg.value, 0, 127, 0, 1);
+//  }
 }
 
 const char* VolumeHistorySketch::getName() {
